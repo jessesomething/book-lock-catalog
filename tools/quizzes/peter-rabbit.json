@@ -1,0 +1,5 @@
+{"chapters": [[
+  {"prompt": "Mother Rabbit told the bunnies to stay away from where?", "choices": ["Down the lane", "Mr. McGregor's garden", "Into the fields"], "correctIndex": 1, "evidence": "you may go into the fields or down the lane, but don't go into Mr. McGregor's garden"},
+  {"prompt": "What did Peter lose in the garden?", "choices": ["His basket", "His umbrella", "His shoes and jacket"], "correctIndex": 2, "evidence": "Mr. McGregor hung up the little jacket and the shoes for a scare-crow"},
+  {"prompt": "What did Peter's mother give him at bedtime?", "choices": ["Camomile tea", "Blackberries", "Currant buns"], "correctIndex": 0, "evidence": "His mother put him to bed, and made some camomile tea; and she gave a dose of it to Peter!"}
+]]}

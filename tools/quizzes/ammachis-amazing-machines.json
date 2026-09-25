@@ -1,0 +1,5 @@
+{"chapters": [[
+  {"prompt": "What did Sooraj and Ammachi make together?", "choices": ["Coconut barfi", "Unniappams", "Mango juice"], "correctIndex": 0, "evidence": "\"Ammachi! Ammachi! Could we make coconut barfi today?\" Sooraj asked his grandmother."},
+  {"prompt": "Which coconuts did Ammachi say to pick?", "choices": ["Small green ones", "Ripe brown ones", "Cracked ones"], "correctIndex": 1, "evidence": "We'll only pick the ripe ones, okay? The ones that are brown all over..."},
+  {"prompt": "What does the book say simple machines do?", "choices": ["Make food taste sweet", "Keep things cold", "Make work easier"], "correctIndex": 2, "evidence": "Simple machines make it easier to do work."}
+]]}

@@ -1,0 +1,1334 @@
+{
+ "chapters": [
+  [
+   {
+    "prompt": "What were Matthew and Marilla expecting to get?",
+    "choices": [
+     "A new horse",
+     "A hired man from Carmody",
+     "A boy from an orphan asylum",
+     "A girl from an orphan asylum"
+    ],
+    "correctIndex": 2,
+    "evidence": "We're getting a little boy from an orphan asylum in Nova Scotia and he's coming on the train tonight."
+   },
+   {
+    "prompt": "Who was supposed to bring the child to the train station?",
+    "choices": [
+     "Mrs. Alexander Spencer",
+     "Mrs. Rachel Lynde",
+     "Thomas Lynde",
+     "Peter Morrison"
+    ],
+    "correctIndex": 0,
+    "evidence": "So Matthew went to Bright River to meet him. Mrs. Spencer will drop him off there."
+   },
+   {
+    "prompt": "What did Mrs. Rachel think of the Cuthberts' plan?",
+    "choices": [
+     "It was a wonderful idea",
+     "It was none of her business",
+     "They should get two boys",
+     "It was foolish and risky"
+    ],
+    "correctIndex": 3,
+    "evidence": "I think you're doing a mighty foolish thing—a risky thing, that's what."
+   }
+  ],
+  [
+   {
+    "prompt": "When Matthew reached the station, who was waiting for him?",
+    "choices": [
+     "A boy of about eleven",
+     "A red-haired girl",
+     "Mrs. Spencer",
+     "Nobody at all"
+    ],
+    "correctIndex": 1,
+    "evidence": "But there was a passenger dropped off for you—a little girl. She's sitting out there on the shingles."
+   },
+   {
+    "prompt": "What did Matthew decide to do about the mistake?",
+    "choices": [
+     "Leave the girl with the stationmaster",
+     "Send her back on the next train",
+     "Take her home and let Marilla explain",
+     "Tell her right away at the station"
+    ],
+    "correctIndex": 2,
+    "evidence": "He could not tell this child... that there had been a mistake; he would take her home and let Marilla do that."
+   },
+   {
+    "prompt": "What did the girl say kept her from being perfectly happy?",
+    "choices": [
+     "Her red hair",
+     "Her old carpet-bag",
+     "Being far from the sea",
+     "Missing her friends at the asylum"
+    ],
+    "correctIndex": 0,
+    "evidence": "Now you see why I can't be perfectly happy. Nobody could who has red hair."
+   }
+  ],
+  [
+   {
+    "prompt": "What name did the girl ask Marilla to call her?",
+    "choices": [
+     "Diana",
+     "Lily",
+     "Jane",
+     "Cordelia"
+    ],
+    "correctIndex": 3,
+    "evidence": "Will you please call me Cordelia?"
+   },
+   {
+    "prompt": "Why did Marilla say they wanted a boy instead of a girl?",
+    "choices": [
+     "A boy would be quieter",
+     "To help Matthew on the farm",
+     "To keep Matthew company",
+     "Boys eat less"
+    ],
+    "correctIndex": 1,
+    "evidence": "No. We want a boy to help Matthew on the farm. A girl would be of no use to us."
+   },
+   {
+    "prompt": "At the end of the chapter, what did Matthew and Marilla disagree about?",
+    "choices": [
+     "Where Anne should sleep",
+     "What to feed Anne",
+     "Whether to keep Anne",
+     "Who should drive to Bright River"
+    ],
+    "correctIndex": 2,
+    "evidence": "Matthew Cuthbert, I believe that child has bewitched you! I can see as plain as plain that you want to keep her."
+   }
+  ],
+  [
+   {
+    "prompt": "Why did Anne decide not to go outside to play?",
+    "choices": [
+     "She would love it too much and it would be harder to leave",
+     "Marilla told her to stay in",
+     "It was raining",
+     "She was afraid of the brook"
+    ],
+    "correctIndex": 0,
+    "evidence": "if I go out there and get acquainted with all those trees and flowers... I'll not be able to help loving it."
+   },
+   {
+    "prompt": "What did Anne name the cherry-tree outside her window?",
+    "choices": [
+     "White Lady",
+     "Blossom Queen",
+     "Cherry Bride",
+     "Snow Queen"
+    ],
+    "correctIndex": 3,
+    "evidence": "I named that cherry-tree outside my bedroom window this morning. I called it Snow Queen because it was so white."
+   },
+   {
+    "prompt": "As Marilla drove away, what did Matthew tell her?",
+    "choices": [
+     "He was going to buy turnip seed",
+     "He planned to hire Jerry Buote for the summer",
+     "He had found a boy to adopt",
+     "He wanted to come to White Sands too"
+    ],
+    "correctIndex": 1,
+    "evidence": "Little Jerry Buote from the Creek was here this morning, and I told him I guessed I'd hire him for the summer."
+   }
+  ],
+  [
+   {
+    "prompt": "What happened to Anne's parents?",
+    "choices": [
+     "They moved to the States",
+     "They left her at the asylum",
+     "They both died of fever when she was a baby",
+     "They were lost at sea"
+    ],
+    "correctIndex": 2,
+    "evidence": "She died of fever when I was just three months old... And father died four days afterwards from fever too."
+   },
+   {
+    "prompt": "What did Anne mostly do while living with Mrs. Thomas and Mrs. Hammond?",
+    "choices": [
+     "Looked after their children",
+     "Worked in the sawmill",
+     "Went to school every day",
+     "Sold eggs at the market"
+    ],
+    "correctIndex": 0,
+    "evidence": "I helped look after the Thomas children... Mrs. Hammond... said she'd take me, seeing I was handy with children"
+   },
+   {
+    "prompt": "How did Marilla begin to feel as she heard Anne's story?",
+    "choices": [
+     "Angry at Anne",
+     "Bored",
+     "Sure Anne was making it up",
+     "Sorry for Anne"
+    ],
+    "correctIndex": 3,
+    "evidence": "Pity was suddenly stirring in her heart for the child. What a starved, unloved life she had had"
+   }
+  ],
+  [
+   {
+    "prompt": "How did the mix-up about the boy happen?",
+    "choices": [
+     "Anne pretended to be a boy",
+     "Nancy passed on the message wrong and said they wanted a girl",
+     "The asylum had no boys left",
+     "Matthew wrote the wrong word in a letter"
+    ],
+    "correctIndex": 1,
+    "evidence": "Why, Robert sent word down by his daughter Nancy and she said you wanted a girl"
+   },
+   {
+    "prompt": "Who wanted to take Anne instead?",
+    "choices": [
+     "Mrs. Rachel Lynde",
+     "Flora Jane Spencer",
+     "Mrs. Peter Blewett",
+     "Mrs. Hammond"
+    ],
+    "correctIndex": 2,
+    "evidence": "Mrs. Peter Blewett... wished she'd sent by me for a little girl to help her."
+   },
+   {
+    "prompt": "What did Marilla decide at the end of the chapter?",
+    "choices": [
+     "Anne could stay at Green Gables",
+     "Anne would go to Mrs. Blewett",
+     "Anne would go back to the asylum",
+     "Anne would live with Mrs. Spencer"
+    ],
+    "correctIndex": 0,
+    "evidence": "But I'll do my best. So far as I'm concerned, Matthew, she may stay."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne tell Marilla when asked to say her prayers?",
+    "choices": [
+     "She had already said them",
+     "She only prayed in church",
+     "She prayed every morning",
+     "She never said any prayers"
+    ],
+    "correctIndex": 3,
+    "evidence": "\"I never say any prayers,\" announced Anne."
+   },
+   {
+    "prompt": "What two things did Anne ask for in her prayer?",
+    "choices": [
+     "A new dress and a best friend",
+     "To stay at Green Gables and to be good-looking",
+     "A brook and a garden",
+     "To go to school and to meet Diana"
+    ],
+    "correctIndex": 1,
+    "evidence": "Please let me stay at Green Gables; and please let me be good-looking when I grow up."
+   },
+   {
+    "prompt": "How did Anne end her first prayer?",
+    "choices": [
+     "Amen",
+     "Good night",
+     "Yours respectfully, Anne Shirley",
+     "The end"
+    ],
+    "correctIndex": 2,
+    "evidence": "I remain, \"Yours respectfully, Anne Shirley.\" ... I should have said 'Amen' in place of 'yours respectfully,'"
+   }
+  ],
+  [
+   {
+    "prompt": "What news did Marilla finally give Anne?",
+    "choices": [
+     "She and Matthew had decided to keep her",
+     "Anne was going to Mrs. Blewett",
+     "Anne would start school the next day",
+     "Diana was coming to visit"
+    ],
+    "correctIndex": 0,
+    "evidence": "Matthew and I have decided to keep you—that is, if you will try to be a good little girl"
+   },
+   {
+    "prompt": "Who did Marilla say might become a playmate for Anne?",
+    "choices": [
+     "Ruby Gillis",
+     "Lily Jones",
+     "Flora Jane Spencer",
+     "Diana Barry"
+    ],
+    "correctIndex": 3,
+    "evidence": "Diana Barry lives over at Orchard Slope and she's about your age... perhaps she will be a playmate for you"
+   },
+   {
+    "prompt": "Who was Katie Maurice?",
+    "choices": [
+     "A girl at the asylum",
+     "A pretend friend who was Anne's reflection in a bookcase door",
+     "Mrs. Thomas's oldest daughter",
+     "A girl who lived near Mrs. Hammond"
+    ],
+    "correctIndex": 1,
+    "evidence": "I used to pretend that my reflection in it was another little girl who lived in it. I called her Katie Maurice"
+   }
+  ],
+  [
+   {
+    "prompt": "What did Mrs. Rachel say that made Anne so angry?",
+    "choices": [
+     "That she talked too much",
+     "That she should go back to the asylum",
+     "That she was skinny and homely with red hair",
+     "That she was lazy"
+    ],
+    "correctIndex": 2,
+    "evidence": "She's terrible skinny and homely, Marilla... And hair as red as carrots!"
+   },
+   {
+    "prompt": "What did Marilla tell Mrs. Rachel after Anne ran upstairs?",
+    "choices": [
+     "She shouldn't have teased Anne about her looks",
+     "Anne would be sent back",
+     "Anne deserved a whipping",
+     "Anne was sick"
+    ],
+    "correctIndex": 0,
+    "evidence": "You shouldn't have twitted her about her looks, Rachel."
+   },
+   {
+    "prompt": "What punishment did Marilla give Anne?",
+    "choices": [
+     "A whipping with a birch switch",
+     "No supper for a week",
+     "Being sent to Mrs. Blewett",
+     "Staying in her room until she would apologize to Mrs. Lynde"
+    ],
+    "correctIndex": 3,
+    "evidence": "apologize to Mrs. Lynde you must and shall and you'll stay here in your room until you can tell me you're willing"
+   }
+  ],
+  [
+   {
+    "prompt": "Who talked Anne into apologizing?",
+    "choices": [
+     "Marilla",
+     "Matthew",
+     "Diana",
+     "Mrs. Spencer"
+    ],
+    "correctIndex": 1,
+    "evidence": "\"Well now, Anne, don't you think you'd better do it and have it over with?\" he whispered."
+   },
+   {
+    "prompt": "How did Anne apologize to Mrs. Lynde?",
+    "choices": [
+     "She wrote a short note",
+     "She sent Matthew to say sorry",
+     "She knelt down and gave a long, dramatic apology",
+     "She mumbled 'sorry' and ran off"
+    ],
+    "correctIndex": 2,
+    "evidence": "Anne suddenly went down on her knees before the astonished Mrs. Rachel and held out her hands beseechingly."
+   },
+   {
+    "prompt": "What hopeful thing did Mrs. Lynde tell Anne?",
+    "choices": [
+     "Her red hair might turn auburn when she grew up",
+     "Her freckles would fade",
+     "She would grow tall",
+     "She would get a new dress"
+    ],
+    "correctIndex": 0,
+    "evidence": "when she grew up it darkened to a real handsome auburn. I wouldn't be a mite surprised if yours did, too"
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne wish one of her new dresses had?",
+    "choices": [
+     "A lace collar",
+     "Pockets",
+     "A long skirt",
+     "Puffed sleeves"
+    ],
+    "correctIndex": 3,
+    "evidence": "But I'd be ever so much gratefuller if—if you'd made just one of them with puffed sleeves."
+   },
+   {
+    "prompt": "What did Anne put on her hat on the way to Sunday-school?",
+    "choices": [
+     "A wreath of buttercups and wild roses",
+     "A blue ribbon",
+     "A feather",
+     "Apple blossoms"
+    ],
+    "correctIndex": 0,
+    "evidence": "a golden frenzy of wind-stirred buttercups and a glory of wild roses, Anne promptly and liberally garlanded her hat"
+   },
+   {
+    "prompt": "What happened when Anne got to Mrs. Lynde's house?",
+    "choices": [
+     "Mrs. Lynde drove her to church",
+     "Mrs. Lynde was sick in bed",
+     "Mrs. Lynde had already left, so Anne went on alone",
+     "Mrs. Lynde sent her home"
+    ],
+    "correctIndex": 2,
+    "evidence": "When she had reached Mrs. Lynde's house she found that lady gone. Nothing daunted, Anne proceeded onward to the church alone."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Marilla scold Anne about at the start of the chapter?",
+    "choices": [
+     "Talking during church",
+     "Wearing flowers on her hat to church",
+     "Losing her collection cent",
+     "Not learning her lesson"
+    ],
+    "correctIndex": 1,
+    "evidence": "you went to church last Sunday with your hat rigged out ridiculous with roses and buttercups"
+   },
+   {
+    "prompt": "What did Anne and Diana do in the Barry garden?",
+    "choices": [
+     "Picked flowers for Mrs. Barry",
+     "Read a book together",
+     "Played tag",
+     "Made a solemn vow to be friends forever"
+    ],
+    "correctIndex": 3,
+    "evidence": "I solemnly swear to be faithful to my bosom friend, Diana Barry, as long as the sun and moon shall endure."
+   },
+   {
+    "prompt": "What did Anne want to do with the chocolates Matthew gave her?",
+    "choices": [
+     "Give half to Diana",
+     "Save them for Christmas",
+     "Eat them all at once",
+     "Give them to Marilla"
+    ],
+    "correctIndex": 0,
+    "evidence": "And I can give Diana half of them, can't I?"
+   }
+  ],
+  [
+   {
+    "prompt": "What exciting event was Anne looking forward to?",
+    "choices": [
+     "A school concert",
+     "Diana's birthday party",
+     "A Sunday-school picnic",
+     "A trip to Charlottetown"
+    ],
+    "correctIndex": 2,
+    "evidence": "there's going to be a Sunday-school picnic next week—in Mr. Harmon Andrews's field"
+   },
+   {
+    "prompt": "What is Idlewild?",
+    "choices": [
+     "The Barrys' house",
+     "Anne and Diana's playhouse in a ring of birch trees",
+     "A pond in Mr. Barry's field",
+     "A book Diana lent Anne"
+    ],
+    "correctIndex": 1,
+    "evidence": "there is a little ring of white birch trees... Diana and I have our playhouse there. We call it Idlewild."
+   },
+   {
+    "prompt": "What was Marilla's most treasured possession?",
+    "choices": [
+     "Her rosebud tea set",
+     "Her Bible",
+     "Her best brown satin dress",
+     "Her amethyst brooch"
+    ],
+    "correctIndex": 3,
+    "evidence": "That amethyst brooch was Marilla's most treasured possession."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne first say about the missing brooch?",
+    "choices": [
+     "She tried it on but put it back",
+     "She lost it in the lake",
+     "She gave it to Diana",
+     "She never saw it"
+    ],
+    "correctIndex": 0,
+    "evidence": "I pinned it on my breast just to see how it would look... I put it back on the bureau."
+   },
+   {
+    "prompt": "Why did Anne 'confess' to losing the brooch?",
+    "choices": [
+     "She really had dropped it in the lake",
+     "Diana told her to",
+     "She thought confessing would let her go to the picnic",
+     "Matthew asked her to"
+    ],
+    "correctIndex": 2,
+    "evidence": "you said you'd keep me here until I confessed... so I decided to confess because I was bound to get to the picnic."
+   },
+   {
+    "prompt": "Where was the brooch really?",
+    "choices": [
+     "At the bottom of the Lake of Shining Waters",
+     "Caught on Marilla's black lace shawl",
+     "Behind the bureau",
+     "In Anne's pocket"
+    ],
+    "correctIndex": 1,
+    "evidence": "It was the amethyst brooch, hanging to a thread of the lace by its catch!"
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne do when Gilbert Blythe called her 'Carrots'?",
+    "choices": [
+     "Burst into tears and ran home",
+     "Told Mr. Phillips",
+     "Called him a crow",
+     "Cracked her slate over his head"
+    ],
+    "correctIndex": 3,
+    "evidence": "thwack! Anne had brought her slate down on Gilbert's head and cracked it—slate not head—clear across."
+   },
+   {
+    "prompt": "How did Mr. Phillips punish Anne for being late the next day?",
+    "choices": [
+     "He made her sit with Gilbert Blythe",
+     "He kept her after school",
+     "He sent her home",
+     "He took away her slate"
+    ],
+    "correctIndex": 0,
+    "evidence": "Take those flowers out of your hair and sit with Gilbert Blythe."
+   },
+   {
+    "prompt": "What did Anne decide after that day?",
+    "choices": [
+     "To apologize to Gilbert",
+     "To move to Diana's desk",
+     "Never to go back to school",
+     "To ask for a new teacher"
+    ],
+    "correctIndex": 2,
+    "evidence": "\"I am not coming back to school any more,\" said Anne."
+   }
+  ],
+  [
+   {
+    "prompt": "What was really in the bottle Anne gave Diana?",
+    "choices": [
+     "Raspberry cordial",
+     "Currant wine",
+     "Cherry juice",
+     "Cold tea"
+    ],
+    "correctIndex": 1,
+    "evidence": "You went and gave Diana currant wine instead of raspberry cordial."
+   },
+   {
+    "prompt": "Why did the mix-up with the bottles happen?",
+    "choices": [
+     "Diana brought the wrong bottle",
+     "Jerry Buote switched the bottles",
+     "Anne wanted to play a joke",
+     "Marilla had put the cordial in the cellar, not the pantry"
+    ],
+    "correctIndex": 3,
+    "evidence": "Marilla recollected that she had put the bottle of raspberry cordial down in the cellar instead of in the pantry"
+   },
+   {
+    "prompt": "What did Mrs. Barry decide?",
+    "choices": [
+     "Diana could never play with Anne again",
+     "Anne must apologize in church",
+     "Diana had to stay home from school",
+     "Marilla must pay for the doctor"
+    ],
+    "correctIndex": 0,
+    "evidence": "she's never, never going to let Diana play with me again."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Diana give Anne when they said goodbye at the spring?",
+    "choices": [
+     "A ring",
+     "A book",
+     "A lock of her hair",
+     "A picture of a lady"
+    ],
+    "correctIndex": 2,
+    "evidence": "Diana gave me a lock of her hair and I'm going to sew it up in a little bag"
+   },
+   {
+    "prompt": "What did Anne decide to do after she and Diana were parted?",
+    "choices": [
+     "Go back to school",
+     "Run away to the asylum",
+     "Find a new bosom friend",
+     "Stay in her room forever"
+    ],
+    "correctIndex": 0,
+    "evidence": "\"I'm going back to school,\" she announced."
+   },
+   {
+    "prompt": "Who did Anne try hardest to beat in her schoolwork?",
+    "choices": [
+     "Diana Barry",
+     "Gilbert Blythe",
+     "Minnie Andrews",
+     "Charlie Sloane"
+    ],
+    "correctIndex": 1,
+    "evidence": "She flung herself into her studies heart and soul, determined not to be outdone in any class by Gilbert Blythe."
+   }
+  ],
+  [
+   {
+    "prompt": "What emergency made Diana rush over to Green Gables?",
+    "choices": [
+     "Her mother had forgiven Anne",
+     "Her house was on fire",
+     "She was lost in the snow",
+     "Minnie May was very sick with croup"
+    ],
+    "correctIndex": 3,
+    "evidence": "Minnie May is awful sick—she's got croup... and there's nobody to go for the doctor."
+   },
+   {
+    "prompt": "How did Anne know what to do for croup?",
+    "choices": [
+     "She had read about it in a book",
+     "The doctor told her",
+     "She had cared for Mrs. Hammond's twins, who often had croup",
+     "Marilla had taught her"
+    ],
+    "correctIndex": 2,
+    "evidence": "You forget that Mrs. Hammond had twins three times... They all had croup regularly."
+   },
+   {
+    "prompt": "What happened after Anne saved Minnie May?",
+    "choices": [
+     "Mrs. Barry said sorry and let Anne and Diana be friends again",
+     "Anne was given a medal",
+     "Marilla punished Anne for going out at night",
+     "Diana moved away"
+    ],
+    "correctIndex": 0,
+    "evidence": "she is very sorry she acted as she did... and she hopes you'll forgive her and be good friends with Diana again."
+   }
+  ],
+  [
+   {
+    "prompt": "Who convinced Marilla to let Anne go to the concert?",
+    "choices": [
+     "Diana",
+     "Matthew",
+     "Mrs. Barry",
+     "Mrs. Lynde"
+    ],
+    "correctIndex": 1,
+    "evidence": "\"I think you ought to let Anne go, Marilla.\" ... \"Very well, she can go, since nothing else 'll please you.\""
+   },
+   {
+    "prompt": "What happened when Anne and Diana raced into the spare-room bed?",
+    "choices": [
+     "The bed broke",
+     "They woke Minnie May",
+     "They knocked over a candle",
+     "They landed on Diana's Aunt Josephine"
+    ],
+    "correctIndex": 3,
+    "evidence": "\"It was Aunt Josephine,\" said Diana, gasping with laughter."
+   },
+   {
+    "prompt": "What did Anne do to fix the trouble with Miss Barry?",
+    "choices": [
+     "She hid at Green Gables",
+     "She asked Marilla to apologize for her",
+     "She told Miss Barry it was her idea and asked her to forgive Diana",
+     "She wrote Miss Barry a poem"
+    ],
+    "correctIndex": 2,
+    "evidence": "That it was all my fault about jumping into bed on you last night. I suggested it."
+   }
+  ],
+  [
+   {
+    "prompt": "Who made up the story that the spruce wood was haunted?",
+    "choices": [
+     "Charlie Sloane",
+     "Mrs. Barry",
+     "Anne and Diana",
+     "Marilla"
+    ],
+    "correctIndex": 2,
+    "evidence": "Diana and I just imagined the wood was haunted."
+   },
+   {
+    "prompt": "What special day did Anne remind Marilla about?",
+    "choices": [
+     "Anne's birthday",
+     "The day Anne met Diana",
+     "The first day of school",
+     "The day Anne came to Green Gables"
+    ],
+    "correctIndex": 3,
+    "evidence": "Oh, Marilla, it was the day I came to Green Gables."
+   },
+   {
+    "prompt": "What did Anne forget about while she imagined she was an enchanted princess?",
+    "choices": [
+     "A pie in the oven, which burned",
+     "The cows in the pasture",
+     "Her school books",
+     "A letter for Diana"
+    ],
+    "correctIndex": 0,
+    "evidence": "I never thought about that pie from the moment I put it in the oven till now"
+   }
+  ],
+  [
+   {
+    "prompt": "Who is the new minister in Avonlea?",
+    "choices": [
+     "Mr. Bentley",
+     "Mr. Phillips",
+     "Mr. Bell",
+     "Mr. Allan"
+    ],
+    "correctIndex": 3,
+    "evidence": "I'm very glad they've called Mr. Allan."
+   },
+   {
+    "prompt": "What went wrong with Anne's layer cake?",
+    "choices": [
+     "She forgot to add flour",
+     "She flavored it with liniment instead of vanilla",
+     "It burned in the oven",
+     "It did not rise"
+    ],
+    "correctIndex": 1,
+    "evidence": "Mercy on us, Anne, you've flavored that cake with Anodyne Liniment."
+   },
+   {
+    "prompt": "What did Mrs. Allan do after the cake disaster?",
+    "choices": [
+     "Left the house upset",
+     "Told Mrs. Lynde about it",
+     "Came upstairs to comfort Anne",
+     "Asked for the recipe"
+    ],
+    "correctIndex": 2,
+    "evidence": "My dear little girl, you mustn't cry like this... it's all just a funny mistake that anybody might make."
+   }
+  ],
+  [
+   {
+    "prompt": "Who invited Anne to tea?",
+    "choices": [
+     "Mrs. Lynde",
+     "Mrs. Allan",
+     "Miss Barry",
+     "Mrs. Barry"
+    ],
+    "correctIndex": 1,
+    "evidence": "I am invited to tea at the manse tomorrow afternoon! Mrs. Allan left the letter for me"
+   },
+   {
+    "prompt": "After Anne sang at the manse, what did Mrs. Allan say she should do?",
+    "choices": [
+     "Take piano lessons",
+     "Recite at a concert",
+     "Sing in the Sunday-school choir",
+     "Teach a Sunday-school class"
+    ],
+    "correctIndex": 2,
+    "evidence": "she says I must sing in the Sunday-school choir after this."
+   },
+   {
+    "prompt": "What news did Mrs. Lynde bring about the school?",
+    "choices": [
+     "A lady teacher, Miss Stacy, was hired",
+     "Mr. Phillips was coming back",
+     "The school would close for a year",
+     "Diana would change schools"
+    ],
+    "correctIndex": 0,
+    "evidence": "The trustees have hired a new teacher and it's a lady. Her name is Miss Muriel Stacy."
+   }
+  ],
+  [
+   {
+    "prompt": "Who dared Anne to walk along the top of Mr. Barry's roof?",
+    "choices": [
+     "Diana Barry",
+     "Ruby Gillis",
+     "Carrie Sloane",
+     "Josie Pye"
+    ],
+    "correctIndex": 3,
+    "evidence": "\"Then I dare you to do it,\" said Josie defiantly."
+   },
+   {
+    "prompt": "How was Anne hurt when she fell?",
+    "choices": [
+     "She broke her arm",
+     "She hurt her back",
+     "She cut her head",
+     "She broke her ankle"
+    ],
+    "correctIndex": 3,
+    "evidence": "the injury was more serious than they had supposed. Anne's ankle was broken."
+   },
+   {
+    "prompt": "When Marilla saw Mr. Barry carrying Anne home, what did she realize?",
+    "choices": [
+     "Anne was dearer to her than anything on earth",
+     "Anne should never go to parties",
+     "Mrs. Barry was to blame",
+     "She needed to call the minister"
+    ],
+    "correctIndex": 0,
+    "evidence": "she knew as she hurried wildly down the slope that Anne was dearer to her than anything else on earth."
+   }
+  ],
+  [
+   {
+    "prompt": "What big project did Miss Stacy plan in November?",
+    "choices": [
+     "A school picnic",
+     "A spelling contest",
+     "A concert on Christmas night",
+     "A trip to Charlottetown"
+    ],
+    "correctIndex": 2,
+    "evidence": "the scholars of Avonlea school should get up a concert and hold it in the hall on Christmas Night"
+   },
+   {
+    "prompt": "What was the concert money going to help pay for?",
+    "choices": [
+     "A schoolhouse flag",
+     "New desks",
+     "A church organ",
+     "Books for the library"
+    ],
+    "correctIndex": 0,
+    "evidence": "for the laudable purpose of helping to pay for a schoolhouse flag."
+   },
+   {
+    "prompt": "What did Marilla think of the concert?",
+    "choices": [
+     "She offered to sew the costumes",
+     "She thought it was foolishness",
+     "She wanted to be in it",
+     "She asked for more songs"
+    ],
+    "correctIndex": 1,
+    "evidence": "Marilla thought it all rank foolishness."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Matthew figure out was different about Anne?",
+    "choices": [
+     "She was taller than the other girls",
+     "She talked more than the others",
+     "She wasn't dressed like the other girls",
+     "She had no winter hat"
+    ],
+    "correctIndex": 2,
+    "evidence": "Anne was not dressed like the other girls!"
+   },
+   {
+    "prompt": "Matthew got nervous at Lawson's store. What did he come home with instead of a dress?",
+    "choices": [
+     "A rake and brown sugar",
+     "A hat and gloves",
+     "Hair ribbons",
+     "A new coat"
+    ],
+    "correctIndex": 0,
+    "evidence": "When he reached home he hid the rake in the tool house, but the sugar he carried in to Marilla."
+   },
+   {
+    "prompt": "Who helped Matthew by choosing and sewing the dress?",
+    "choices": [
+     "Marilla",
+     "Mrs. Allan",
+     "Diana",
+     "Mrs. Lynde"
+    ],
+    "correctIndex": 3,
+    "evidence": "To Mrs. Lynde he went accordingly, and that good lady promptly took the matter out of the harassed man's hands."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne and Diana start in this chapter?",
+    "choices": [
+     "A story club",
+     "A sewing circle",
+     "A singing group",
+     "A garden club"
+    ],
+    "correctIndex": 0,
+    "evidence": "Let you and me have a story club all our own and write stories for practice."
+   },
+   {
+    "prompt": "How old did Anne turn on her birthday in this chapter?",
+    "choices": [
+     "Eleven",
+     "Twelve",
+     "Thirteen",
+     "Fourteen"
+    ],
+    "correctIndex": 2,
+    "evidence": "Just think, Diana, I'm thirteen years old today"
+   },
+   {
+    "prompt": "What did Anne insist every club story must have?",
+    "choices": [
+     "A happy wedding",
+     "A talking animal",
+     "A funny ending",
+     "A moral"
+    ],
+    "correctIndex": 3,
+    "evidence": "we're so careful to put a moral into them all, Marilla... I insist upon that."
+   }
+  ],
+  [
+   {
+    "prompt": "What color did Anne's hair turn after she dyed it?",
+    "choices": [
+     "Raven black",
+     "Green",
+     "Bright orange",
+     "Brown"
+    ],
+    "correctIndex": 1,
+    "evidence": "Anne Shirley, what have you done to your hair? Why, it's green!"
+   },
+   {
+    "prompt": "Where did Anne get the hair dye?",
+    "choices": [
+     "From a peddler at the door",
+     "From Diana",
+     "From a store in Carmody",
+     "From Josie Pye"
+    ],
+    "correctIndex": 0,
+    "evidence": "The peddler that was here this afternoon. I bought the dye from him."
+   },
+   {
+    "prompt": "How was the green hair problem finally solved?",
+    "choices": [
+     "Washing it every day worked",
+     "Anne dyed it red again",
+     "Marilla cut Anne's hair off",
+     "Anne wore a hat until it faded"
+    ],
+    "correctIndex": 2,
+    "evidence": "Your hair must be cut off; there is no other way."
+   }
+  ],
+  [
+   {
+    "prompt": "What went wrong while Anne was floating down the pond as Elaine?",
+    "choices": [
+     "The boat drifted out to sea",
+     "The boat began to leak",
+     "A storm came up",
+     "She fell asleep"
+    ],
+    "correctIndex": 1,
+    "evidence": "Then something happened not at all romantic. The flat began to leak."
+   },
+   {
+    "prompt": "Who rescued Anne from the bridge pile?",
+    "choices": [
+     "Diana Barry",
+     "Mr. Barry",
+     "Gilbert Blythe",
+     "Matthew"
+    ],
+    "correctIndex": 2,
+    "evidence": "Gilbert Blythe came rowing under the bridge in Harmon Andrews's dory!"
+   },
+   {
+    "prompt": "What did Anne say when Gilbert asked to be friends?",
+    "choices": [
+     "Yes, happily",
+     "That she would think about it",
+     "That she had to ask Marilla",
+     "No, she would never be his friend"
+    ],
+    "correctIndex": 3,
+    "evidence": "\"No,\" she said coldly, \"I shall never be friends with you, Gilbert Blythe\""
+   }
+  ],
+  [
+   {
+    "prompt": "Who invited Anne and Diana to stay in town for the Exhibition?",
+    "choices": [
+     "Mrs. Allan",
+     "Miss Stacy",
+     "Diana's Aunt Josephine",
+     "Mrs. Lynde"
+    ],
+    "correctIndex": 2,
+    "evidence": "Aunt Josephine wants you and me to go to town next Tuesday and stop with her for the Exhibition."
+   },
+   {
+    "prompt": "Why did Anne refuse to bet on the horse race?",
+    "choices": [
+     "She had no money",
+     "She wanted to tell Mrs. Allan everything",
+     "Diana told her not to",
+     "She didn't like horses"
+    ],
+    "correctIndex": 1,
+    "evidence": "I refused to bet, because I wanted to tell Mrs. Allan all about everything"
+   },
+   {
+    "prompt": "After her visit, what did Anne decide about city life?",
+    "choices": [
+     "She wasn't born for it, and was glad",
+     "She wanted to live in town forever",
+     "She wanted to move in with Miss Barry",
+     "She liked it better than Avonlea"
+    ],
+    "correctIndex": 0,
+    "evidence": "I came to the conclusion, Marilla, that I wasn't born for city life and that I was glad of it."
+   }
+  ],
+  [
+   {
+    "prompt": "What did Miss Stacy come to Green Gables to ask about?",
+    "choices": [
+     "Anne reading Ben Hur in class",
+     "Anne joining a class to study for Queen's",
+     "Anne helping teach younger pupils",
+     "Anne singing at a concert"
+    ],
+    "correctIndex": 1,
+    "evidence": "Miss Stacy wants to organize a class among her advanced students who mean to study for the entrance examination into Queen's."
+   },
+   {
+    "prompt": "Why was Anne sad when the Queen's class first stayed after school?",
+    "choices": [
+     "Miss Stacy scolded her",
+     "She failed a test",
+     "Gilbert sat next to her",
+     "Diana wasn't in the class and walked home alone"
+    ],
+    "correctIndex": 3,
+    "evidence": "Diana Barry did not, as her parents did not intend to send her to Queen's."
+   },
+   {
+    "prompt": "What did Miss Stacy tell the class on the last evening of the term?",
+    "choices": [
+     "She would come back next year",
+     "She was getting married",
+     "She was leaving for another school",
+     "The exam was cancelled"
+    ],
+    "correctIndex": 0,
+    "evidence": "I thought of taking another school, but I have decided to come back to Avonlea."
+   }
+  ],
+  [
+   {
+    "prompt": "What did the doctor tell Marilla to do for Anne that summer?",
+    "choices": [
+     "Keep her in bed",
+     "Keep her outdoors and away from books",
+     "Send her to the seaside",
+     "Make her study every day"
+    ],
+    "correctIndex": 1,
+    "evidence": "Keep that redheaded girl of yours in the open air all summer and don't let her read books"
+   },
+   {
+    "prompt": "How had Anne changed as she grew older?",
+    "choices": [
+     "She talked less and used fewer big words",
+     "She stopped liking school",
+     "She became best friends with Josie",
+     "She stopped reading"
+    ],
+    "correctIndex": 0,
+    "evidence": "You don't chatter half as much as you used to, Anne, nor use half as many big words."
+   },
+   {
+    "prompt": "Which subject did Anne call her 'stumbling block' for the Entrance exam?",
+    "choices": [
+     "Latin",
+     "History",
+     "Geometry",
+     "Spelling"
+    ],
+    "correctIndex": 2,
+    "evidence": "We've each got a stumbling block. Mine is geometry of course"
+   }
+  ],
+  [
+   {
+    "prompt": "What did Miss Stacy make the students promise before the exams?",
+    "choices": [
+     "To study all night",
+     "Not to open a book",
+     "To write to her every day",
+     "To eat a big breakfast"
+    ],
+    "correctIndex": 1,
+    "evidence": "Miss Stacy has made us promise not to open a book at all."
+   },
+   {
+    "prompt": "Who ran to tell Anne that the pass list was out?",
+    "choices": [
+     "Matthew",
+     "Gilbert",
+     "Jane",
+     "Diana"
+    ],
+    "correctIndex": 3,
+    "evidence": "she saw Diana come flying down through the firs... with a fluttering newspaper in her hand."
+   },
+   {
+    "prompt": "How did Anne do on the Entrance exam?",
+    "choices": [
+     "She tied with Gilbert for first place",
+     "She failed geometry",
+     "She came in tenth",
+     "She just barely passed"
+    ],
+    "correctIndex": 0,
+    "evidence": "passed the very first—you and Gilbert both—you're ties—but your name is first."
+   }
+  ],
+  [
+   {
+    "prompt": "What was Anne asked to do at the White Sands Hotel concert?",
+    "choices": [
+     "Sing a duet",
+     "Play the violin",
+     "Recite",
+     "Play the organ"
+    ],
+    "correctIndex": 2,
+    "evidence": "Laura Spencer of Spencervale and Anne Shirley of Avonlea were to recite."
+   },
+   {
+    "prompt": "What helped Anne get over her stage fright?",
+    "choices": [
+     "The pink lady held her hand",
+     "Seeing Gilbert and deciding not to fail in front of him",
+     "Diana waved to her",
+     "Mrs. Evans whispered advice"
+    ],
+    "correctIndex": 1,
+    "evidence": "She would not fail before Gilbert Blythe—he should never be able to laugh at her, never, never!"
+   },
+   {
+    "prompt": "What happened after Anne finished her recitation?",
+    "choices": [
+     "Everyone left early",
+     "Mrs. Evans said it was too long",
+     "The lights went out",
+     "The audience called her back for more"
+    ],
+    "correctIndex": 3,
+    "evidence": "There, they're encoring you—they're bound to have you back!"
+   }
+  ],
+  [
+   {
+    "prompt": "Why did Marilla cry when Anne recited in her new green dress?",
+    "choices": [
+     "The poem was sad",
+     "She was thinking of the little girl Anne used to be",
+     "She didn't like the dress",
+     "She was very tired"
+    ],
+    "correctIndex": 1,
+    "evidence": "No, I wasn't crying over your piece... I just couldn't help thinking of the little girl you used to be"
+   },
+   {
+    "prompt": "What did Anne and Gilbert both choose to do at Queen's?",
+    "choices": [
+     "Take the harder course to get a First Class license in one year",
+     "Study only music",
+     "Leave after one month",
+     "Live at Miss Barry's house"
+    ],
+    "correctIndex": 0,
+    "evidence": "Anne intended taking up the Second Year work... Gilbert Blythe elected to do the same."
+   },
+   {
+    "prompt": "Who would win the Avery scholarship?",
+    "choices": [
+     "The best student in geometry",
+     "The student with the best attendance",
+     "The best reciter",
+     "The student with the highest mark in English"
+    ],
+    "correctIndex": 3,
+    "evidence": "the graduate who made the highest mark in English and English Literature would win the scholarship"
+   }
+  ],
+  [
+   {
+    "prompt": "Which two new friends did Anne make at Queen's?",
+    "choices": [
+     "Emily Clay and Ethel Marr",
+     "Laura Spencer and Julia Bell",
+     "Stella Maynard and Priscilla Grant",
+     "Lewis Wilson and Frank Stockley"
+    ],
+    "correctIndex": 2,
+    "evidence": "With the \"rose-red\" girl, Stella Maynard, and the \"dream girl,\" Priscilla Grant, she soon became intimate"
+   },
+   {
+    "prompt": "Who did Gilbert nearly always walk with from the train?",
+    "choices": [
+     "Ruby Gillis",
+     "Anne",
+     "Jane Andrews",
+     "Josie Pye"
+    ],
+    "correctIndex": 0,
+    "evidence": "Gilbert Blythe nearly always walked with Ruby Gillis and carried her satchel for her."
+   },
+   {
+    "prompt": "How had Anne's rivalry with Gilbert changed?",
+    "choices": [
+     "She had stopped trying",
+     "It was no longer bitter; she just wanted a fair win",
+     "She wanted to beat him more than ever",
+     "They had become best friends"
+    ],
+    "correctIndex": 1,
+    "evidence": "somehow the bitterness had gone out of it. Anne no longer wished to win for the sake of defeating Gilbert"
+   }
+  ],
+  [
+   {
+    "prompt": "What did Anne win at Queen's?",
+    "choices": [
+     "The gold medal",
+     "The Avery scholarship",
+     "The math prize",
+     "A prize for sewing"
+    ],
+    "correctIndex": 1,
+    "evidence": "Three cheers for Miss Shirley, winner of the Avery!"
+   },
+   {
+    "prompt": "Why was Gilbert going to teach instead of going to college right away?",
+    "choices": [
+     "He didn't like studying",
+     "He wanted to stay near Anne",
+     "His father couldn't afford to send him",
+     "He failed his exams"
+    ],
+    "correctIndex": 2,
+    "evidence": "His father can't afford to send him to college next year, after all"
+   },
+   {
+    "prompt": "When Anne wished she had been a boy so she could help more, what did Matthew say?",
+    "choices": [
+     "He'd rather have her than a dozen boys",
+     "He wished that too",
+     "They should hire a boy",
+     "She should stay home from college"
+    ],
+    "correctIndex": 0,
+    "evidence": "Well now, I'd rather have you than a dozen boys, Anne"
+   }
+  ],
+  [
+   {
+    "prompt": "What news was in the paper Matthew was holding?",
+    "choices": [
+     "Anne had won a prize",
+     "The Abbey Bank had failed",
+     "A storm was coming",
+     "Green Gables had been sold"
+    ],
+    "correctIndex": 1,
+    "evidence": "It contained an account of the failure of the Abbey Bank."
+   },
+   {
+    "prompt": "What did Anne plant by Matthew's grave?",
+    "choices": [
+     "A maple tree",
+     "Some violets",
+     "A slip of the white Scotch rosebush",
+     "An apple tree"
+    ],
+    "correctIndex": 2,
+    "evidence": "I took a slip of the little white Scotch rosebush his mother brought out from Scotland long ago"
+   },
+   {
+    "prompt": "What did Marilla tell Anne about Gilbert's father, John Blythe?",
+    "choices": [
+     "He was her cousin",
+     "He sold them their farm",
+     "He was her teacher",
+     "They were close friends until a quarrel she wouldn't forgive"
+    ],
+    "correctIndex": 3,
+    "evidence": "We had a quarrel. I wouldn't forgive him when he asked me to."
+   }
+  ],
+  [
+   {
+    "prompt": "What did the eye doctor tell Marilla?",
+    "choices": [
+     "Her eyes were perfectly fine",
+     "She needed an operation",
+     "She could go blind if she kept straining her eyes",
+     "She should move to town"
+    ],
+    "correctIndex": 2,
+    "evidence": "But if I don't he says I'll certainly be stone-blind in six months."
+   },
+   {
+    "prompt": "What did Anne decide to do so Marilla wouldn't have to sell Green Gables?",
+    "choices": [
+     "Give up Redmond and stay home to teach",
+     "Ask Miss Barry for money",
+     "Give her scholarship to Gilbert",
+     "Move to town with Marilla"
+    ],
+    "correctIndex": 0,
+    "evidence": "I'm not going to Redmond; and I am going to stay here and teach."
+   },
+   {
+    "prompt": "How did Anne get the Avonlea school?",
+    "choices": [
+     "The trustees gave a test",
+     "Miss Stacy came back",
+     "Mrs. Lynde asked the trustees",
+     "Gilbert gave it up for her"
+    ],
+    "correctIndex": 3,
+    "evidence": "told them that he withdrew his application, and suggested that they accept yours."
+   }
+  ]
+ ]
+}

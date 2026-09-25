@@ -1,0 +1,296 @@
+{
+ "formatVersion": 1,
+ "books": [
+  {
+   "id": "too-big-too-small",
+   "title": "Too Big! Too Small!",
+   "authors": [
+    "Lavanya Karthik"
+   ],
+   "illustrators": [
+    "Lavanya Karthik"
+   ],
+   "minAge": 4,
+   "maxAge": 6,
+   "cover": "books/too-big-too-small/cover.jpg",
+   "licence": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+   },
+   "credit": "Too Big! Too Small! (English), written by Lavanya Karthik, illustrated by Lavanya Karthik, supported by Parag: A Sir Ratan Tata Trust Initiative, published by Pratham Books (© Pratham Books, 2017) under a CC BY 4.0 license on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+   "chapterCount": 1,
+   "wordCount": 193,
+   "files": [
+    "books/too-big-too-small/book.json",
+    "books/too-big-too-small/cover.jpg",
+    "books/too-big-too-small/p01.jpg",
+    "books/too-big-too-small/p02.jpg",
+    "books/too-big-too-small/p03.jpg",
+    "books/too-big-too-small/p04.jpg",
+    "books/too-big-too-small/p05.jpg",
+    "books/too-big-too-small/p06.jpg",
+    "books/too-big-too-small/p07.jpg",
+    "books/too-big-too-small/p08.jpg",
+    "books/too-big-too-small/p09.jpg",
+    "books/too-big-too-small/p10.jpg",
+    "books/too-big-too-small/p11.jpg",
+    "books/too-big-too-small/p12.jpg",
+    "books/too-big-too-small/p13.jpg"
+   ],
+   "sizeBytes": 1268524,
+   "version": "71fc9e56b568",
+   "starter": true
+  },
+  {
+   "id": "peter-rabbit",
+   "title": "The Tale of Peter Rabbit",
+   "authors": [
+    "Beatrix Potter"
+   ],
+   "illustrators": [
+    "Beatrix Potter"
+   ],
+   "minAge": 4,
+   "maxAge": 6,
+   "cover": "books/peter-rabbit/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Tale of Peter Rabbit, written and illustrated by Beatrix Potter, first published 1902. Public domain.",
+   "chapterCount": 1,
+   "wordCount": 948,
+   "files": [
+    "books/peter-rabbit/book.json",
+    "books/peter-rabbit/cover.jpg",
+    "books/peter-rabbit/p01.jpg",
+    "books/peter-rabbit/p02.jpg",
+    "books/peter-rabbit/p03.jpg",
+    "books/peter-rabbit/p04.jpg",
+    "books/peter-rabbit/p05.jpg",
+    "books/peter-rabbit/p06.jpg",
+    "books/peter-rabbit/p07.jpg",
+    "books/peter-rabbit/p08.jpg",
+    "books/peter-rabbit/p09.jpg",
+    "books/peter-rabbit/p10.jpg",
+    "books/peter-rabbit/p11.jpg",
+    "books/peter-rabbit/p12.jpg",
+    "books/peter-rabbit/p13.jpg",
+    "books/peter-rabbit/p14.jpg",
+    "books/peter-rabbit/p15.jpg",
+    "books/peter-rabbit/p16.jpg",
+    "books/peter-rabbit/p17.jpg",
+    "books/peter-rabbit/p18.jpg",
+    "books/peter-rabbit/p19.jpg",
+    "books/peter-rabbit/p20.jpg",
+    "books/peter-rabbit/p21.jpg",
+    "books/peter-rabbit/p22.jpg",
+    "books/peter-rabbit/p23.jpg",
+    "books/peter-rabbit/p24.jpg",
+    "books/peter-rabbit/p25.jpg",
+    "books/peter-rabbit/p26.jpg",
+    "books/peter-rabbit/p27.jpg"
+   ],
+   "sizeBytes": 1125181,
+   "version": "84e090e2de86",
+   "starter": true
+  },
+  {
+   "id": "ammachis-amazing-machines",
+   "title": "Ammachi's Amazing Machines",
+   "authors": [
+    "Rajiv Eipe"
+   ],
+   "illustrators": [
+    "Rajiv Eipe"
+   ],
+   "minAge": 6,
+   "maxAge": 8,
+   "cover": "books/ammachis-amazing-machines/cover.jpg",
+   "licence": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+   },
+   "credit": "Ammachi's Amazing Machines (English), written by Rajiv Eipe, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2017) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+   "chapterCount": 1,
+   "wordCount": 187,
+   "files": [
+    "books/ammachis-amazing-machines/book.json",
+    "books/ammachis-amazing-machines/cover.jpg",
+    "books/ammachis-amazing-machines/p01.jpg",
+    "books/ammachis-amazing-machines/p02.jpg",
+    "books/ammachis-amazing-machines/p03.jpg",
+    "books/ammachis-amazing-machines/p04.jpg",
+    "books/ammachis-amazing-machines/p05.jpg",
+    "books/ammachis-amazing-machines/p06.jpg",
+    "books/ammachis-amazing-machines/p07.jpg",
+    "books/ammachis-amazing-machines/p08.jpg",
+    "books/ammachis-amazing-machines/p09.jpg",
+    "books/ammachis-amazing-machines/p10.jpg",
+    "books/ammachis-amazing-machines/p11.jpg",
+    "books/ammachis-amazing-machines/p12.jpg",
+    "books/ammachis-amazing-machines/p13.jpg",
+    "books/ammachis-amazing-machines/p14.jpg"
+   ],
+   "sizeBytes": 1864120,
+   "version": "23b6f1f62585",
+   "starter": true
+  },
+  {
+   "id": "velveteen-rabbit",
+   "title": "The Velveteen Rabbit",
+   "authors": [
+    "Margery Williams"
+   ],
+   "illustrators": [
+    "William Nicholson"
+   ],
+   "minAge": 6,
+   "maxAge": 8,
+   "cover": "books/velveteen-rabbit/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Velveteen Rabbit, or How Toys Become Real, written by Margery Williams, illustrated by William Nicholson, first published 1922. Public domain.",
+   "chapterCount": 1,
+   "wordCount": 3873,
+   "files": [
+    "books/velveteen-rabbit/book.json",
+    "books/velveteen-rabbit/cover.jpg",
+    "books/velveteen-rabbit/p01.jpg",
+    "books/velveteen-rabbit/p02.jpg",
+    "books/velveteen-rabbit/p03.jpg",
+    "books/velveteen-rabbit/p04.jpg",
+    "books/velveteen-rabbit/p05.jpg",
+    "books/velveteen-rabbit/p06.jpg",
+    "books/velveteen-rabbit/p07.jpg"
+   ],
+   "sizeBytes": 373449,
+   "version": "3e1b995a7701",
+   "starter": true
+  },
+  {
+   "id": "ammachis-incredible-investigation",
+   "title": "Ammachi's Incredible Investigation",
+   "authors": [
+    "Vinayak Varma"
+   ],
+   "illustrators": [
+    "Rajiv Eipe"
+   ],
+   "minAge": 8,
+   "maxAge": 10,
+   "cover": "books/ammachis-incredible-investigation/cover.jpg",
+   "licence": {
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+   },
+   "credit": "Ammachi's Incredible Investigation (English), written by Vinayak Varma, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2019) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+   "chapterCount": 1,
+   "wordCount": 448,
+   "files": [
+    "books/ammachis-incredible-investigation/book.json",
+    "books/ammachis-incredible-investigation/cover.jpg",
+    "books/ammachis-incredible-investigation/p01.jpg",
+    "books/ammachis-incredible-investigation/p02.jpg",
+    "books/ammachis-incredible-investigation/p03.jpg",
+    "books/ammachis-incredible-investigation/p04.jpg",
+    "books/ammachis-incredible-investigation/p05.jpg",
+    "books/ammachis-incredible-investigation/p06.jpg",
+    "books/ammachis-incredible-investigation/p07.jpg",
+    "books/ammachis-incredible-investigation/p08.jpg",
+    "books/ammachis-incredible-investigation/p09.jpg",
+    "books/ammachis-incredible-investigation/p10.jpg",
+    "books/ammachis-incredible-investigation/p11.jpg",
+    "books/ammachis-incredible-investigation/p12.jpg",
+    "books/ammachis-incredible-investigation/p13.jpg",
+    "books/ammachis-incredible-investigation/p14.jpg",
+    "books/ammachis-incredible-investigation/p15.jpg",
+    "books/ammachis-incredible-investigation/p16.jpg",
+    "books/ammachis-incredible-investigation/p17.jpg",
+    "books/ammachis-incredible-investigation/p18.jpg",
+    "books/ammachis-incredible-investigation/p19.jpg"
+   ],
+   "sizeBytes": 2408527,
+   "version": "7e14e1333693",
+   "starter": true
+  },
+  {
+   "id": "wizard-of-oz",
+   "title": "The Wonderful Wizard of Oz",
+   "authors": [
+    "L. Frank Baum"
+   ],
+   "illustrators": [
+    "W. W. Denslow"
+   ],
+   "minAge": 8,
+   "maxAge": 10,
+   "cover": "books/wizard-of-oz/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Wonderful Wizard of Oz by L. Frank Baum, pictures by W. W. Denslow, first published 1900. Public domain.",
+   "chapterCount": 24,
+   "wordCount": 39109,
+   "files": [
+    "books/wizard-of-oz/book.json",
+    "books/wizard-of-oz/cover.jpg"
+   ],
+   "sizeBytes": 435792,
+   "version": "0bc8ccfe2d3f",
+   "starter": true
+  },
+  {
+   "id": "anne-of-green-gables",
+   "title": "Anne of Green Gables",
+   "authors": [
+    "L. M. Montgomery"
+   ],
+   "illustrators": [],
+   "minAge": 10,
+   "maxAge": 12,
+   "cover": "books/anne-of-green-gables/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "Anne of Green Gables by L. M. Montgomery, first published 1908. Public domain.",
+   "chapterCount": 38,
+   "wordCount": 101965,
+   "files": [
+    "books/anne-of-green-gables/book.json",
+    "books/anne-of-green-gables/cover.jpg"
+   ],
+   "sizeBytes": 825598,
+   "version": "8137e15e1a6d",
+   "starter": true
+  },
+  {
+   "id": "railway-children",
+   "title": "The Railway Children",
+   "authors": [
+    "E. Nesbit"
+   ],
+   "illustrators": [],
+   "minAge": 10,
+   "maxAge": 12,
+   "cover": null,
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Railway Children by E. Nesbit, first published 1906. Public domain.",
+   "chapterCount": 14,
+   "wordCount": 58409,
+   "files": [
+    "books/railway-children/book.json"
+   ],
+   "sizeBytes": 358337,
+   "version": "534d581bd527",
+   "starter": true
+  }
+ ]
+}

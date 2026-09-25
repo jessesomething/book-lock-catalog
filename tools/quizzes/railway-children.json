@@ -1,0 +1,72 @@
+{"chapters": [
+  [
+    {"prompt": "What happened to the model engine Peter got for his birthday?", "choices": ["It was lost on a train", "It went off with a bang and broke", "Phyllis gave it away", "It was stolen from the nursery"], "correctIndex": 1, "evidence": "Then, owing either to Peter's inexperience or Phyllis's good intentions... the Engine suddenly went off with a bang."},
+    {"prompt": "What happened on the evening Father was looking at the broken engine?", "choices": ["The house caught fire", "Aunt Emma arrived to stay", "A letter came from the King", "Two gentlemen came, and Father was called away"], "correctIndex": 3, "evidence": "two gentlemen wanted to see the master ... “Father's been called away—on business,” said Mother."},
+    {"prompt": "What did Mother ask the children not to do?", "choices": ["Ask any questions about the trouble", "Play in the garden", "Go outside after dark", "Write letters to Father"], "correctIndex": 0, "evidence": "“I want you not to ask me any questions about this trouble; and not to ask anybody else any questions.”"}
+  ],
+  [
+    {"prompt": "Where was the supper Mrs. Viney had left for the family?", "choices": ["In the cellar with the packing cases", "At Mrs. Viney's own house", "In a small room they thought was a cupboard", "On the kitchen table under a cloth"], "correctIndex": 2, "evidence": "The forgotten room opened out of the kitchen... its door had been mistaken for a cupboard's."},
+    {"prompt": "Why did Peter start taking coal?", "choices": ["He wanted to sell it in the village", "Mother said they were too poor to have a fire", "The Station Master asked him to", "He needed it for his model engine"], "correctIndex": 1, "evidence": "“You know that wet day? Well, Mother said we were too poor to have a fire.”"},
+    {"prompt": "What did the Station Master decide to do after catching Peter?", "choices": ["Take him to the police station", "Tell Mother everything", "Make him work at the station", "Let him off this once, with a warning"], "correctIndex": 3, "evidence": "“I'll look over it this once. But you remember, young gentleman, stealing is stealing”"}
+  ],
+  [
+    {"prompt": "How did the children first get to know the old gentleman?", "choices": ["He waved back when they waved at his train", "He was an old friend of Father's", "He came to Three Chimneys for tea", "He worked as the station porter"], "correctIndex": 0, "evidence": "And out of a first-class carriage a hand waved back... It was the old gentleman's hand."},
+    {"prompt": "When Mother was ill, how did the children get the old gentleman's attention?", "choices": ["They shouted at his train from the bridge", "They sent a telegram to London", "They painted big letters on a white sheet by the line", "They asked the Doctor to visit him"], "correctIndex": 2, "evidence": "a large white sheet nailed against the fence. On the sheet there were thick black letters more than a foot long."},
+    {"prompt": "What did the old gentleman send to the children?", "choices": ["A letter saying he could not help", "A hamper with the things Mother needed, and more", "Money to pay the doctor", "A new model engine for Peter"], "correctIndex": 1, "evidence": "Then the children undid the hamper... then came all the things they had asked for, and plenty of them"}
+  ],
+  [
+    {"prompt": "After hearing about the hamper, what did Mother make the children promise?", "choices": ["Never to go to the station again", "Never to wave at trains again", "To pay the old gentleman back", "Never to ask strangers to give them things"], "correctIndex": 3, "evidence": "“And you must never, never, never ask strangers to give you things.”"},
+    {"prompt": "What did Bobbie ask the Doctor on her birthday?", "choices": ["If he would mend Peter's engine", "If her family could join his Club, like Mrs. Viney", "If he knew where Father was", "If he would come to her birthday tea"], "correctIndex": 1, "evidence": "“Can't we be in the Club, too, the same as Mrs. Viney?”"},
+    {"prompt": "Why did Bobbie climb up into the engine's cab?", "choices": ["To get a free ride to London", "To hide from the Station Master", "To ask the men to mend Peter's toy engine", "To look for Peter and Phyllis"], "correctIndex": 2, "evidence": "“I only wanted to ask you if you'd be so kind as to mend this.”"}
+  ],
+  [
+    {"prompt": "How did the children find out which country the stranger came from?", "choices": ["He wrote its name on paper", "He picked a Russian stamp from Peter's stamps", "The Station Master read his ticket", "He drew them a map"], "correctIndex": 1, "evidence": "The hand that he reached out at last... contained a RUSSIAN stamp."},
+    {"prompt": "Why had the Russian been sent to prison in his own country?", "choices": ["He had stolen a horse", "He had started a fire", "He had broken into a bank", "He had written a book about helping poor people"], "correctIndex": 3, "evidence": "he wrote a beautiful book about poor people and how to help them... And they sent him to prison for it."},
+    {"prompt": "Who was the Russian hoping to find in England?", "choices": ["His wife and children", "An old school friend", "A doctor for his cough", "The man who printed his book"], "correctIndex": 0, "evidence": "his wife and children had escaped and come to England. So when he deserted he came here to look for them."}
+  ],
+  [
+    {"prompt": "Why was Perks cross with the children at first?", "choices": ["They had broken one of his lamps", "They had walked on the line", "Nobody had told him the Russian's story", "They picked his strawberries without asking"], "correctIndex": 2, "evidence": "“Not so much as a breath... But I did think one o' you would 'a' nipped down to tell me”"},
+    {"prompt": "What did the children see happen at the railway cutting?", "choices": ["A train came off the rails", "Rocks, earth and trees slid down onto the line", "A fire started in the trees", "A bridge fell into the canal"], "correctIndex": 1, "evidence": "rock and trees and grass and bushes... slipped right away from the face of the cutting and fell on the line"},
+    {"prompt": "What did the children use to make red warning flags?", "choices": ["Peter's red scarf", "A red tablecloth from home", "Handkerchiefs dipped in paint", "The girls' red flannel petticoats"], "correctIndex": 3, "evidence": "“How lucky we DID put on our red flannel petticoats!” said Phyllis."}
+  ],
+  [
+    {"prompt": "What did the railway give each child at the presentation?", "choices": ["A medal on a ribbon", "A model steam-engine", "A gold watch and chain", "A free ticket to London"], "correctIndex": 2, "evidence": "he called the children one by one, by their names, and gave each of them a beautiful gold watch and chain."},
+    {"prompt": "What did Bobbie ask the old gentleman to help with?", "choices": ["Finding the Russian's wife and children", "Getting Peter a job on the railway", "Paying the doctor's bill", "Sending a letter to Father"], "correctIndex": 0, "evidence": "“And what we want more than anything in the world is to find his wife and children for him,” said Bobbie"},
+    {"prompt": "About ten days later, what news did the old gentleman bring to Three Chimneys?", "choices": ["He was moving to the village", "The Russian had to leave England", "The railway was building a new station", "He had found the Russian's wife and child"], "correctIndex": 3, "evidence": "“Good news,” said he. “I've found your Russian friend's wife and child”"}
+  ],
+  [
+    {"prompt": "Why did the bargeman grab Peter by the ear?", "choices": ["Peter threw coal at his barge", "He thought the children were fishing in his waters", "Peter untied his barge", "Peter had frightened his horse"], "correctIndex": 1, "evidence": "“Don't you know these 'ere waters is preserved? You ain't no right catching fish 'ere”"},
+    {"prompt": "Who carried the baby out of the smoky barge cabin?", "choices": ["Bobbie", "Phyllis", "Peter", "Bill the bargeman"], "correctIndex": 2, "evidence": "picked it up and backed out... “I've got the kid,” said Peter, tearing off the handkerchief and staggering on to the deck."},
+    {"prompt": "How did Bill the bargeman thank the children?", "choices": ["He gave them each a shilling", "He gave them a puppy", "He wrote a letter to their Mother", "He took them on a free barge trip"], "correctIndex": 3, "evidence": "“I'll take you the entire trip to Farley and back, so I will, and not a penny to pay.”"}
+  ],
+  [
+    {"prompt": "How did the children collect presents for Perks's birthday?", "choices": ["They asked people in the village to give things", "They spent Mother's story money", "They made everything themselves", "The Station Master bought them"], "correctIndex": 0, "evidence": "“There must be lots of people in the village who'd like to help to make him a birthday. Let's go round and ask everybody.”"},
+    {"prompt": "Why was Perks angry when he first saw all the presents?", "choices": ["He did not like buns", "Some of the presents were broken", "He thought they were charity", "He wanted money instead"], "correctIndex": 2, "evidence": "“I'm not going to begin these sort of charity goings-on at my time of life”"},
+    {"prompt": "What changed Perks's mind about the presents?", "choices": ["The Station Master ordered him to keep them", "Bobbie read out what each giver had said about him", "The old gentleman came to visit", "The Doctor explained it to him"], "correctIndex": 1, "evidence": "“we wrote down all the things everybody said when they gave us the things, with the people's names”"}
+  ],
+  [
+    {"prompt": "How did Peter hurt his foot?", "choices": ["He fell over and the rake's teeth cut it", "He stepped on a nail in the stable", "He dropped the coal-shovel on it", "He tripped on the railway line"], "correctIndex": 0, "evidence": "there were three red wounds in Peter's foot and ankle, where the teeth of the rake had bitten him"},
+    {"prompt": "Why had Bobbie stopped talking about Father to Mother?", "choices": ["She was cross with Father", "She thought it made Mother more unhappy", "Peter told her not to", "She had forgotten about him"], "correctIndex": 1, "evidence": "“I thought you were so unhappy about Daddy not being here, it made you worse when I talked about him.”"},
+    {"prompt": "What did Bobbie read on the old newspaper wrapped around the magazines?", "choices": ["Father had won a prize", "The railway was closing", "Father had been found guilty at a trial", "The Russian was going home"], "correctIndex": 2, "evidence": "The name of the man who had been tried was the name of her Father. The verdict was 'Guilty.'"}
+  ],
+  [
+    {"prompt": "What was Father wrongly accused of?", "choices": ["Stealing coal from the railway", "Selling State secrets, like a spy", "Robbing a bank", "Setting fire to his office"], "correctIndex": 1, "evidence": "charging him with selling State secrets to the Russians—with being, in fact, a spy and a traitor."},
+    {"prompt": "What did Bobbie do to try to help Father?", "choices": ["Wrote to the old gentleman and sent him the newspaper report", "Told Peter and Phyllis the secret", "Went to London on the train", "Wrote a letter to the newspaper"], "correctIndex": 0, "evidence": "once more she wrote a letter. And once more it was to the old gentleman."},
+    {"prompt": "Why did the children go into the tunnel?", "choices": ["To take a shortcut home", "To hide from a train", "The runner in the red jersey never came out", "To look for Phyllis's lost bootlace"], "correctIndex": 2, "evidence": "But though they waited and waited and waited, the boy in the red jersey did not appear."}
+  ],
+  [
+    {"prompt": "What was wrong with Jim, the boy in the red jersey?", "choices": ["He had broken his leg", "He had lost his way", "He had hurt his arm in a fight", "He had been hit by the train"], "correctIndex": 0, "evidence": "“Bother! I believe I've broken my leg,” he said."},
+    {"prompt": "What did Peter and Phyllis find in the signal-box?", "choices": ["It was empty and locked", "Perks was on duty there", "The Doctor was inside", "The signalman was fast asleep"], "correctIndex": 3, "evidence": "The signalman was sitting on a chair tilted back against the wall... He was fast asleep."},
+    {"prompt": "Where did the children decide to take Jim?", "choices": ["To their own home, Three Chimneys", "To his school in Maidbridge", "To Brigden's farm", "To the station"], "correctIndex": 0, "evidence": "“Then we're to take him up to Three Chimneys?” said the bailiff. “Of course,” said Peter."}
+  ],
+  [
+    {"prompt": "Why did Bobbie and Phyllis tie Peter up?", "choices": ["He kept talking about blood and wounds after they asked him to stop", "He had broken Phyllis's doll", "They were playing prisoners", "To stop him waking Jim"], "correctIndex": 0, "evidence": "“It was only that I kept on talking about blood and wounds... And I wouldn't stop when they asked me.”"},
+    {"prompt": "Who turned out to be Jim's grandfather?", "choices": ["Dr. Forrest", "The Station Master", "The old gentleman", "Bill the bargeman"], "correctIndex": 2, "evidence": "“Jim's grandfather has come,” ... “It's our own old gentleman!” said Phyllis."},
+    {"prompt": "What did the old gentleman tell Bobbie privately at the gate?", "choices": ["He was taking Jim away the next day", "Mother must go back to her writing", "He wanted them all to visit London", "He was certain Father was innocent, and had hopes"], "correctIndex": 3, "evidence": "“But I have hopes, my dear—I have hopes.” ... “I'm perfectly CERTAIN he didn't.”"}
+  ],
+  [
+    {"prompt": "What was unusual when the children waved to the 9.15 train?", "choices": ["The train did not come", "People waved from every window", "The old gentleman did not wave", "The train stopped by the fence"], "correctIndex": 1, "evidence": "from every window handkerchiefs fluttered, newspapers signalled, hands waved wildly."},
+    {"prompt": "Who did Bobbie meet getting off the 11.54 train?", "choices": ["The Russian gentleman", "Jim's schoolmaster", "Aunt Emma", "Father"], "correctIndex": 3, "evidence": "“Oh! my Daddy, my Daddy!” That scream went like a knife into the heart of everyone in the train"},
+    {"prompt": "Why was Father able to come home?", "choices": ["He had escaped", "He had paid a fine", "The man who really did it had been caught", "The Russian had spoken up for him"], "correctIndex": 2, "evidence": "“They've caught the man who did it. Everyone knows now that it wasn't your Daddy.”"}
+  ]
+]}

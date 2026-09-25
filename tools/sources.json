@@ -1,0 +1,85 @@
+[
+ {
+  "id": "too-big-too-small",
+  "starter": true,
+  "source": "storyweaver",
+  "file": "sources/16411-too-big-too-small.zip",
+  "minAge": 4, "maxAge": 6
+ },
+ {
+  "id": "peter-rabbit",
+  "starter": true,
+  "source": "gutenberg", "ebook": 14838, "kind": "picture",
+  "title": "The Tale of Peter Rabbit",
+  "authors": ["Beatrix Potter"], "illustrators": ["Beatrix Potter"],
+  "credit": "The Tale of Peter Rabbit, written and illustrated by Beatrix Potter, first published 1902. Public domain.",
+  "minAge": 4, "maxAge": 6,
+  "pageWords": 80,
+  "cover": "images/peter04.jpg",
+  "skipImages": ["images/peter04.jpg"]
+ },
+ {
+  "id": "ammachis-amazing-machines",
+  "starter": true,
+  "source": "storyweaver",
+  "file": "sources/10118-ammachi-s-amazing-machines.zip",
+  "minAge": 6, "maxAge": 8
+ },
+ {
+  "id": "velveteen-rabbit",
+  "starter": true,
+  "source": "gutenberg", "ebook": 11757, "kind": "picture",
+  "title": "The Velveteen Rabbit",
+  "authors": ["Margery Williams"], "illustrators": ["William Nicholson"],
+  "credit": "The Velveteen Rabbit, or How Toys Become Real, written by Margery Williams, illustrated by William Nicholson, first published 1922. Public domain.",
+  "minAge": 6, "maxAge": 8,
+  "pageWords": 110,
+  "startAt": "HERE was once a velveteen rabbit",
+  "replace": {"HERE was once a velveteen rabbit": "THERE was once a velveteen rabbit"},
+  "cover": "images/christmas.jpg",
+  "skipImages": ["images/detail.jpg"],
+  "skipParagraphs": ["Christmas Morning", "The Skin Horse Tells His Story", "Spring Time", "Summer Days",
+                     "Anxious Times", "The Fairy Flower", "At Last! At Last!"]
+ },
+ {
+  "id": "ammachis-incredible-investigation",
+  "starter": true,
+  "source": "storyweaver",
+  "file": "sources/89567-ammachi-s-incredible-investigation.zip",
+  "minAge": 8, "maxAge": 10
+ },
+ {
+  "id": "wizard-of-oz",
+  "starter": true,
+  "source": "gutenberg", "ebook": 55, "kind": "chapters",
+  "title": "The Wonderful Wizard of Oz",
+  "authors": ["L. Frank Baum"], "illustrators": ["W. W. Denslow"],
+  "credit": "The Wonderful Wizard of Oz by L. Frank Baum, pictures by W. W. Denslow, first published 1900. Public domain.",
+  "minAge": 8, "maxAge": 10,
+  "pageWords": 200,
+  "cover": "images/cover.jpg"
+ },
+ {
+  "id": "anne-of-green-gables",
+  "starter": true,
+  "source": "gutenberg", "ebook": 45, "kind": "chapters",
+  "title": "Anne of Green Gables",
+  "authors": ["L. M. Montgomery"],
+  "credit": "Anne of Green Gables by L. M. Montgomery, first published 1908. Public domain.",
+  "minAge": 10, "maxAge": 12,
+  "pageWords": 280,
+  "cover": "images/cover.jpg",
+  "coverCrop": [0.22, 0, 1, 1]
+ },
+ {
+  "id": "railway-children",
+  "starter": true,
+  "source": "gutenberg", "ebook": 1874, "kind": "chapters",
+  "title": "The Railway Children",
+  "authors": ["E. Nesbit"],
+  "credit": "The Railway Children by E. Nesbit, first published 1906. Public domain.",
+  "replace": {"'ad 'a' been a Jap.": "'ad 'a' been Japanese.", "the Japs": "the Japanese"},
+  "minAge": 10, "maxAge": 12,
+  "pageWords": 280
+ }
+]

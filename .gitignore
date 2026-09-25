@@ -1,0 +1,15 @@
+# Raw source downloads (StoryWeaver zips etc.) - rebuilt into books/, not published as-is
+sources/
+
+# Prep-script scratch
+tools/.cache/
+tools/work/
+.venv/
+__pycache__/
+
+# Secrets - this repo is public
+.env
+*.env
+secrets.properties
+
+.DS_Store

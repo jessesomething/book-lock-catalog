@@ -1,0 +1,122 @@
+{"chapters": [
+  [
+    {"prompt": "Where did Dorothy live?", "choices": ["On a farm on the Kansas prairie", "In a big city", "In a house by the sea"], "correctIndex": 0, "evidence": "Dorothy lived in the midst of the great Kansas prairies, with Uncle Henry, who was a farmer"},
+    {"prompt": "Who made Dorothy laugh?", "choices": ["Uncle Henry", "Aunt Em", "Her little dog, Toto"], "correctIndex": 2, "evidence": "It was Toto that made Dorothy laugh, and saved her from growing as gray as her other surroundings."},
+    {"prompt": "Why wasn't Dorothy in the cellar when the house flew away?", "choices": ["She could not find the trap door", "She was chasing Toto, who hid under the bed", "She was outside with the cows"], "correctIndex": 1, "evidence": "Toto jumped out of Dorothy's arms and hid under the bed, and the girl started to get him."}
+  ],
+  [
+    {"prompt": "What happened to the Wicked Witch of the East?", "choices": ["The Munchkins chased her away", "Dorothy's house fell on her", "She flew off on a broom"], "correctIndex": 1, "evidence": "\"The house must have fallen on her. Whatever shall we do?\""},
+    {"prompt": "What kind of shoes did the Witch of the East leave behind?", "choices": ["Silver shoes", "Ruby slippers", "Wooden clogs"], "correctIndex": 0, "evidence": "The feet of the dead Witch had disappeared entirely, and nothing was left but the silver shoes."},
+    {"prompt": "Where did the Witch of the North tell Dorothy to go?", "choices": ["To live with the Munchkins", "To find the Wicked Witch of the West", "To the City of Emeralds to ask Oz for help"], "correctIndex": 2, "evidence": "\"Then you must go to the City of Emeralds. Perhaps Oz will help you.\""}
+  ],
+  [
+    {"prompt": "Why did Dorothy put on the silver shoes?", "choices": ["Her old shoes were worn out", "Boq told her to", "They made her invisible"], "correctIndex": 0, "evidence": "she looked down at her feet and noticed how old and worn her shoes were."},
+    {"prompt": "Where did Dorothy find the Scarecrow?", "choices": ["Sitting by a brook", "Stuck on a pole in a cornfield", "Asleep in Boq's house"], "correctIndex": 1, "evidence": "There was a great cornfield beyond the fence, and not far away she saw a Scarecrow, placed high on a pole"},
+    {"prompt": "What does the Scarecrow hope Oz will give him?", "choices": ["A heart", "Courage", "Some brains"], "correctIndex": 2, "evidence": "\"Do you think,\" he asked, \"if I go to the Emerald City with you, that Oz would give me some brains?\""}
+  ],
+  [
+    {"prompt": "Why doesn't the Scarecrow eat Dorothy's bread?", "choices": ["He does not like bread", "His mouth is only painted on", "He wants to save it for Toto"], "correctIndex": 1, "evidence": "\"my mouth is only painted, and if I should cut a hole in it so I could eat, the straw... would come out\""},
+    {"prompt": "What did the old crow tell the Scarecrow?", "choices": ["Brains are the only things worth having", "He should fly away with the crows", "The farmer would come back soon"], "correctIndex": 0, "evidence": "\"Brains are the only things worth having in this world, no matter whether one is a crow or a man.\""},
+    {"prompt": "Where did the travelers spend the night?", "choices": ["In a Munchkin's big house", "Up in a tall tree", "In a little cottage in the forest"], "correctIndex": 2, "evidence": "\"I see a little cottage at the right of us,\" he said, \"built of logs and branches.\""}
+  ],
+  [
+    {"prompt": "Why couldn't the Tin Woodman move?", "choices": ["He was tied to a tree", "He was under a sleeping spell", "His joints had rusted in the rain"], "correctIndex": 2, "evidence": "being caught in a rainstorm, before I thought of the danger my joints had rusted"},
+    {"prompt": "What did Dorothy use to help the Tin Woodman?", "choices": ["A hammer", "An oil-can from his cottage", "A bucket of water"], "correctIndex": 1, "evidence": "\"Get an oil-can and oil my joints... You will find an oil-can on a shelf in my cottage.\""},
+    {"prompt": "What does the Tin Woodman want to ask Oz for?", "choices": ["A heart", "Brains", "A new axe"], "correctIndex": 0, "evidence": "\"Do you suppose Oz could give me a heart?\""}
+  ],
+  [
+    {"prompt": "What did Dorothy do when the Lion tried to bite Toto?", "choices": ["She ran away", "She slapped the Lion on the nose", "She hid behind a tree"], "correctIndex": 1, "evidence": "rushed forward and slapped the Lion upon his nose as hard as she could"},
+    {"prompt": "What does the Lion want to ask Oz for?", "choices": ["A crown", "A heart", "Courage"], "correctIndex": 2, "evidence": "\"Do you think Oz could give me courage?\" asked the Cowardly Lion."},
+    {"prompt": "Why did the Tin Woodman's jaws rust shut?", "choices": ["He cried after stepping on a beetle", "He fell into a river", "He forgot to oil them in the morning"], "correctIndex": 0, "evidence": "the Tin Woodman stepped upon a beetle... he wept several tears... over the hinges of his jaw, and there they rusted."}
+  ],
+  [
+    {"prompt": "How did the group cross the first big ditch?", "choices": ["They built a raft", "The Lion jumped across, carrying them one at a time", "The Scarecrow found a bridge"], "correctIndex": 1, "evidence": "\"Then we are all right,\" answered the Scarecrow, \"for you can carry us all over on your back, one at a time.\""},
+    {"prompt": "Who thought of chopping down a tree to make a bridge?", "choices": ["The Scarecrow", "The Lion", "Dorothy"], "correctIndex": 0, "evidence": "the Scarecrow said: \"Here is a great tree... If the Tin Woodman can chop it down... we can walk across it\""},
+    {"prompt": "Why did the Scarecrow keep away from the campfire?", "choices": ["The smoke hurt his painted eyes", "He was busy chopping wood", "He was afraid a spark would burn his straw"], "correctIndex": 2, "evidence": "it enabled him to keep away from the fire, as he feared a spark might get into his straw and burn him up."}
+  ],
+  [
+    {"prompt": "How did the Scarecrow get stuck in the middle of the river?", "choices": ["He fell off the Lion's back", "His pole stuck in the mud and the raft floated away", "He jumped in to go swimming"], "correctIndex": 1, "evidence": "he pushed so hard on his long pole that it stuck fast in the mud... the raft was swept away"},
+    {"prompt": "Who rescued the Scarecrow from the river?", "choices": ["A kind Stork", "The Lion", "A friendly fish"], "correctIndex": 0, "evidence": "the Stork with her great claws grabbed the Scarecrow by the arm and carried him... back to the bank"},
+    {"prompt": "What happened to Dorothy in the field of red poppies?", "choices": ["She picked a bunch for Aunt Em", "She got lost", "She fell fast asleep"], "correctIndex": 2, "evidence": "Her eyes closed in spite of herself and she forgot where she was and fell among the poppies, fast asleep."}
+  ],
+  [
+    {"prompt": "Who was the little mouse the Tin Woodman saved?", "choices": ["A baby mouse who was lost", "The Queen of all the Field Mice", "A mouse who lived with Boq"], "correctIndex": 1, "evidence": "\"Why, I am a Queen—the Queen of all the Field Mice!\""},
+    {"prompt": "Whose idea was it to ask the mice to save the Lion?", "choices": ["The Scarecrow's", "The Tin Woodman's", "Dorothy's"], "correctIndex": 0, "evidence": "the Scarecrow... said, quickly, \"Oh, yes; you can save our friend, the Cowardly Lion, who is asleep in the poppy bed.\""},
+    {"prompt": "How did the mice get the Lion out of the poppies?", "choices": ["They woke him by squeaking loudly", "They carried him on their backs", "They pulled him on a cart the Tin Woodman built"], "correctIndex": 2, "evidence": "he soon made a truck out of the limbs of trees... Soon they rolled the Lion out of the poppy bed"}
+  ],
+  [
+    {"prompt": "What color were the fences and houses as they got close to the Emerald City?", "choices": ["Blue", "Yellow", "Green"], "correctIndex": 2, "evidence": "Once more they could see fences built beside the road; but these were painted green"},
+    {"prompt": "What did the farmer say about seeing Oz?", "choices": ["Oz never lets anyone see him", "Oz visits every farm", "Oz is away on a trip"], "correctIndex": 0, "evidence": "\"Why, it is said that he never lets anyone come into his presence.\""},
+    {"prompt": "What did everyone have to put on before going into the city?", "choices": ["Green hats", "Green spectacles", "Silver shoes"], "correctIndex": 1, "evidence": "\"I must take you to his Palace. But first you must put on the spectacles.\""}
+  ],
+  [
+    {"prompt": "What did Oz look like when Dorothy went in to see him?", "choices": ["A lovely Lady with wings", "A giant Head with no body", "A Ball of Fire"], "correctIndex": 1, "evidence": "In the center of the chair was an enormous Head, without a body to support it or any arms or legs whatever."},
+    {"prompt": "What did Oz say Dorothy must do before he would send her home?", "choices": ["Defeat the Wicked Witch of the West", "Bring him a golden crown", "Find the Witch of the North"], "correctIndex": 0, "evidence": "\"There is now but one Wicked Witch left... when you can tell me she is dead I will send you back to Kansas\""},
+    {"prompt": "What did the Lion see when it was his turn to meet Oz?", "choices": ["A giant Head", "A terrible Beast", "A Ball of Fire"], "correctIndex": 2, "evidence": "glancing around saw, to his surprise, that before the throne was a Ball of Fire"}
+  ],
+  [
+    {"prompt": "Why wouldn't the Winged Monkeys hurt Dorothy?", "choices": ["Toto barked and scared them", "She had the Good Witch's kiss mark on her forehead", "She was wearing the Golden Cap"], "correctIndex": 1, "evidence": "he saw the mark of the Good Witch's kiss upon her forehead and stopped short, motioning the others not to touch her."},
+    {"prompt": "How did the Wicked Witch get one of Dorothy's silver shoes?", "choices": ["She tripped Dorothy with an invisible iron bar", "She sneaked into Dorothy's room at night", "Toto carried it to her"], "correctIndex": 0, "evidence": "she stumbled over the bar, not being able to see it... in her fall one of the Silver Shoes came off"},
+    {"prompt": "What made the Wicked Witch melt away?", "choices": ["Bright sunshine", "A magic word", "A bucket of water"], "correctIndex": 2, "evidence": "she picked up the bucket of water that stood near and dashed it over the Witch, wetting her from head to foot."}
+  ],
+  [
+    {"prompt": "Who fixed the Tin Woodman's dents?", "choices": ["The Winged Monkeys", "The Winkie tinsmiths", "The Witch of the North"], "correctIndex": 1, "evidence": "The tinsmiths looked the Woodman over carefully and then answered that they thought they could mend him"},
+    {"prompt": "How did they get the Scarecrow back?", "choices": ["They chopped down the tree and stuffed his clothes with new straw", "The Winged Monkeys brought him back", "He climbed down from the tree by himself"], "correctIndex": 0, "evidence": "the tree fell over with a crash, whereupon the Scarecrow's clothes fell... they were stuffed with nice, clean straw"},
+    {"prompt": "What did Dorothy find in the Witch's cupboard and decide to wear?", "choices": ["A magic wand", "A silver whistle", "The Golden Cap"], "correctIndex": 2, "evidence": "there she saw the Golden Cap. She tried it on her own head and found that it fitted her exactly."}
+  ],
+  [
+    {"prompt": "What went wrong on the way back to the Emerald City?", "choices": ["The Lion hurt his paw", "They got lost in the fields of flowers", "They ran out of food"], "correctIndex": 1, "evidence": "they did not know which was east and which was west, and that was the reason they were lost in the great fields."},
+    {"prompt": "Who told Dorothy to use the Golden Cap to call the Winged Monkeys?", "choices": ["The Queen of the Field Mice", "The Scarecrow", "The Guardian of the Gates"], "correctIndex": 0, "evidence": "Then she noticed Dorothy's Golden Cap, and said, \"Why don't you use the charm of the Cap, and call the Winged Monkeys\""},
+    {"prompt": "Why must the Winged Monkeys obey whoever owns the Golden Cap?", "choices": ["The Wicked Witch put a spell on them", "Oz made them his helpers", "It was their punishment for a trick they played long ago"], "correctIndex": 2, "evidence": "Gayelette finally spared them, on condition that the Winged Monkeys should... do three times the bidding of the owner of the Golden Cap."}
+  ],
+  [
+    {"prompt": "What was hiding behind the screen that Toto knocked over?", "choices": ["A secret door", "A little old man, the real Oz", "The giant Head"], "correctIndex": 1, "evidence": "they saw, standing in just the spot the screen had hidden, a little old man, with a bald head and a wrinkled face"},
+    {"prompt": "Why did everything in the Emerald City look green?", "choices": ["Oz made everyone wear green spectacles", "The sun there shines green", "It rained green paint"], "correctIndex": 0, "evidence": "\"I put green spectacles on all the people, so that everything they saw was green.\""},
+    {"prompt": "How did Oz first come to the Land of Oz?", "choices": ["A cyclone carried his house", "He walked across the desert", "His balloon was blown far away"], "correctIndex": 2, "evidence": "\"one day I went up in a balloon and the ropes got twisted, so that I couldn't come down again.\""}
+  ],
+  [
+    {"prompt": "What did Oz put in the Scarecrow's head for brains?", "choices": ["Bran mixed with pins and needles", "A real brain from a jar", "Gold coins"], "correctIndex": 0, "evidence": "took up a measure of bran, which he mixed with a great many pins and needles."},
+    {"prompt": "What was the Tin Woodman's new heart made of?", "choices": ["Tin", "Silk stuffed with sawdust", "Glass"], "correctIndex": 1, "evidence": "he took out a pretty heart, made entirely of silk and stuffed with sawdust."},
+    {"prompt": "What did Oz give the Lion to make him brave?", "choices": ["A shiny medal", "A golden crown", "A drink from a green bottle"], "correctIndex": 2, "evidence": "took down a square green bottle, the contents of which he poured into a green-gold dish... the Wizard said: \"Drink.\""}
+  ],
+  [
+    {"prompt": "How did Oz plan to cross the desert with Dorothy?", "choices": ["In a hot-air balloon", "On the Lion's back", "Through a secret tunnel"], "correctIndex": 0, "evidence": "\"it is quite beyond my powers to make a cyclone; but... I believe I can make a balloon.\""},
+    {"prompt": "Why did Dorothy miss the balloon?", "choices": ["She fell asleep", "She went to find Toto, who was barking at a kitten", "She changed her mind"], "correctIndex": 1, "evidence": "Toto had run into the crowd to bark at a kitten, and Dorothy at last found him."},
+    {"prompt": "Who did Oz choose to rule the Emerald City while he was gone?", "choices": ["The Tin Woodman", "The Lion", "The Scarecrow"], "correctIndex": 2, "evidence": "\"While I am gone the Scarecrow will rule over you. I command you to obey him as you would me.\""}
+  ],
+  [
+    {"prompt": "What did the Monkey King say when Dorothy asked to be flown to Kansas?", "choices": ["They were too tired to fly so far", "They belong to this country and cannot leave it", "Only Oz could give that order"], "correctIndex": 1, "evidence": "\"That cannot be done,\" he said. \"We belong to this country alone, and cannot leave it.\""},
+    {"prompt": "Who did the soldier say might help Dorothy cross the desert?", "choices": ["Glinda, the Witch of the South", "The Queen of the Field Mice", "The Guardian of the Gates"], "correctIndex": 0, "evidence": "\"Glinda might,\" he suggested... \"The Witch of the South.\""},
+    {"prompt": "Why did the Scarecrow want to go with Dorothy?", "choices": ["He wanted to see Kansas", "He was tired of ruling the city", "He owed all his good luck to her"], "correctIndex": 2, "evidence": "\"If it wasn't for Dorothy I should never have had brains... So my good luck is all due to her\""}
+  ],
+  [
+    {"prompt": "Why did Dorothy forgive Oz?", "choices": ["He gave her a present", "He had done his best", "He promised to come back"], "correctIndex": 1, "evidence": "Oz had not kept the promise he made her, but he had done his best, so she forgave him."},
+    {"prompt": "How did they get past the fighting trees?", "choices": ["The Tin Woodman chopped the grabbing branch", "The Lion roared until the trees stopped", "They walked around the forest"], "correctIndex": 0, "evidence": "When a big branch bent down to seize him the Woodman chopped at it... and the Tin Woodman passed safely under it."},
+    {"prompt": "What did they find at the far edge of the woods?", "choices": ["The Emerald City", "A river of honey", "A high wall that looked like white china"], "correctIndex": 2, "evidence": "they found before them a high wall which seemed to be made of white china."}
+  ],
+  [
+    {"prompt": "What were the people and houses made of in the country over the wall?", "choices": ["Glass", "China, like dishes", "Candy"], "correctIndex": 1, "evidence": "these people were all made of china, even to their clothes"},
+    {"prompt": "What happened when the travelers came near the china milkmaid?", "choices": ["She gave them a cup of milk", "She sang them a song", "Her cow kicked and broke its leg"], "correctIndex": 2, "evidence": "Dorothy was shocked to see that the cow had broken her leg off"},
+    {"prompt": "Why wouldn't the china Princess go to Kansas with Dorothy?", "choices": ["Away from home she would go stiff and could not move", "She was afraid of dogs", "She wanted to marry a prince"], "correctIndex": 0, "evidence": "\"But whenever any of us are taken away our joints at once stiffen, and we can only stand straight and look pretty.\""}
+  ],
+  [
+    {"prompt": "What did the Lion think of the big old forest?", "choices": ["It was gloomy", "It was the most beautiful place he had seen", "It was too cold"], "correctIndex": 1, "evidence": "\"This forest is perfectly delightful,\" declared the Lion... \"Never have I seen a more beautiful place.\""},
+    {"prompt": "What did the animals agree to do if the Lion defeated their enemy?", "choices": ["Give him a golden crown", "Carry Dorothy home", "Bow down to him and obey him as King"], "correctIndex": 2, "evidence": "\"If I put an end to your enemy, will you bow down to me and obey me...?\" \"We will do that gladly\""},
+    {"prompt": "What did the Lion promise the animals?", "choices": ["To come back and rule once Dorothy was on her way home", "To stay with them right away", "To take them to the Emerald City"], "correctIndex": 0, "evidence": "he promised to come back and rule over them as soon as Dorothy was safely on her way to Kansas."}
+  ],
+  [
+    {"prompt": "Who blocked the travelers from climbing the rocky hill?", "choices": ["The fighting trees", "The Hammer-Heads", "The china people"], "correctIndex": 1, "evidence": "Dorothy saw hundreds of the armless Hammer-Heads upon the hillside, one behind every rock."},
+    {"prompt": "How did the travelers get over the hill?", "choices": ["The Tin Woodman built a ladder", "They dug a tunnel", "The Winged Monkeys carried them"], "correctIndex": 2, "evidence": "the Winged Monkeys caught the four travelers and Toto up in their arms and flew away with them."},
+    {"prompt": "What color was everything in the country of the Quadlings?", "choices": ["Red", "Blue", "Yellow"], "correctIndex": 0, "evidence": "The fences and houses and bridges were all painted bright red"}
+  ],
+  [
+    {"prompt": "What did Glinda ask Dorothy to give her?", "choices": ["Toto", "The Golden Cap", "The Silver Shoes"], "correctIndex": 1, "evidence": "\"But, if I do, you must give me the Golden Cap.\""},
+    {"prompt": "What could carry Dorothy home to Kansas?", "choices": ["Her Silver Shoes", "The Winged Monkeys", "Oz's balloon"], "correctIndex": 0, "evidence": "\"Your Silver Shoes will carry you over the desert,\" replied Glinda."},
+    {"prompt": "What happened to the Silver Shoes on the way home?", "choices": ["Dorothy gave them to Aunt Em", "Glinda kept them", "They fell off and were lost in the desert"], "correctIndex": 2, "evidence": "the Silver Shoes had fallen off in her flight through the air, and were lost forever in the desert."}
+  ],
+  [
+    {"prompt": "Who came home to Kansas with Dorothy?", "choices": ["The Scarecrow", "Toto", "The Lion"], "correctIndex": 1, "evidence": "\"And here is Toto, too.\""},
+    {"prompt": "Where did Dorothy tell Aunt Em she had come from?", "choices": ["The Land of Oz", "Omaha", "The circus"], "correctIndex": 0, "evidence": "\"From the Land of Oz,\" said Dorothy gravely."},
+    {"prompt": "How did Dorothy feel about being home?", "choices": ["Sad that she left Oz", "Angry at Aunt Em", "So glad to be home"], "correctIndex": 2, "evidence": "\"And oh, Aunt Em! I'm so glad to be at home again!\""}
+  ]
+]}

@@ -1,0 +1,114 @@
+{
+ "formatVersion": 1,
+ "id": "ammachis-amazing-machines",
+ "title": "Ammachi's Amazing Machines",
+ "authors": [
+  "Rajiv Eipe"
+ ],
+ "illustrators": [
+  "Rajiv Eipe"
+ ],
+ "minAge": 6,
+ "maxAge": 8,
+ "cover": "cover.jpg",
+ "licence": {
+  "name": "CC BY 4.0",
+  "url": "https://creativecommons.org/licenses/by/4.0/"
+ },
+ "credit": "Ammachi's Amazing Machines (English), written by Rajiv Eipe, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2017) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+ "imageCredits": "Cover page: An old lady with her tool kit and a boy washing his hands in the garden, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 2: An old woman and a young boy out in the garden, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 3: A boy jumping with joy, a smiling old woman, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 4: A boy helping his grandmother pick coconuts, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 5: An old woman picking coconuts with her grandson, by Rajiv Eipe © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 6: A boy and his grandmother trying to cut open a coconut, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 7: A hungry boy and his laughing grandmother, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 8: A grandmother cutting open a coconut, a boy with a bowl , by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 9: A boy grating coconuts in the kitchen , by Rajiv Eipe © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 10: Grandmother cooking and boy watching, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 11: An old woman pouring food into a tray, by Rajiv Eipe © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 12: Grandmother cutting slices of coconut barfi, by Rajiv Eipe © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 13: Grandmother and her grandson eating coconut barfi, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 14: Simple machines , by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license. Page 15: Simple machines - Wedge, Pulley, Screw, by Rajiv Eipe © Pratham Books, 2016. Some rights reserved. Released under CC BY 4.0 license.",
+ "changes": "Adapted for BookLock: pages re-laid out for phone screens, and comprehension quizzes added.",
+ "wordCount": 187,
+ "chapters": [
+  {
+   "title": null,
+   "pages": [
+    {
+     "text": "\"Ammachi! Ammachi! Could we make coconut barfi today?\" Sooraj asked his grandmother. \"PLEEEEEAASE?\"",
+     "image": "p01.jpg"
+    },
+    {
+     "text": "\"Hee hee hee! Only if you help me make it, eh?\" replied Ammachi. \"YAY!\"",
+     "image": "p02.jpg"
+    },
+    {
+     "text": "\"Ready?\" shouted Sooraj. \"Ready!\" said Ammachi.",
+     "image": "p03.jpg"
+    },
+    {
+     "text": "\"We’ll only pick the ripe ones, okay? The ones that are brown all over... Watch out! Here they come!\" WHOOOSH... WHUMP!",
+     "image": "p04.jpg"
+    },
+    {
+     "text": "\"Now to get the husk off…\" POTCH! CRAANKK!",
+     "image": "p05.jpg"
+    },
+    {
+     "text": "Sooraj’s stomach went: \"GRRRRRR!\" Ammachi giggled.",
+     "image": "p06.jpg"
+    },
+    {
+     "text": "\"Then we crACK the shell… like THIS!\" KHATAK!",
+     "image": "p07.jpg"
+    },
+    {
+     "text": "\"And grrrrrraaaaate the frrrrrrrruuuit!\"",
+     "image": "p08.jpg"
+    },
+    {
+     "text": "\"Toss it into the pan with all the other ingredients…\" \"It smells SO good, Ammachi!\"",
+     "image": "p09.jpg"
+    },
+    {
+     "text": "\"Then we pour it all out on to a tray… Wait for it to cool, baba!\"",
+     "image": "p10.jpg"
+    },
+    {
+     "text": "\"Now cut it into neat little slices…\" SQUEAK SQUEAK",
+     "image": "p11.jpg"
+    },
+    {
+     "text": "\"YIPPEE! Our coconut barfi is ready to be eaten!\" \"YUM YUM YUM!\"",
+     "image": "p12.jpg"
+    },
+    {
+     "text": "Ammachi's barfi was made using SIMPLE MACHINES! Simple machines make it easier to do work. There are six kinds of simple machines: 1. Inclined plane 2. Lever 3. Wheel and Axle",
+     "image": "p13.jpg"
+    },
+    {
+     "text": "4. Wedge 5. Pulley 6. Screw Can you identify the simple machines that Sooraj and Ammachi used in the process of making coconut barfi?",
+     "image": "p14.jpg"
+    }
+   ],
+   "quiz": [
+    {
+     "prompt": "What did Sooraj and Ammachi make together?",
+     "choices": [
+      "Coconut barfi",
+      "Unniappams",
+      "Mango juice"
+     ],
+     "correctIndex": 0
+    },
+    {
+     "prompt": "Which coconuts did Ammachi say to pick?",
+     "choices": [
+      "Small green ones",
+      "Ripe brown ones",
+      "Cracked ones"
+     ],
+     "correctIndex": 1
+    },
+    {
+     "prompt": "What does the book say simple machines do?",
+     "choices": [
+      "Make food taste sweet",
+      "Keep things cold",
+      "Make work easier"
+     ],
+     "correctIndex": 2
+    }
+   ]
+  }
+ ]
+}

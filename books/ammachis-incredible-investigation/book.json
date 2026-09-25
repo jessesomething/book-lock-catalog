@@ -1,0 +1,143 @@
+{
+ "formatVersion": 1,
+ "id": "ammachis-incredible-investigation",
+ "title": "Ammachi's Incredible Investigation",
+ "authors": [
+  "Vinayak Varma"
+ ],
+ "illustrators": [
+  "Rajiv Eipe"
+ ],
+ "minAge": 8,
+ "maxAge": 10,
+ "cover": "cover.jpg",
+ "licence": {
+  "name": "CC BY 4.0",
+  "url": "https://creativecommons.org/licenses/by/4.0/"
+ },
+ "credit": "Ammachi's Incredible Investigation (English), written by Vinayak Varma, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2019) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+ "imageCredits": "Cover page: Grandmother and boy using torches, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 2: Grandmother looking shocked, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 3: Boy thinking, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 4: Grandmother comes up with an idea, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 5: Boy thinking about unniappams, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 6: Boy climbing a shelf, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 7: Boy and grandmother with a bucket and box, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 8: Grandmother pointing at a lamp, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 9: Boy following his grandmother, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 10: Woman reading a book, boy complaining, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 11: Setting traps, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 12: Grandmother with a torch , by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 13: Grandmother pointing torch at the boy, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 14: Boy stealing food, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 15: A scared boy, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 16: Boy and grandmother smiling, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 17: Grandmother and boy hugging, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 18: Boy and grandmother shocked, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 19: Grandfather, dog & cat, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license. Page 20: Spiral notebook, pencil, by Rajiv Eipe © Pratham Books, 2019. Some rights reserved. Released under CC BY 4.0 license.",
+ "changes": "Adapted for BookLock: pages re-laid out for phone screens, and comprehension quizzes added.",
+ "wordCount": 448,
+ "chapters": [
+  {
+   "title": null,
+   "pages": [
+    {
+     "text": "“Oh no, the unniappams have disappeared!” said Ammachi. “Someone must have stolen them!” said Sooraj. “But who?” asked Ammachi.",
+     "image": "p01.jpg"
+    },
+    {
+     "text": "“It could have been Penny,” said Sooraj. “Or maybe it was that civet from the attic.” “Or do you think Appachen took them?” asked Sooraj. “Hmm,” said Ammachi. “Perhaps.”",
+     "image": "p02.jpg"
+    },
+    {
+     "text": "“We must lay three BRILLIANT traps!” “There’s only one way to find out,” said Ammachi. “Oh? How?”",
+     "image": "p03.jpg"
+    },
+    {
+     "text": "“Haha! Yum!” “First we need more unniappams.” “Aren’t they all gone?” asked Sooraj. “No, I hid some in the kitchen,” said Ammachi. “For emergencies!”",
+     "image": "p04.jpg"
+    },
+    {
+     "text": "“Our first trap is for the civet,” said Ammachi. “When he comes through the window, he’ll fall right into this basket. His weight will make the lid fall shut automatically.” “Amazing!” said Sooraj.",
+     "image": "p05.jpg"
+    },
+    {
+     "text": "“This one is for Penny. If she tries to eat the unniappam, she’ll be instantly trapped under this bucket.” “Brilliant!” said Sooraj.",
+     "image": "p06.jpg"
+    },
+    {
+     "text": "“And this hidden camera will catch Appachen red-handed,” said Ammachi. “If he lifts the unniappam off the plate, this string will slip out and trigger the camera’s shutter.” “Genius!” said Sooraj.",
+     "image": "p07.jpg"
+    },
+    {
+     "text": "“And now we wait.”",
+     "image": "p08.jpg"
+    },
+    {
+     "text": "An hour passed. Ammachi was in her rocking chair, reading her favourite science book, when Sooraj came running. “Ammachi, come and look! The traps have been sprung!” “Oh!” said Ammachi. “Let’s see!”",
+     "image": "p09.jpg"
+    },
+    {
+     "text": "“But the unniappams are all gone!” said Ammachi. “Again!” “The basket trap is empty!” “So is the bucket trap! How odd!” “The camera didn’t go off either!”",
+     "image": "p10.jpg"
+    },
+    {
+     "text": "“What a clever thief,” said Ammachi. “Maybe we should lay THREE MORE traps!” “YES!” said Sooraj. “But what will we use as bait?” “Don’t we have three more unniappams left in the oven?” asked Sooraj.",
+     "image": "p11.jpg"
+    },
+    {
+     "text": "“A-HA!” said Ammachi. “Not so clever after all, I see!” “Eh?” said Sooraj. “What?”",
+     "image": "p12.jpg"
+    },
+    {
+     "text": "“How did you know that there were THREE unniappams left, Sooraj?” asked Ammachi. “And HOW did you know they were hidden in the OVEN?” “Ahhh…. I…. Ummm…. Ohhh….” “And I didn’t tell ANYONE ELSE how the traps worked. Only YOU could have sprung them without getting caught!”",
+     "image": "p13.jpg"
+    },
+    {
+     "text": "“Okay. OKAY!” said Sooraj. “FINE! You caught me. I AM the unniappam thief!” “I KNEW IT!” said Ammachi.",
+     "image": "p14.jpg"
+    },
+    {
+     "text": "“Heee. Those unniappams were TOO irresistible, Ammachi!” said Sooraj. “You’re such a good cook!” “Hahaha! You little flatterer!” said Ammachi.",
+     "image": "p15.jpg"
+    },
+    {
+     "text": "“Who gets to eat the remaining unniappams, Ammachi?” “Hahaha! Come, we’ll share them!”",
+     "image": "p16.jpg"
+    },
+    {
+     "text": "“Oh no!” said Ammachi. “The unniappams are GONE! AGAINNNN!”",
+     "image": "p17.jpg"
+    },
+    {
+     "text": "\"Hehehe!\" *NYUM-NYUM* *SCRUNCH* *MUNCH-MUNCH* *CHOMP-CHOMP* *TAKA-TAKA-TAKA*",
+     "image": "p18.jpg"
+    },
+    {
+     "text": "How to catch a thief: 1. Look for clues! 2. Make a list of suspects! 3. Lay traps! 4. Ask clever questions! 5. Write down everything you’ve discovered! 6. Go and catch your prime suspect! 7. Caught the wrong suspect? Oh no! 8. Repeat steps 1 to 7!",
+     "image": "p19.jpg"
+    }
+   ],
+   "quiz": [
+    {
+     "prompt": "What went missing at the start of the story?",
+     "choices": [
+      "The unniappams",
+      "Ammachi's science book",
+      "The camera"
+     ],
+     "correctIndex": 0
+    },
+    {
+     "prompt": "Which trap did Ammachi set to catch Appachen?",
+     "choices": [
+      "A basket with a lid",
+      "A hidden camera",
+      "A bucket"
+     ],
+     "correctIndex": 1
+    },
+    {
+     "prompt": "Where did Sooraj say the last three unniappams were?",
+     "choices": [
+      "In the attic",
+      "Under the bucket",
+      "In the oven"
+     ],
+     "correctIndex": 2
+    },
+    {
+     "prompt": "Who turned out to be the unniappam thief?",
+     "choices": [
+      "Penny",
+      "Sooraj",
+      "The civet"
+     ],
+     "correctIndex": 1
+    }
+   ]
+  }
+ ]
+}

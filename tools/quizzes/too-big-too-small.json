@@ -1,0 +1,5 @@
+{"chapters": [[
+  {"prompt": "Shanu's family says she is too big. What else do they say she is?", "choices": ["Too loud", "Too small", "Too slow"], "correctIndex": 1, "evidence": "Too big! Too small! How can she be too big and too small all at once?"},
+  {"prompt": "Ammi says Shanu is just big enough for what?", "choices": ["Big school", "Making dosas", "Carrying the baby"], "correctIndex": 0, "evidence": "Ammi smiles and says, \"Why, you are just big enough to go to big school.\""},
+  {"prompt": "What does the whole family give Shanu at the end?", "choices": ["A new frock", "A dosa", "A big hug"], "correctIndex": 2, "evidence": "all say, and give her a warm, wonderful hug."}
+]]}

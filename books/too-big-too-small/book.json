@@ -1,0 +1,110 @@
+{
+ "formatVersion": 1,
+ "id": "too-big-too-small",
+ "title": "Too Big! Too Small!",
+ "authors": [
+  "Lavanya Karthik"
+ ],
+ "illustrators": [
+  "Lavanya Karthik"
+ ],
+ "minAge": 4,
+ "maxAge": 6,
+ "cover": "cover.jpg",
+ "licence": {
+  "name": "CC BY 4.0",
+  "url": "https://creativecommons.org/licenses/by/4.0/"
+ },
+ "credit": "Too Big! Too Small! (English), written by Lavanya Karthik, illustrated by Lavanya Karthik, supported by Parag: A Sir Ratan Tata Trust Initiative, published by Pratham Books (© Pratham Books, 2017) under a CC BY 4.0 license on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
+ "imageCredits": "Cover page: Two cats and a pair of feet, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 2: Girl wants mother to carry her, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 3: Father running after girl, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 4: Girl tries to climb in with baby, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 5: Girl walking away with baby, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 6: Tiny girl on girl's palm, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 7: Girl holding pink frock, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 8: Big baby looks at small girl, girl sits on grandpa's back, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 9: Tiny girl of big cat's back, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 10: Mother holding uniform, smiling at girl, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 11: Cat chases butterfly, girl sits on man's shoulder, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 12: Girl walks with grandpa, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 13: Grandmother tells stories, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license. Page 14: Girl and baby laugh with parents and grandparents, by Lavanya Karthik © Pratham Books, 2017. Some rights reserved. Released under CC BY 4.0 license.",
+ "changes": "Adapted for BookLock: pages re-laid out for phone screens, and comprehension quizzes added.",
+ "wordCount": 193,
+ "chapters": [
+  {
+   "title": null,
+   "pages": [
+    {
+     "text": "“I can’t lift you up, Shanu!” says Ammi. “You are too big!”",
+     "image": "p01.jpg"
+    },
+    {
+     "text": "“You can’t walk to school alone, Shanu!” says Abbu. “You are too small!”",
+     "image": "p02.jpg"
+    },
+    {
+     "text": "“You can’t sleep in the baby’s cot, Shanu!” says Dadu. “You are too big!”",
+     "image": "p03.jpg"
+    },
+    {
+     "text": "“You can’t carry the baby to the park, Shanu!” says Dadi. “You are too small!”",
+     "image": "p04.jpg"
+    },
+    {
+     "text": "Shanu is puzzled. Too big! Too small! How can she be too big and too small all at once?",
+     "image": "p05.jpg"
+    },
+    {
+     "text": "Too big to wear her old pink frock. Too small to make dosas at the stove.",
+     "image": "p06.jpg"
+    },
+    {
+     "text": "Too big to climb up on Dadu’s back? Too small to carry the baby on hers?",
+     "image": "p07.jpg"
+    },
+    {
+     "text": "“What am I the right size for?” Shanu wonders.",
+     "image": "p08.jpg"
+    },
+    {
+     "text": "Ammi smiles and says, “Why, you are just big enough to go to big school.”",
+     "image": "p09.jpg"
+    },
+    {
+     "text": "“And you are just small enough for me to carry you on my shoulders,” says Abbu.",
+     "image": "p10.jpg"
+    },
+    {
+     "text": "“You are just big enough to take me for my morning walks,” says Dadu.",
+     "image": "p11.jpg"
+    },
+    {
+     "text": "“And you are just small enough for me to tell stories to,” says Dadi.",
+     "image": "p12.jpg"
+    },
+    {
+     "text": "“And you will always, always be the perfect size... for this!\" all say, and give her a warm, wonderful hug.",
+     "image": "p13.jpg"
+    }
+   ],
+   "quiz": [
+    {
+     "prompt": "Shanu's family says she is too big. What else do they say she is?",
+     "choices": [
+      "Too loud",
+      "Too small",
+      "Too slow"
+     ],
+     "correctIndex": 1
+    },
+    {
+     "prompt": "Ammi says Shanu is just big enough for what?",
+     "choices": [
+      "Big school",
+      "Making dosas",
+      "Carrying the baby"
+     ],
+     "correctIndex": 0
+    },
+    {
+     "prompt": "What does the whole family give Shanu at the end?",
+     "choices": [
+      "A new frock",
+      "A dosa",
+      "A big hug"
+     ],
+     "correctIndex": 2
+    }
+   ]
+  }
+ ]
+}

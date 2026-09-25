@@ -1,0 +1,46 @@
+{
+ "chapters": [
+  [
+   {
+    "prompt": "What did the Skin Horse say makes a toy become Real?",
+    "choices": [
+     "A child loves it for a long, long time",
+     "It gets wound up with a key",
+     "It is made with expensive parts"
+    ],
+    "correctIndex": 0,
+    "evidence": "When a child loves you for a long, long time, not just to play with, but REALLY loves you, then you become Real."
+   },
+   {
+    "prompt": "How did the Rabbit first end up sleeping in the Boy's bed?",
+    "choices": [
+     "The Skin Horse chose him",
+     "The Boy's china dog was missing",
+     "The Boy's Uncle brought him"
+    ],
+    "correctIndex": 1,
+    "evidence": "he couldn't find the china dog that always slept with him... \"take your old Bunny! He'll do to sleep with you!\""
+   },
+   {
+    "prompt": "What did the wild rabbit laugh about the Velveteen Rabbit not having?",
+    "choices": [
+     "A fluffy tail",
+     "Long ears",
+     "Hind legs"
+    ],
+    "correctIndex": 2,
+    "evidence": "\"He hasn't got any hind legs!\" he called out. \"Fancy a rabbit without any hind legs!\" And he began to laugh."
+   },
+   {
+    "prompt": "Who changed the Rabbit so he had real hind legs and soft brown fur?",
+    "choices": [
+     "The nursery magic Fairy",
+     "The Skin Horse",
+     "The wild rabbits"
+    ],
+    "correctIndex": 0,
+    "evidence": "He did not know that when the Fairy kissed him that last time she had changed him altogether."
+   }
+  ]
+ ]
+}
