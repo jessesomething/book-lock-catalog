@@ -20,6 +20,10 @@
    "credit": "Too Big! Too Small! (English), written by Lavanya Karthik, illustrated by Lavanya Karthik, supported by Parag: A Sir Ratan Tata Trust Initiative, published by Pratham Books (© Pratham Books, 2017) under a CC BY 4.0 license on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
    "chapterCount": 1,
    "wordCount": 193,
+   "year": 2017,
+   "genre": "Family & friends",
+   "classic": false,
+   "pictures": "picture-book",
    "files": [
     "books/too-big-too-small/book.json",
     "books/too-big-too-small/cover.jpg",
@@ -37,8 +41,8 @@
     "books/too-big-too-small/p12.jpg",
     "books/too-big-too-small/p13.jpg"
    ],
-   "sizeBytes": 1268524,
-   "version": "71fc9e56b568",
+   "sizeBytes": 1268617,
+   "version": "b1b899ee0954",
    "starter": true
   },
   {
@@ -60,6 +64,10 @@
    "credit": "The Tale of Peter Rabbit, written and illustrated by Beatrix Potter, first published 1902. Public domain.",
    "chapterCount": 1,
    "wordCount": 948,
+   "year": 1902,
+   "genre": "Animals",
+   "classic": true,
+   "pictures": "picture-book",
    "files": [
     "books/peter-rabbit/book.json",
     "books/peter-rabbit/cover.jpg",
@@ -91,8 +99,8 @@
     "books/peter-rabbit/p26.jpg",
     "books/peter-rabbit/p27.jpg"
    ],
-   "sizeBytes": 1125181,
-   "version": "84e090e2de86",
+   "sizeBytes": 1125264,
+   "version": "a3db0a8f61b7",
    "starter": true
   },
   {
@@ -114,6 +122,10 @@
    "credit": "Ammachi's Amazing Machines (English), written by Rajiv Eipe, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2017) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
    "chapterCount": 1,
    "wordCount": 187,
+   "year": 2017,
+   "genre": "How things work",
+   "classic": false,
+   "pictures": "picture-book",
    "files": [
     "books/ammachis-amazing-machines/book.json",
     "books/ammachis-amazing-machines/cover.jpg",
@@ -132,8 +144,8 @@
     "books/ammachis-amazing-machines/p13.jpg",
     "books/ammachis-amazing-machines/p14.jpg"
    ],
-   "sizeBytes": 1864120,
-   "version": "23b6f1f62585",
+   "sizeBytes": 1864212,
+   "version": "37c345b8ffa7",
    "starter": true
   },
   {
@@ -155,6 +167,10 @@
    "credit": "The Velveteen Rabbit, or How Toys Become Real, written by Margery Williams, illustrated by William Nicholson, first published 1922. Public domain.",
    "chapterCount": 1,
    "wordCount": 3873,
+   "year": 1922,
+   "genre": "Fantasy",
+   "classic": false,
+   "pictures": "illustrated",
    "files": [
     "books/velveteen-rabbit/book.json",
     "books/velveteen-rabbit/cover.jpg",
@@ -166,8 +182,8 @@
     "books/velveteen-rabbit/p06.jpg",
     "books/velveteen-rabbit/p07.jpg"
    ],
-   "sizeBytes": 373449,
-   "version": "3e1b995a7701",
+   "sizeBytes": 373532,
+   "version": "402e61f38e62",
    "starter": true
   },
   {
@@ -189,6 +205,10 @@
    "credit": "Ammachi's Incredible Investigation (English), written by Vinayak Varma, illustrated by Rajiv Eipe, supported by Oracle, published by Pratham Books (© Pratham Books,2019) under a CC BY 4.0 license, first released on StoryWeaver. Read, create and translate stories for free on www.storyweaver.org.in",
    "chapterCount": 1,
    "wordCount": 448,
+   "year": 2019,
+   "genre": "Mystery",
+   "classic": false,
+   "pictures": "picture-book",
    "files": [
     "books/ammachis-incredible-investigation/book.json",
     "books/ammachis-incredible-investigation/cover.jpg",
@@ -212,8 +232,8 @@
     "books/ammachis-incredible-investigation/p18.jpg",
     "books/ammachis-incredible-investigation/p19.jpg"
    ],
-   "sizeBytes": 2408527,
-   "version": "7e14e1333693",
+   "sizeBytes": 2408611,
+   "version": "2148f67de9fe",
    "starter": true
   },
   {
@@ -232,15 +252,19 @@
     "name": "Public domain",
     "url": null
    },
-   "credit": "The Wonderful Wizard of Oz by L. Frank Baum, pictures by W. W. Denslow, first published 1900. Public domain.",
+   "credit": "The Wonderful Wizard of Oz by L. Frank Baum, cover by W. W. Denslow, first published 1900. Public domain.",
    "chapterCount": 24,
    "wordCount": 39109,
+   "year": 1900,
+   "genre": "Fantasy",
+   "classic": true,
+   "pictures": null,
    "files": [
     "books/wizard-of-oz/book.json",
     "books/wizard-of-oz/cover.jpg"
    ],
-   "sizeBytes": 435792,
-   "version": "0bc8ccfe2d3f",
+   "sizeBytes": 435862,
+   "version": "f30102aab2b9",
    "starter": true
   },
   {
@@ -260,12 +284,16 @@
    "credit": "Anne of Green Gables by L. M. Montgomery, first published 1908. Public domain.",
    "chapterCount": 38,
    "wordCount": 101965,
+   "year": 1908,
+   "genre": "Family & friends",
+   "classic": true,
+   "pictures": null,
    "files": [
     "books/anne-of-green-gables/book.json",
     "books/anne-of-green-gables/cover.jpg"
    ],
-   "sizeBytes": 825598,
-   "version": "8137e15e1a6d",
+   "sizeBytes": 825680,
+   "version": "169806cba341",
    "starter": true
   },
   {
@@ -285,11 +313,15 @@
    "credit": "The Railway Children by E. Nesbit, first published 1906. Public domain.",
    "chapterCount": 14,
    "wordCount": 58409,
+   "year": 1906,
+   "genre": "Adventure",
+   "classic": false,
+   "pictures": null,
    "files": [
     "books/railway-children/book.json"
    ],
-   "sizeBytes": 358337,
-   "version": "534d581bd527",
+   "sizeBytes": 358413,
+   "version": "38f8ef91b1d3",
    "starter": true
   }
  ]

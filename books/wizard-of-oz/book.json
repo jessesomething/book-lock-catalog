@@ -15,7 +15,11 @@
   "name": "Public domain",
   "url": null
  },
- "credit": "The Wonderful Wizard of Oz by L. Frank Baum, pictures by W. W. Denslow, first published 1900. Public domain.",
+ "year": 1900,
+ "genre": "Fantasy",
+ "classic": true,
+ "pictures": null,
+ "credit": "The Wonderful Wizard of Oz by L. Frank Baum, cover by W. W. Denslow, first published 1900. Public domain.",
  "imageCredits": null,
  "changes": "Adapted for BookLock: text split into pages for phone screens, and comprehension quizzes added.",
  "wordCount": 39109,

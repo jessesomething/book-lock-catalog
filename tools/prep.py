@@ -37,6 +37,24 @@ ALLOWED_LICENCES = {
     "Public domain": None,
 }
 
+GENRES = ["Adventure", "Fantasy", "Animals", "Family & friends", "Mystery", "How things work", "Funny"]
+
+# A book counts as a "picture book" once at least half its pages carry a picture, or
+# "illustrated" for anything less than that but more than none. The cover doesn't count.
+PICTURE_BOOK_RATIO = 0.5
+
+
+def pictures_label(chapters):
+    pages = [p for c in chapters for p in c["pages"]]
+    if not pages:
+        return None
+    ratio = sum(1 for p in pages if p["image"]) / len(pages)
+    if ratio >= PICTURE_BOOK_RATIO:
+        return "picture-book"
+    if ratio > 0:
+        return "illustrated"
+    return None
+
 # StoryWeaver PDFs encode these ligatures as accented letters.
 SW_LIGATURES = {"ì": "fi", "ë": "ff", "í": "fl", "î": "ffi", "ï": "ffl"}
 
@@ -140,6 +158,11 @@ def build_storyweaver(src, out_dir):
     if licence == "CC BY SA 4.0":
         licence = "CC BY-SA 4.0"
 
+    year_match = re.search(r"©[^)]*?(\d{4})", credit)
+    if not year_match:
+        raise PrepError(f"couldn't find a © year in the StoryWeaver attribution: {credit!r}")
+    year = int(year_match.group(1))
+
     replacements = dict(SW_LIGATURES)
     replacements.update(src.get("replace", {}))
 
@@ -182,6 +205,7 @@ def build_storyweaver(src, out_dir):
         "changes": "Adapted for BookLock: pages re-laid out for phone screens, and comprehension quizzes added.",
         "cover": "cover.jpg",
         "chapters": [{"title": None, "pages": pages}],
+        "year": year,
     }
 
 
@@ -233,6 +257,7 @@ def build_gutenberg(src, out_dir):
         "changes": "Adapted for BookLock: text split into pages for phone screens, and comprehension quizzes added.",
         "cover": cover,
         "chapters": chapters,
+        "year": src["year"],
     }
 
 
@@ -326,6 +351,10 @@ def build_book(src, draft):
     if book["licence"] not in ALLOWED_LICENCES:
         raise PrepError(f"{src['id']}: licence {book['licence']!r} is not allowed")
 
+    genre = src.get("genre")
+    if genre not in GENRES:
+        raise PrepError(f"{src['id']}: genre {genre!r} must be one of {GENRES}")
+
     quizzes = load_quizzes(src["id"], len(book["chapters"]), draft)
     for chapter, quiz in zip(book["chapters"], quizzes):
         chapter["quiz"] = quiz
@@ -341,6 +370,10 @@ def build_book(src, draft):
         "maxAge": src["maxAge"],
         "cover": book["cover"],
         "licence": {"name": book["licence"], "url": ALLOWED_LICENCES[book["licence"]]},
+        "year": book["year"],
+        "genre": genre,
+        "classic": src.get("classic", False),
+        "pictures": pictures_label(book["chapters"]),
         "credit": book["credit"],
         "imageCredits": book["imageCredits"],
         "changes": book["changes"],
@@ -375,6 +408,10 @@ def catalog_entry(book_json, starter):
         "credit": book_json["credit"],
         "chapterCount": len(book_json["chapters"]),
         "wordCount": book_json["wordCount"],
+        "year": book_json["year"],
+        "genre": book_json["genre"],
+        "classic": book_json["classic"],
+        "pictures": book_json["pictures"],
         "files": [f"books/{book_json['id']}/{n}" for n in files],
         "sizeBytes": sum((book_dir / n).stat().st_size for n in files),
         "version": h.hexdigest()[:12],

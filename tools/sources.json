@@ -4,6 +4,7 @@
   "starter": true,
   "source": "storyweaver",
   "file": "sources/16411-too-big-too-small.zip",
+  "genre": "Family & friends",
   "minAge": 4, "maxAge": 6
  },
  {
@@ -13,6 +14,9 @@
   "title": "The Tale of Peter Rabbit",
   "authors": ["Beatrix Potter"], "illustrators": ["Beatrix Potter"],
   "credit": "The Tale of Peter Rabbit, written and illustrated by Beatrix Potter, first published 1902. Public domain.",
+  "year": 1902,
+  "genre": "Animals",
+  "classic": true,
   "minAge": 4, "maxAge": 6,
   "pageWords": 80,
   "cover": "images/peter04.jpg",
@@ -23,6 +27,7 @@
   "starter": true,
   "source": "storyweaver",
   "file": "sources/10118-ammachi-s-amazing-machines.zip",
+  "genre": "How things work",
   "minAge": 6, "maxAge": 8
  },
  {
@@ -32,6 +37,8 @@
   "title": "The Velveteen Rabbit",
   "authors": ["Margery Williams"], "illustrators": ["William Nicholson"],
   "credit": "The Velveteen Rabbit, or How Toys Become Real, written by Margery Williams, illustrated by William Nicholson, first published 1922. Public domain.",
+  "year": 1922,
+  "genre": "Fantasy",
   "minAge": 6, "maxAge": 8,
   "pageWords": 110,
   "startAt": "HERE was once a velveteen rabbit",
@@ -46,6 +53,7 @@
   "starter": true,
   "source": "storyweaver",
   "file": "sources/89567-ammachi-s-incredible-investigation.zip",
+  "genre": "Mystery",
   "minAge": 8, "maxAge": 10
  },
  {
@@ -54,7 +62,10 @@
   "source": "gutenberg", "ebook": 55, "kind": "chapters",
   "title": "The Wonderful Wizard of Oz",
   "authors": ["L. Frank Baum"], "illustrators": ["W. W. Denslow"],
-  "credit": "The Wonderful Wizard of Oz by L. Frank Baum, pictures by W. W. Denslow, first published 1900. Public domain.",
+  "credit": "The Wonderful Wizard of Oz by L. Frank Baum, cover by W. W. Denslow, first published 1900. Public domain.",
+  "year": 1900,
+  "genre": "Fantasy",
+  "classic": true,
   "minAge": 8, "maxAge": 10,
   "pageWords": 200,
   "cover": "images/cover.jpg"
@@ -66,6 +77,9 @@
   "title": "Anne of Green Gables",
   "authors": ["L. M. Montgomery"],
   "credit": "Anne of Green Gables by L. M. Montgomery, first published 1908. Public domain.",
+  "year": 1908,
+  "genre": "Family & friends",
+  "classic": true,
   "minAge": 10, "maxAge": 12,
   "pageWords": 280,
   "cover": "images/cover.jpg",
@@ -78,6 +92,8 @@
   "title": "The Railway Children",
   "authors": ["E. Nesbit"],
   "credit": "The Railway Children by E. Nesbit, first published 1906. Public domain.",
+  "year": 1906,
+  "genre": "Adventure",
   "replace": {"'ad 'a' been a Jap.": "'ad 'a' been Japanese.", "the Japs": "the Japanese"},
   "minAge": 10, "maxAge": 12,
   "pageWords": 280
