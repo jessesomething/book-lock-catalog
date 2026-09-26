@@ -292,8 +292,8 @@
     "books/anne-of-green-gables/book.json",
     "books/anne-of-green-gables/cover.jpg"
    ],
-   "sizeBytes": 825680,
-   "version": "169806cba341",
+   "sizeBytes": 906899,
+   "version": "2afb59cd40ef",
    "starter": true
   },
   {
@@ -320,8 +320,8 @@
    "files": [
     "books/railway-children/book.json"
    ],
-   "sizeBytes": 358413,
-   "version": "38f8ef91b1d3",
+   "sizeBytes": 406341,
+   "version": "39603545898c",
    "starter": true
   }
  ]
