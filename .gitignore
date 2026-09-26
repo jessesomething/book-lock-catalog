@@ -13,3 +13,6 @@ __pycache__/
 secrets.properties
 
 .DS_Store
+
+# Half-built book folders left by an interrupted prep.py build
+books/.*.building/

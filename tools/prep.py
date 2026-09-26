@@ -2,16 +2,20 @@
 """Build the BookLock catalog from tools/sources.json.
 
     python tools/prep.py build [--only ID] [--draft]
-    python tools/prep.py text ID        # dump chapter text to tools/work/ID/ for quiz writing
+    python tools/prep.py segment ID [--force]   # propose ~10-minute segments, report them
+    python tools/prep.py text ID                # dump chapter/segment text to tools/work/ID/
+    python tools/prep.py review ID              # readable segment quizzes in tools/work/ID/review.md
 
---draft skips the quiz check so text can be extracted before quizzes exist.
-Drafts are never valid for publishing: catalog.json is only written on a full build.
+--draft allows missing quizzes so text can be extracted before quizzes exist; quizzes
+that are present are still checked. Drafts are never valid for publishing: catalog.json
+is only written on a full build.
 """
 import argparse
 import hashlib
 import io
 import json
 import re
+import shutil
 import sys
 import urllib.request
 import zipfile
@@ -26,6 +30,7 @@ TOOLS = ROOT / "tools"
 BOOKS = ROOT / "books"
 CACHE = TOOLS / ".cache"
 WORK = TOOLS / "work"
+SEGMENTS = TOOLS / "segments"
 FORMAT_VERSION = 1
 MAX_IMAGE_WIDTH = 1024
 JPEG_QUALITY = 80
@@ -42,6 +47,24 @@ GENRES = ["Adventure", "Fantasy", "Animals", "Family & friends", "Mystery", "How
 # A book counts as a "picture book" once at least half its pages carry a picture, or
 # "illustrated" for anything less than that but more than none. The cover doesn't count.
 PICTURE_BOOK_RATIO = 0.5
+
+
+SEGMENT_MINUTES = 10
+COMPREHENSION_PER_SEGMENT = 3
+
+
+def words_per_minute(age):
+    # The app's reading-speed table (BL-24), applied to the book's youngest reader.
+    # Under 6 isn't in that table; 50 is a guess for early readers.
+    if age >= 12:
+        return 180
+    if age >= 10:
+        return 150
+    if age >= 8:
+        return 110
+    if age >= 6:
+        return 70
+    return 50
 
 
 def pictures_label(chapters):
@@ -124,9 +147,13 @@ def split_long(paragraph, page_words):
     return parts
 
 
-def paginate(paragraphs, page_words):
+def to_parts(paragraphs, page_words):
+    return [part for para in paragraphs for part in split_long(para, page_words)]
+
+
+def paginate(parts, page_words):
     pages, current, count = [], [], 0
-    for p in (part for para in paragraphs for part in split_long(para, page_words)):
+    for p in parts:
         if current and count + len(p.split()) > page_words:
             pages.append("\n\n".join(current))
             current, count = [], 0
@@ -268,7 +295,7 @@ def picture_pages(elements, base, out_dir, page_words, replacements, skip_texts,
         nonlocal paras, current_img
         if not paras and current_img is None:
             return
-        chunks = paginate(paras, page_words) or [""]
+        chunks = paginate(to_parts(paras, page_words), page_words) or [""]
         for j, chunk in enumerate(chunks):
             pages.append({"text": chunk, "image": current_img if j == 0 else None})
         paras, current_img = [], None
@@ -311,8 +338,186 @@ def chapter_pages(elements, page_words, replacements, skip_texts):
                 current["paras"].append(t)
     if not chapters:
         raise PrepError("no chapter headings found")
-    return [{"title": c["title"], "pages": [{"text": t, "image": None} for t in paginate(c["paras"], page_words)]}
-            for c in chapters]
+    # Paginated later, once segment starts are known, so each segment starts on a fresh page.
+    return [{"title": c["title"], "parts": to_parts(c["paras"], page_words)} for c in chapters]
+
+
+# --- Segments --------------------------------------------------------------------
+#
+# A segment is ~10 minutes of reading; the app strings segments together into a sitting.
+# tools/segments/<id>.json lists where each segment starts: {"chapter": N} for the top of a
+# chapter, plus "startsWith" (a paragraph's opening words; a page's, in picture books) for a
+# start inside one. Each segment runs until the next one starts.
+
+QUOTE_MAP = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "—": "-", "–": "-", " ": " "})
+EVIDENCE_EDGE = " \"'.,;:!?-"
+
+
+def norm(text):
+    return re.sub(r"\s+", " ", text.translate(QUOTE_MAP)).strip().lower()
+
+
+def chapter_units(chapters):
+    """Per chapter, the pieces a segment may start at."""
+    return [c["parts"] if "parts" in c else [p["text"] for p in c["pages"]] for c in chapters]
+
+
+def load_segment_starts(book_id, units):
+    path = SEGMENTS / f"{book_id}.json"
+    if not path.exists():
+        return None
+    starts = []
+    for n, entry in enumerate(json.loads(path.read_text())["segments"], 1):
+        ci = entry["chapter"] - 1
+        if not 0 <= ci < len(units):
+            raise PrepError(f"{path.name}: segment {n} starts in chapter {ci + 1}, which doesn't exist")
+        ui = 0
+        if "startsWith" in entry:
+            key = norm(entry["startsWith"])
+            hits = [i for i, u in enumerate(units[ci]) if norm(u).startswith(key)]
+            if len(hits) != 1:
+                raise PrepError(f"{path.name}: segment {n}: startsWith matches {len(hits)} places "
+                                f"in chapter {ci + 1}: {entry['startsWith']!r}")
+            ui = hits[0]
+        starts.append((ci, ui))
+    if not starts or starts[0] != (0, 0):
+        raise PrepError(f"{path.name}: the first segment must start at the top of chapter 1")
+    if any(b <= a for a, b in zip(starts, starts[1:])):
+        raise PrepError(f"{path.name}: segments must be in reading order, with no repeats")
+    return starts
+
+
+def lay_out(chapters, starts, page_words):
+    """Paginate chapter books with a page break at every segment start, and turn segment
+    starts from (chapter, unit) into (chapter, page)."""
+    page_starts = []
+    for ci, c in enumerate(chapters):
+        cuts = [ui for sci, ui in starts if sci == ci]
+        if "parts" not in c:
+            page_starts += [(ci, ui) for ui in cuts]
+            continue
+        bounds = sorted({0, *cuts, len(c["parts"])})
+        pages = []
+        for a, b in zip(bounds, bounds[1:]):
+            if a in cuts:
+                page_starts.append((ci, len(pages)))
+            pages += paginate(c["parts"][a:b], page_words)
+        c["pages"] = [{"text": t, "image": None} for t in pages]
+        del c["parts"]
+    return page_starts
+
+
+def page_positions(chapters):
+    return [(ci, pi) for ci, c in enumerate(chapters) for pi in range(len(c["pages"]))]
+
+
+def pages_in(chapters, seg):
+    flat = page_positions(chapters)
+    a = flat.index((seg["startChapter"], seg["startPage"]))
+    b = flat.index((seg["endChapter"], seg["endPage"]))
+    return flat[a:b + 1]
+
+
+def segment_text(chapters, pages):
+    return norm(" ".join(chapters[ci]["pages"][pi]["text"] for ci, pi in pages))
+
+
+def check_choice_question(q, where):
+    if not (2 <= len(q["choices"]) <= 4) or not (0 <= q["correctIndex"] < len(q["choices"])):
+        raise PrepError(f"{where}: bad question {q['prompt']!r}")
+
+
+def evidence_fragments(evidence):
+    quotes = [evidence] if isinstance(evidence, str) else (evidence or [])
+    frags = [f.strip(EVIDENCE_EDGE) for q in quotes for f in re.split(r"\.\.\.|…", norm(q))]
+    return [f for f in frags if f]
+
+
+def check_evidence(q, allowed, later, where):
+    frags = evidence_fragments(q.get("evidence"))
+    if not frags or max(len(f.split()) for f in frags) < 4:
+        raise PrepError(f"{where}: {q['prompt']!r} needs an evidence quote of at least 4 words")
+    for f in frags:
+        if f not in allowed:
+            hint = " (it comes later in the book, so the question would spoil it)" if f in later else ""
+            raise PrepError(f"{where}: evidence for {q['prompt']!r} isn't in the text{hint}: {f!r}")
+
+
+def shipped_question(q):
+    # "evidence" is for review and checking only; it doesn't ship in book.json.
+    return {k: q[k] for k in ("prompt", "choices", "correctIndex")}
+
+
+def load_segment_quizzes(book_id, texts, draft):
+    """texts: each segment's normalised text. Comprehension evidence must come from the
+    segment itself; theme evidence from it or any earlier segment, never a later one."""
+    path = TOOLS / "quizzes" / f"{book_id}.json"
+    quizzes = json.loads(path.read_text()).get("segments", []) if path.exists() else []
+    if len(quizzes) > len(texts):
+        raise PrepError(f"{path.name} has {len(quizzes)} segment quizzes, book has {len(texts)} segments")
+    if len(quizzes) < len(texts) and not draft:
+        raise PrepError(f"{path.name}: only {len(quizzes)} of {len(texts)} segments have quizzes")
+    shipped = []
+    for si, quiz in enumerate(quizzes):
+        where = f"{path.name}: segment {si + 1}"
+        questions, theme, written = quiz.get("questions", []), quiz.get("theme"), quiz.get("written") or ""
+        if len(questions) != COMPREHENSION_PER_SEGMENT or not theme or not written.strip():
+            raise PrepError(f"{where} needs {COMPREHENSION_PER_SEGMENT} questions, a theme question "
+                            f"and a written question")
+        later = " ".join(texts[si + 1:])
+        for q in questions:
+            check_choice_question(q, where)
+            check_evidence(q, texts[si], later, where)
+        check_choice_question(theme, where)
+        check_evidence(theme, " ".join(texts[:si + 1]), later, where)
+        shipped.append({"questions": [shipped_question(q) for q in questions],
+                        "theme": shipped_question(theme),
+                        "written": written.strip()})
+    return shipped + [None] * (len(texts) - len(quizzes))
+
+
+def propose_starts(units, target):
+    """Pack short chapters together and split long ones evenly, aiming for `target` words."""
+    starts, open_words = [], 0
+    for ci, ch in enumerate(units):
+        ws = [len(u.split()) for u in ch]
+        total = sum(ws)
+        n = min(len(ws), max(1, int(total / target + 0.5)))
+        if n == 1:
+            if starts and (open_words + total <= 1.3 * target or open_words < 0.5 * target):
+                open_words += total
+                continue
+            starts.append((ci, 0))
+            open_words = total
+            continue
+        starts.append((ci, 0))
+        before = [sum(ws[:i]) for i in range(len(ws))]
+        last = 0
+        for k in range(1, n):
+            goal = total * k / n
+            last = min(range(last + 1, len(ws) - (n - 1 - k)), key=lambda i: abs(before[i] - goal))
+            starts.append((ci, last))
+        open_words = total - before[last]
+    if len(starts) > 1 and open_words < 0.5 * target:
+        starts.pop()
+    return starts
+
+
+def opening_words(chapter, ui):
+    words = chapter[ui].split()
+    for k in range(min(6, len(words)), len(words) + 1):
+        key = norm(" ".join(words[:k]))
+        if sum(norm(u).startswith(key) for u in chapter) == 1:
+            return " ".join(words[:k])
+    raise PrepError(f"paragraph is repeated word for word in its chapter: {chapter[ui][:60]!r}")
+
+
+def write_segments(path, units, starts):
+    entries = [{"chapter": ci + 1} if ui == 0 else {"chapter": ci + 1, "startsWith": opening_words(units[ci], ui)}
+               for ci, ui in starts]
+    lines = ",\n".join("  " + json.dumps(e, ensure_ascii=False) for e in entries)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text('{\n "segments": [\n' + lines + "\n ]\n}\n")
 
 
 # --- Assembly --------------------------------------------------------------------
@@ -333,18 +538,27 @@ def load_quizzes(book_id, chapter_count, draft):
             if not (2 <= len(q["choices"]) <= 4) or not (0 <= q["correctIndex"] < len(q["choices"])):
                 raise PrepError(f"{path.name}: bad question in chapter {ci + 1}: {q['prompt']!r}")
     quizzes += [[] for _ in range(chapter_count - len(quizzes))]
-    # "evidence" is for human review only; it doesn't ship in book.json.
-    return [[{k: q[k] for k in ("prompt", "choices", "correctIndex")} for q in quiz]
-            for quiz in quizzes[:chapter_count]]
+    return [[shipped_question(q) for q in quiz] for quiz in quizzes[:chapter_count]]
 
 
 def build_book(src, draft):
-    out_dir = BOOKS / src["id"]
-    if out_dir.exists():
-        for f in out_dir.iterdir():
-            f.unlink()
-    out_dir.mkdir(parents=True, exist_ok=True)
+    # Built beside the real folder and swapped in only on success, so a failed build
+    # never leaves a published book half-deleted.
+    final = BOOKS / src["id"]
+    staging = BOOKS / f".{src['id']}.building"
+    shutil.rmtree(staging, ignore_errors=True)
+    staging.mkdir(parents=True)
+    try:
+        book_json = assemble_book(src, draft, staging)
+    except BaseException:
+        shutil.rmtree(staging, ignore_errors=True)
+        raise
+    shutil.rmtree(final, ignore_errors=True)
+    staging.rename(final)
+    return book_json
 
+
+def assemble_book(src, draft, out_dir):
     builder = {"storyweaver": build_storyweaver, "gutenberg": build_gutenberg}[src["source"]]
     book = builder(src, out_dir)
 
@@ -355,9 +569,28 @@ def build_book(src, draft):
     if genre not in GENRES:
         raise PrepError(f"{src['id']}: genre {genre!r} must be one of {GENRES}")
 
+    starts = load_segment_starts(src["id"], chapter_units(book["chapters"]))
+    page_starts = lay_out(book["chapters"], starts or [], src.get("pageWords"))
+
     quizzes = load_quizzes(src["id"], len(book["chapters"]), draft)
     for chapter, quiz in zip(book["chapters"], quizzes):
         chapter["quiz"] = quiz
+
+    segments = None
+    if starts:
+        flat = page_positions(book["chapters"])
+        firsts = [flat.index(p) for p in page_starts]
+        ranges = [flat[a:b] for a, b in zip(firsts, firsts[1:] + [len(flat)])]
+        texts = [segment_text(book["chapters"], r) for r in ranges]
+        segments = [{"startChapter": r[0][0], "startPage": r[0][1],
+                     "endChapter": r[-1][0], "endPage": r[-1][1],
+                     "wordCount": sum(len(book["chapters"][ci]["pages"][pi]["text"].split()) for ci, pi in r),
+                     "quiz": quiz}
+                    for r, quiz in zip(ranges, load_segment_quizzes(src["id"], texts, draft))]
+    else:
+        qpath = TOOLS / "quizzes" / f"{src['id']}.json"
+        if qpath.exists() and json.loads(qpath.read_text()).get("segments"):
+            raise PrepError(f"{qpath.name} has segment quizzes but tools/segments/{src['id']}.json is missing")
 
     words = sum(len(p["text"].split()) for c in book["chapters"] for p in c["pages"])
     book_json = {
@@ -380,6 +613,8 @@ def build_book(src, draft):
         "wordCount": words,
         "chapters": book["chapters"],
     }
+    if segments:
+        book_json["segments"] = segments
     (out_dir / "book.json").write_text(json.dumps(book_json, ensure_ascii=False, indent=1))
 
     odd = sorted({ch for c in book["chapters"] for p in c["pages"] for ch in p["text"]
@@ -443,20 +678,120 @@ def cmd_build(args):
         load_quizzes(book_id, len(book_json["chapters"]), draft=False)
         if any(not c["quiz"] for c in book_json["chapters"]):
             raise PrepError(f"{book_id} was built as a draft - rebuild it without --draft")
+        if (SEGMENTS / f"{book_id}.json").exists():
+            segs = book_json.get("segments") or []
+            texts = [segment_text(book_json["chapters"], pages_in(book_json["chapters"], s)) for s in segs]
+            if not segs or load_segment_quizzes(book_id, texts, draft=False) != [s["quiz"] for s in segs]:
+                raise PrepError(f"{book_id}'s segments or quizzes changed since it was built - rebuild it")
         entries.append(catalog_entry(book_json, src.get("starter", False)))
     (ROOT / "catalog.json").write_text(json.dumps(
         {"formatVersion": FORMAT_VERSION, "books": entries}, ensure_ascii=False, indent=1))
     print(f"catalog.json: {len(entries)} books")
 
 
+def source(book_id):
+    for src in json.loads((TOOLS / "sources.json").read_text()):
+        if src["id"] == book_id:
+            return src
+    raise PrepError(f"no source with id {book_id!r}")
+
+
+def built_book(book_id):
+    path = BOOKS / book_id / "book.json"
+    if not path.exists():
+        raise PrepError(f"{book_id} has not been built - run: prep.py build --only {book_id} --draft")
+    return json.loads(path.read_text())
+
+
+def built_units(src, book_json):
+    """chapter_units() recovered from a built book.json: chapter books' pages are paragraphs
+    joined by blank lines."""
+    if src.get("kind") == "chapters":
+        return [[u for p in c["pages"] for u in p["text"].split("\n\n")] for c in book_json["chapters"]]
+    return [[p["text"] for p in c["pages"]] for c in book_json["chapters"]]
+
+
+def cmd_segment(args):
+    src = source(args.id)
+    units = built_units(src, built_book(args.id))
+    wpm = words_per_minute(src["minAge"])
+    path = SEGMENTS / f"{args.id}.json"
+    if args.force or not path.exists():
+        write_segments(path, units, propose_starts(units, wpm * SEGMENT_MINUTES))
+        print(f"wrote {path.relative_to(ROOT)} - move starts inside chapters onto scene breaks, then rebuild\n")
+
+    starts = load_segment_starts(args.id, units)
+    flat = [(ci, ui) for ci, ch in enumerate(units) for ui in range(len(ch))]
+    words = [len(units[ci][ui].split()) for ci, ui in flat]
+    firsts = [flat.index(s) for s in starts]
+    for n, (a, b) in enumerate(zip(firsts, firsts[1:] + [len(flat)]), 1):
+        ci, ui = flat[a]
+        where = f"ch {ci + 1}" + (f"  {' '.join(units[ci][ui].split()[:6])}..." if ui else "")
+        w = sum(words[a:b])
+        print(f"{n:3}  {where:<52} {w:6} words {w / wpm:5.1f} min")
+    print(f"\n{len(starts)} segments; aiming for {wpm * SEGMENT_MINUTES} words "
+          f"({SEGMENT_MINUTES} min at {wpm} words/min for age {src['minAge']})")
+
+
 def cmd_text(args):
-    book = json.loads((BOOKS / args.id / "book.json").read_text())
+    book = built_book(args.id)
     out = WORK / args.id
     out.mkdir(parents=True, exist_ok=True)
     for i, c in enumerate(book["chapters"], 1):
         body = "\n\n".join(p["text"] for p in c["pages"])
         (out / f"ch{i:02d}.txt").write_text(f"{c['title'] or book['title']}\n\n{body}\n")
     print(f"wrote {len(book['chapters'])} chapter files to {out.relative_to(ROOT)}")
+
+    for old in out.glob("seg*.txt"):
+        old.unlink()
+    segments = book.get("segments") or []
+    wpm = words_per_minute(book["minAge"])
+    for si, seg in enumerate(segments, 1):
+        chunks, last_ci = [], None
+        for ci, pi in pages_in(book["chapters"], seg):
+            if ci != last_ci:
+                title = book["chapters"][ci]["title"] or book["title"]
+                chunks.append(f"## {title}" + (" (continued)" if pi else ""))
+                last_ci = ci
+            chunks.append(book["chapters"][ci]["pages"][pi]["text"])
+        header = (f"Segment {si} of {len(segments)} - {seg['wordCount']} words, "
+                  f"about {round(seg['wordCount'] / wpm)} min")
+        (out / f"seg{si:03d}.txt").write_text(header + "\n\n" + "\n\n".join(chunks) + "\n")
+    if segments:
+        print(f"wrote {len(segments)} segment files to {out.relative_to(ROOT)}")
+
+
+def review_question(q, label):
+    lines = [f"**{label}** {q['prompt']}", ""]
+    lines += [f"- **{c}** ✓" if i == q["correctIndex"] else f"- {c}" for i, c in enumerate(q["choices"])]
+    quotes = [q["evidence"]] if isinstance(q["evidence"], str) else q["evidence"]
+    return lines + [""] + [line for e in quotes for line in (f"> {e}", "")]
+
+
+def cmd_review(args):
+    book = built_book(args.id)
+    segments = book.get("segments") or []
+    quizzes = json.loads((TOOLS / "quizzes" / f"{args.id}.json").read_text()).get("segments", [])
+    chapters = book["chapters"]
+    lines = [f"# {book['title']}: segment quizzes", "",
+             f"{len(quizzes)} of {len(segments)} segments written. ✓ marks the right answer; "
+             "quotes are the evidence the build checked against the text.", ""]
+    for si, (seg, quiz) in enumerate(zip(segments, quizzes), 1):
+        pages = pages_in(chapters, seg)
+        (ci, pi), (lci, lpi) = pages[0], pages[-1]
+        title = chapters[ci]["title"] or book["title"]
+        start = " ".join(chapters[ci]["pages"][pi]["text"].split()[:10])
+        end = " ".join(chapters[lci]["pages"][lpi]["text"].split()[-10:])
+        lines += [f"## Segment {si}: {title}{' (continued)' if pi else ''}", "",
+                  f"*{seg['wordCount']} words. Starts \"{start} …\" and ends \"… {end}\"*", ""]
+        for n, q in enumerate(quiz["questions"], 1):
+            lines += review_question(q, f"{n}.")
+        lines += review_question(quiz["theme"], "Theme:")
+        lines += [f"**Written (for the parent):** {quiz['written']}", ""]
+    out = WORK / args.id / "review.md"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text("\n".join(lines))
+    print(f"wrote {out.relative_to(ROOT)}")
 
 
 def main():
@@ -465,11 +800,16 @@ def main():
     b = sub.add_parser("build")
     b.add_argument("--only")
     b.add_argument("--draft", action="store_true")
+    s = sub.add_parser("segment")
+    s.add_argument("id")
+    s.add_argument("--force", action="store_true", help="replace an existing segments file with a new proposal")
     t = sub.add_parser("text")
     t.add_argument("id")
+    r = sub.add_parser("review")
+    r.add_argument("id")
     args = parser.parse_args()
     try:
-        {"build": cmd_build, "text": cmd_text}[args.cmd](args)
+        {"build": cmd_build, "segment": cmd_segment, "text": cmd_text, "review": cmd_review}[args.cmd](args)
     except PrepError as e:
         sys.exit(f"error: {e}")
 
