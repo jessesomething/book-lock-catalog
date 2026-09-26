@@ -243,5 +243,271 @@
     }
    ]
   }
+ ],
+ "segments": [
+  {
+   "startChapter": 0,
+   "startPage": 0,
+   "endChapter": 0,
+   "endPage": 9,
+   "wordCount": 868,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "Where was the Velveteen Rabbit on Christmas morning?",
+      "choices": [
+       "Under the Christmas tree",
+       "In the top of the Boy's stocking",
+       "In a box by the fire"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "Which toy was the only one kind to the Rabbit?",
+      "choices": [
+       "Timothy the wooden lion",
+       "The model boat",
+       "The Skin Horse"
+      ],
+      "correctIndex": 2
+     },
+     {
+      "prompt": "What did the Skin Horse say makes a toy become Real?",
+      "choices": [
+       "A child loves it for a long, long time",
+       "It gets wound up with a key",
+       "It is made with expensive parts"
+      ],
+      "correctIndex": 0
+     }
+    ],
+    "theme": null,
+    "written": null
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 10,
+   "endChapter": 0,
+   "endPage": 15,
+   "wordCount": 522,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "How did the Rabbit first end up sleeping in the Boy's bed?",
+      "choices": [
+       "The Skin Horse chose him",
+       "The Boy's china dog was missing",
+       "The Boy's Uncle brought him"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What did the Boy make for the Rabbit under the bedclothes?",
+      "choices": [
+       "Tunnels like real rabbit burrows",
+       "A little house of pillows",
+       "A hiding place for snacks"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "Why did Nana have to go out with a candle after dark?",
+      "choices": [
+       "To look for the lost china dog",
+       "To chase away the wild rabbits",
+       "To find the Rabbit, who had been left out on the lawn"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "What makes the Rabbit \"Real\" in this story?",
+     "choices": [
+      "Having fancy parts inside him",
+      "Being truly loved by the Boy",
+      "Being brand new"
+     ],
+     "correctIndex": 1
+    },
+    "written": "The Boy couldn't sleep without his Bunny. Do you have a toy or blanket you love that much? What makes it special?"
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 16,
+   "endChapter": 0,
+   "endPage": 23,
+   "wordCount": 778,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "Where did the Boy leave the Rabbit while he played in the wood?",
+      "choices": [
+       "In a little nest in the bracken",
+       "Up in a tree",
+       "In his coat pocket"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "What did the Rabbit look for on the wild rabbits, because he thought all rabbits worked that way?",
+      "choices": [
+       "Buttons",
+       "The clockwork that wound them up",
+       "Price tags"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What did the wild rabbit laugh about the Velveteen Rabbit not having?",
+      "choices": [
+       "A fluffy tail",
+       "Long ears",
+       "Hind legs"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": null,
+    "written": null
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 24,
+   "endChapter": 0,
+   "endPage": 30,
+   "wordCount": 647,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "What happened to the Rabbit's looks as the Boy went on loving him?",
+      "choices": [
+       "He grew old and shabby, with his whiskers loved off",
+       "He got a new coat of paint",
+       "He stayed as bright as new"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "Why did the Rabbit stay hidden under the bedclothes while the Boy was ill?",
+      "choices": [
+       "He was fast asleep",
+       "He was afraid someone would take him away, and the Boy needed him",
+       "Nana told him to hide"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What did the doctor say must happen to the old Bunny?",
+      "choices": [
+       "It should be washed and kept",
+       "It should go to the seaside too",
+       "It must be burnt because of the fever germs"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "The Skin Horse said that once you are Real you can't be ugly, \"except to people who don't understand.\" How does that fit the shabby Rabbit now?",
+     "choices": [
+      "The Boy thinks he is too shabby to keep",
+      "To the Boy he is still beautiful, however worn he looks",
+      "He is shiny and new again"
+     ],
+     "correctIndex": 1
+    },
+    "written": "The Rabbit got shabby because he was loved so much. Why do you think the things we love most often end up looking worn?"
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 31,
+   "endChapter": 0,
+   "endPage": 35,
+   "wordCount": 402,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "Why didn't the Boy care much about his splendid new bunny?",
+      "choices": [
+       "He didn't like white bunnies",
+       "He was too excited about going to the seaside",
+       "He was still very ill"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "Where did the little Rabbit spend his last night in the garden?",
+      "choices": [
+       "In a sack behind the fowl-house",
+       "In the Boy's bed",
+       "In the toy cupboard"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "What grew where the Rabbit's tear fell?",
+      "choices": [
+       "A tall tree",
+       "A patch of clover",
+       "A mysterious flower"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": null,
+    "written": null
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 36,
+   "endChapter": 0,
+   "endPage": 43,
+   "wordCount": 656,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "What does the Fairy do with the toys children have loved?",
+      "choices": [
+       "Mends them and gives them back",
+       "Takes them away and turns them into Real",
+       "Hides them in the wood"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "Who changed the Rabbit so he had real hind legs and soft brown fur?",
+      "choices": [
+       "The nursery magic Fairy",
+       "The Skin Horse",
+       "The wild rabbits"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "What did the Boy think when he saw the rabbit in the spring?",
+      "choices": [
+       "He was frightened of it",
+       "He wanted to catch it",
+       "It looked just like his old Bunny"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "On his lonely night, the Rabbit wondered what use it was to be loved and become Real \"if it all ended like this.\" How does the ending answer him?",
+     "choices": [
+      "Being loved made him Real, and that is why the Fairy could make him a real rabbit",
+      "It shows that being loved doesn't matter",
+      "He goes back to being a brand-new toy"
+     ],
+     "correctIndex": 0
+    },
+    "written": "At the end, the Boy sees a rabbit that looks just like his old Bunny. How do you think he would feel if he knew it really was his Bunny?"
+   }
+  }
  ]
 }

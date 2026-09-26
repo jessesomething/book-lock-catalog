@@ -450,7 +450,11 @@ def shipped_question(q):
 
 def load_segment_quizzes(book_id, texts, draft):
     """texts: each segment's normalised text. Comprehension evidence must come from the
-    segment itself; theme evidence from it or any earlier segment, never a later one."""
+    segment itself; theme evidence from it or any earlier segment, never a later one.
+
+    Theme and written questions come as a pair on roughly every other segment: never two
+    segments in a row without them (so any sitting of two or more segments gets one), and
+    always on the last segment."""
     path = TOOLS / "quizzes" / f"{book_id}.json"
     quizzes = json.loads(path.read_text()).get("segments", []) if path.exists() else []
     if len(quizzes) > len(texts):
@@ -460,24 +464,59 @@ def load_segment_quizzes(book_id, texts, draft):
     shipped = []
     for si, quiz in enumerate(quizzes):
         where = f"{path.name}: segment {si + 1}"
-        questions, theme, written = quiz.get("questions", []), quiz.get("theme"), quiz.get("written") or ""
-        if len(questions) != COMPREHENSION_PER_SEGMENT or not theme or not written.strip():
-            raise PrepError(f"{where} needs {COMPREHENSION_PER_SEGMENT} questions, a theme question "
-                            f"and a written question")
+        questions, theme, written = quiz.get("questions", []), quiz.get("theme"), (quiz.get("written") or "").strip()
+        if len(questions) != COMPREHENSION_PER_SEGMENT:
+            raise PrepError(f"{where} needs {COMPREHENSION_PER_SEGMENT} comprehension questions")
+        if bool(theme) != bool(written):
+            raise PrepError(f"{where}: theme and written questions go together - give it both or neither")
         later = " ".join(texts[si + 1:])
         for q in questions:
             check_choice_question(q, where)
             check_evidence(q, texts[si], later, where)
-        check_choice_question(theme, where)
-        check_evidence(theme, " ".join(texts[:si + 1]), later, where)
+        if theme:
+            check_choice_question(theme, where)
+            check_evidence(theme, " ".join(texts[:si + 1]), later, where)
         shipped.append({"questions": [shipped_question(q) for q in questions],
-                        "theme": shipped_question(theme),
-                        "written": written.strip()})
+                        "theme": shipped_question(theme) if theme else None,
+                        "written": written or None})
+    has_theme = [s["theme"] is not None for s in shipped]
+    for si in range(len(has_theme) - 1):
+        if not has_theme[si] and not has_theme[si + 1]:
+            raise PrepError(f"{path.name}: segments {si + 1} and {si + 2} both lack theme and written "
+                            f"questions - one of every two in a row needs them")
+    if len(shipped) == len(texts) and texts and not has_theme[-1]:
+        raise PrepError(f"{path.name}: the last segment needs theme and written questions")
     return shipped + [None] * (len(texts) - len(quizzes))
 
 
+# A segment shouldn't open mid-conversation; it reads best where the story shifts time or place.
+DIALOGUE_OPENING = re.compile(r"^[“\"‘']")
+SCENE_SHIFT = re.compile(
+    r"^(The next (morning|day|night|evening)|Next (morning|day)|The following|"
+    r"That (night|evening|afternoon|morning)|In the (morning|afternoon|evening)|Early (the|in|one|next)|"
+    r"One (day|morning|evening|night)|Some (time|days|hours|weeks) (later|after)|By and by|Meanwhile)\b",
+    re.I)
+SCENE_SHIFT_PULL = 0.3  # a time shift beats a closer plain paragraph within this share of a segment
+MID_TALK_PUSH = 0.3     # and a cut between two lines of one conversation is pushed away by the same
+
+
+def pick_cut(chapter, candidates, before, goal, target):
+    def cost(i):
+        c = abs(before[i] - goal)
+        if SCENE_SHIFT.match(chapter[i]):
+            c -= SCENE_SHIFT_PULL * target
+        if DIALOGUE_OPENING.match(chapter[i - 1]) and i + 1 < len(chapter) and DIALOGUE_OPENING.match(chapter[i + 1]):
+            c += MID_TALK_PUSH * target
+        return c
+
+    allowed = [i for i in candidates
+               if not DIALOGUE_OPENING.match(chapter[i]) and not chapter[i - 1].rstrip().endswith(":")]
+    return min(allowed or candidates, key=cost)
+
+
 def propose_starts(units, target):
-    """Pack short chapters together and split long ones evenly, aiming for `target` words."""
+    """Pack short chapters together and split long ones evenly, aiming for `target` words.
+    Cuts inside a chapter avoid dialogue and lean toward time or place shifts."""
     starts, open_words = [], 0
     for ci, ch in enumerate(units):
         ws = [len(u.split()) for u in ch]
@@ -495,7 +534,7 @@ def propose_starts(units, target):
         last = 0
         for k in range(1, n):
             goal = total * k / n
-            last = min(range(last + 1, len(ws) - (n - 1 - k)), key=lambda i: abs(before[i] - goal))
+            last = pick_cut(ch, range(last + 1, len(ws) - (n - 1 - k)), before, goal, target)
             starts.append((ci, last))
         open_words = total - before[last]
     if len(starts) > 1 and open_words < 0.5 * target:
@@ -774,8 +813,9 @@ def cmd_review(args):
     quizzes = json.loads((TOOLS / "quizzes" / f"{args.id}.json").read_text()).get("segments", [])
     chapters = book["chapters"]
     lines = [f"# {book['title']}: segment quizzes", "",
-             f"{len(quizzes)} of {len(segments)} segments written. ✓ marks the right answer; "
-             "quotes are the evidence the build checked against the text.", ""]
+             f"{len(quizzes)} of {len(segments)} segments written. The build has checked every "
+             "comprehension answer against the text, so those only need a skim (right answer in bold). "
+             "**Read the theme questions** — those are the judgment calls.", ""]
     for si, (seg, quiz) in enumerate(zip(segments, quizzes), 1):
         pages = pages_in(chapters, seg)
         (ci, pi), (lci, lpi) = pages[0], pages[-1]
@@ -785,9 +825,12 @@ def cmd_review(args):
         lines += [f"## Segment {si}: {title}{' (continued)' if pi else ''}", "",
                   f"*{seg['wordCount']} words. Starts \"{start} …\" and ends \"… {end}\"*", ""]
         for n, q in enumerate(quiz["questions"], 1):
-            lines += review_question(q, f"{n}.")
-        lines += review_question(quiz["theme"], "Theme:")
-        lines += [f"**Written (for the parent):** {quiz['written']}", ""]
+            choices = " · ".join(f"**{c}**" if i == q["correctIndex"] else c for i, c in enumerate(q["choices"]))
+            lines += [f"{n}. {q['prompt']} — {choices}"]
+        lines += [""]
+        if quiz.get("theme"):
+            lines += review_question(quiz["theme"], "Theme:")
+            lines += [f"**Written (for the parent):** {quiz['written']}", ""]
     out = WORK / args.id / "review.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(lines))

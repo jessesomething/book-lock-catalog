@@ -1,6 +1,16 @@
-{"chapters": [[
-  {"prompt": "What went missing at the start of the story?", "choices": ["The unniappams", "Ammachi's science book", "The camera"], "correctIndex": 0, "evidence": "\"Oh no, the unniappams have disappeared!\" said Ammachi."},
-  {"prompt": "Which trap did Ammachi set to catch Appachen?", "choices": ["A basket with a lid", "A hidden camera", "A bucket"], "correctIndex": 1, "evidence": "\"And this hidden camera will catch Appachen red-handed,\" said Ammachi."},
-  {"prompt": "Where did Sooraj say the last three unniappams were?", "choices": ["In the attic", "Under the bucket", "In the oven"], "correctIndex": 2, "evidence": "\"Don't we have three more unniappams left in the oven?\" asked Sooraj."},
-  {"prompt": "Who turned out to be the unniappam thief?", "choices": ["Penny", "Sooraj", "The civet"], "correctIndex": 1, "evidence": "\"FINE! You caught me. I AM the unniappam thief!\""}
-]]}
+{"chapters": [
+  [
+    {"prompt": "What went missing at the start of the story?", "choices": ["The unniappams", "Ammachi's science book", "The camera"], "correctIndex": 0, "evidence": "\"Oh no, the unniappams have disappeared!\" said Ammachi."},
+    {"prompt": "Which trap did Ammachi set to catch Appachen?", "choices": ["A basket with a lid", "A hidden camera", "A bucket"], "correctIndex": 1, "evidence": "\"And this hidden camera will catch Appachen red-handed,\" said Ammachi."},
+    {"prompt": "Where did Sooraj say the last three unniappams were?", "choices": ["In the attic", "Under the bucket", "In the oven"], "correctIndex": 2, "evidence": "\"Don't we have three more unniappams left in the oven?\" asked Sooraj."},
+    {"prompt": "Who turned out to be the unniappam thief?", "choices": ["Penny", "Sooraj", "The civet"], "correctIndex": 1, "evidence": "\"FINE! You caught me. I AM the unniappam thief!\""}
+  ]
+],
+"segments": [
+  {"questions": [
+    {"prompt": "What went missing at the start of the story?", "choices": ["The unniappams", "Ammachi's science book", "The camera"], "correctIndex": 0, "evidence": "\"Oh no, the unniappams have disappeared!\" said Ammachi."},
+    {"prompt": "Which trap did Ammachi set to catch Appachen?", "choices": ["A basket with a lid", "A hidden camera", "A bucket"], "correctIndex": 1, "evidence": "\"And this hidden camera will catch Appachen red-handed,\" said Ammachi."},
+    {"prompt": "Where did Sooraj say the last three unniappams were?", "choices": ["In the attic", "Under the bucket", "In the oven"], "correctIndex": 2, "evidence": "\"Don't we have three more unniappams left in the oven?\" asked Sooraj."}],
+   "theme": {"prompt": "How did Ammachi work out that Sooraj was the thief?", "choices": ["He knew things only the thief could know, like how many unniappams were left and where", "She found crumbs on his shirt", "The hidden camera took his picture"], "correctIndex": 0, "evidence": ["How did you know that there were THREE unniappams left, Sooraj?", "And I didn't tell ANYONE ELSE how the traps worked"]},
+   "written": "Sooraj says the unniappams were \"too irresistible.\" Have you ever found a treat too hard to resist? What happened?"}
+]}

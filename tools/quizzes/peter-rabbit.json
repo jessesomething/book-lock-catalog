@@ -1,5 +1,19 @@
-{"chapters": [[
-  {"prompt": "Mother Rabbit told the bunnies to stay away from where?", "choices": ["Down the lane", "Mr. McGregor's garden", "Into the fields"], "correctIndex": 1, "evidence": "you may go into the fields or down the lane, but don't go into Mr. McGregor's garden"},
-  {"prompt": "What did Peter lose in the garden?", "choices": ["His basket", "His umbrella", "His shoes and jacket"], "correctIndex": 2, "evidence": "Mr. McGregor hung up the little jacket and the shoes for a scare-crow"},
-  {"prompt": "What did Peter's mother give him at bedtime?", "choices": ["Camomile tea", "Blackberries", "Currant buns"], "correctIndex": 0, "evidence": "His mother put him to bed, and made some camomile tea; and she gave a dose of it to Peter!"}
-]]}
+{"chapters": [
+  [
+    {"prompt": "Mother Rabbit told the bunnies to stay away from where?", "choices": ["Down the lane", "Mr. McGregor's garden", "Into the fields"], "correctIndex": 1, "evidence": "you may go into the fields or down the lane, but don't go into Mr. McGregor's garden"},
+    {"prompt": "What did Peter lose in the garden?", "choices": ["His basket", "His umbrella", "His shoes and jacket"], "correctIndex": 2, "evidence": "Mr. McGregor hung up the little jacket and the shoes for a scare-crow"},
+    {"prompt": "What did Peter's mother give him at bedtime?", "choices": ["Camomile tea", "Blackberries", "Currant buns"], "correctIndex": 0, "evidence": "His mother put him to bed, and made some camomile tea; and she gave a dose of it to Peter!"}
+  ]
+],
+"segments": [
+  {"questions": [
+    {"prompt": "Mother Rabbit told the bunnies to stay away from where?", "choices": ["Down the lane", "Mr. McGregor's garden", "Into the fields"], "correctIndex": 1, "evidence": "you may go into the fields or down the lane, but don't go into Mr. McGregor's garden"},
+    {"prompt": "What did Peter eat in Mr. McGregor's garden?", "choices": ["Lettuces, French beans and radishes", "Blackberries", "Currant buns"], "correctIndex": 0, "evidence": "First he ate some lettuces and some French beans; and then he ate some radishes"},
+    {"prompt": "How did Peter get away from Mr. McGregor in the tool-shed?", "choices": ["He hid under a flower-pot", "He dug a tunnel", "He jumped out of a window"], "correctIndex": 2, "evidence": "who jumped out of a window, upsetting three plants"}]},
+  {"questions": [
+    {"prompt": "Why didn't Peter ask the white cat for help?", "choices": ["She was asleep", "He had heard about cats from his cousin, Benjamin Bunny", "She only talked to fish"], "correctIndex": 1, "evidence": "he had heard about cats from his cousin, little Benjamin Bunny"},
+    {"prompt": "What did Peter lose in the garden?", "choices": ["His basket", "His umbrella", "His shoes and jacket"], "correctIndex": 2, "evidence": "Mr. McGregor hung up the little jacket and the shoes for a scare-crow"},
+    {"prompt": "What did Peter's mother give him at bedtime?", "choices": ["Camomile tea", "Blackberries", "Currant buns"], "correctIndex": 0, "evidence": "His mother put him to bed, and made some camomile tea; and she gave a dose of it to Peter!"}],
+   "theme": {"prompt": "Why do you think the story ends by telling you that Flopsy, Mopsy and Cotton-tail had bread and milk and blackberries for supper?", "choices": ["Because they were hungrier than Peter", "To show that the bunnies who listened to their mother had a happier evening", "Because Peter doesn't like blackberries"], "correctIndex": 1, "evidence": ["Flopsy, Mopsy, and Cotton-tail, who were good little bunnies, went down the lane to gather blackberries", "But Flopsy, Mopsy, and Cotton-tail had bread and milk and blackberries for supper."]},
+   "written": "Peter didn't listen to his mother and got into big trouble. Tell about a time you learned something the hard way."}
+]}

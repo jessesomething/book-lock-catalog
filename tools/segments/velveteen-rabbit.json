@@ -1,0 +1,10 @@
+{
+ "segments": [
+  {"chapter": 1},
+  {"chapter": 1, "startsWith": "One evening, when the Boy was"},
+  {"chapter": 1, "startsWith": "That night he was almost too"},
+  {"chapter": 1, "startsWith": "For a long time he lay"},
+  {"chapter": 1, "startsWith": "That night the Boy slept in"},
+  {"chapter": 1, "startsWith": "She was quite the loveliest fairy"}
+ ]
+}

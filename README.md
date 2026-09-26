@@ -19,8 +19,8 @@ tools/prep.py             builds books/ and catalog.json from tools/sources.json
 tools/sources.json        where each book comes from, plus per-book settings
 tools/segments/<id>.json  where each segment starts
 tools/quizzes/<id>.json   hand-written quizzes: one list per chapter, one quiz per segment
-tools/notes/<id>.md       what each segment covers and which threads are open, for writing
-                          theme questions that reach back without spoiling ahead
+tools/notes/<id>.md       for long books written across sessions: what each segment covers and
+                          which threads are open, so theme questions reach back without spoiling
 ```
 
 ## Adding or rebuilding a book
@@ -44,9 +44,13 @@ to run until every segment has its quiz.
 
 A segment is about 10 minutes of reading, sized at the book's youngest reader's speed; the app
 strings segments together into a sitting of whatever length the parent picks. Segments never
-end mid-scene. Each has 3 multiple-choice comprehension questions, 1 multiple-choice theme
-question (themes, motifs, character — it may reach back to earlier segments), and 1 open written
-question that goes to the parent and is never graded.
+end mid-scene: `prep.py segment` avoids cutting before dialogue and leans toward time shifts
+("The next morning…"), but its cuts inside chapters still get a skim. Every segment has 3
+multiple-choice comprehension questions. Roughly every other segment also has a pair: 1
+multiple-choice theme question (themes, motifs, character — it may reach back to earlier
+segments) and 1 open written question that goes to the parent and is never graded. The build
+requires the pair on the last segment and never lets two segments in a row go without, so any
+sitting of two or more segments includes one; the app uses the sitting's most recent pair.
 
 Quizzes are written by hand in Claude Code sessions and read by a person before publishing; no
 API calls are involved. Every multiple-choice question carries an `evidence` quote that the build

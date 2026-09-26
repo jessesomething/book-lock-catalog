@@ -110,5 +110,55 @@
     }
    ]
   }
+ ],
+ "segments": [
+  {
+   "startChapter": 0,
+   "startPage": 0,
+   "endChapter": 0,
+   "endPage": 12,
+   "wordCount": 193,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "Shanu's family says she is too big. What else do they say she is?",
+      "choices": [
+       "Too loud",
+       "Too small",
+       "Too slow"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "Ammi says Shanu is just big enough for what?",
+      "choices": [
+       "Big school",
+       "Making dosas",
+       "Carrying the baby"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "What does the whole family give Shanu at the end?",
+      "choices": [
+       "A new frock",
+       "A dosa",
+       "A big hug"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "Shanu's family keeps saying she is too big or too small. What does the story show at the end?",
+     "choices": [
+      "She is the wrong size for everything",
+      "She has to grow bigger before they love her",
+      "She is just the right size for lots of things, and always for a hug"
+     ],
+     "correctIndex": 2
+    },
+    "written": "What is something you are just the right size for right now?"
+   }
+  }
  ]
 }

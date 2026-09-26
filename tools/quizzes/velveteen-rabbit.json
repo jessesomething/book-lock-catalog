@@ -1,46 +1,40 @@
-{
- "chapters": [
+{"chapters": [
   [
-   {
-    "prompt": "What did the Skin Horse say makes a toy become Real?",
-    "choices": [
-     "A child loves it for a long, long time",
-     "It gets wound up with a key",
-     "It is made with expensive parts"
-    ],
-    "correctIndex": 0,
-    "evidence": "When a child loves you for a long, long time, not just to play with, but REALLY loves you, then you become Real."
-   },
-   {
-    "prompt": "How did the Rabbit first end up sleeping in the Boy's bed?",
-    "choices": [
-     "The Skin Horse chose him",
-     "The Boy's china dog was missing",
-     "The Boy's Uncle brought him"
-    ],
-    "correctIndex": 1,
-    "evidence": "he couldn't find the china dog that always slept with him... \"take your old Bunny! He'll do to sleep with you!\""
-   },
-   {
-    "prompt": "What did the wild rabbit laugh about the Velveteen Rabbit not having?",
-    "choices": [
-     "A fluffy tail",
-     "Long ears",
-     "Hind legs"
-    ],
-    "correctIndex": 2,
-    "evidence": "\"He hasn't got any hind legs!\" he called out. \"Fancy a rabbit without any hind legs!\" And he began to laugh."
-   },
-   {
-    "prompt": "Who changed the Rabbit so he had real hind legs and soft brown fur?",
-    "choices": [
-     "The nursery magic Fairy",
-     "The Skin Horse",
-     "The wild rabbits"
-    ],
-    "correctIndex": 0,
-    "evidence": "He did not know that when the Fairy kissed him that last time she had changed him altogether."
-   }
+    {"prompt": "What did the Skin Horse say makes a toy become Real?", "choices": ["A child loves it for a long, long time", "It gets wound up with a key", "It is made with expensive parts"], "correctIndex": 0, "evidence": "When a child loves you for a long, long time, not just to play with, but REALLY loves you, then you become Real."},
+    {"prompt": "How did the Rabbit first end up sleeping in the Boy's bed?", "choices": ["The Skin Horse chose him", "The Boy's china dog was missing", "The Boy's Uncle brought him"], "correctIndex": 1, "evidence": "he couldn't find the china dog that always slept with him... \"take your old Bunny! He'll do to sleep with you!\""},
+    {"prompt": "What did the wild rabbit laugh about the Velveteen Rabbit not having?", "choices": ["A fluffy tail", "Long ears", "Hind legs"], "correctIndex": 2, "evidence": "\"He hasn't got any hind legs!\" he called out. \"Fancy a rabbit without any hind legs!\" And he began to laugh."},
+    {"prompt": "Who changed the Rabbit so he had real hind legs and soft brown fur?", "choices": ["The nursery magic Fairy", "The Skin Horse", "The wild rabbits"], "correctIndex": 0, "evidence": "He did not know that when the Fairy kissed him that last time she had changed him altogether."}
   ]
- ]
-}
+],
+"segments": [
+  {"questions": [
+    {"prompt": "Where was the Velveteen Rabbit on Christmas morning?", "choices": ["Under the Christmas tree", "In the top of the Boy's stocking", "In a box by the fire"], "correctIndex": 1, "evidence": "On Christmas morning, when he sat wedged in the top of the Boy's stocking"},
+    {"prompt": "Which toy was the only one kind to the Rabbit?", "choices": ["Timothy the wooden lion", "The model boat", "The Skin Horse"], "correctIndex": 2, "evidence": "the only person who was kind to him at all was the Skin Horse"},
+    {"prompt": "What did the Skin Horse say makes a toy become Real?", "choices": ["A child loves it for a long, long time", "It gets wound up with a key", "It is made with expensive parts"], "correctIndex": 0, "evidence": "When a child loves you for a long, long time, not just to play with, but REALLY loves you, then you become Real."}]},
+  {"questions": [
+    {"prompt": "How did the Rabbit first end up sleeping in the Boy's bed?", "choices": ["The Skin Horse chose him", "The Boy's china dog was missing", "The Boy's Uncle brought him"], "correctIndex": 1, "evidence": "he couldn't find the china dog that always slept with him... \"take your old Bunny! He'll do to sleep with you!\""},
+    {"prompt": "What did the Boy make for the Rabbit under the bedclothes?", "choices": ["Tunnels like real rabbit burrows", "A little house of pillows", "A hiding place for snacks"], "correctIndex": 0, "evidence": "made nice tunnels for him under the bedclothes that he said were like the burrows the real rabbits lived in"},
+    {"prompt": "Why did Nana have to go out with a candle after dark?", "choices": ["To look for the lost china dog", "To chase away the wild rabbits", "To find the Rabbit, who had been left out on the lawn"], "correctIndex": 2, "evidence": "Nana had to come and look for him with the candle because the Boy couldn't go to sleep unless he was there"}],
+   "theme": {"prompt": "What makes the Rabbit \"Real\" in this story?", "choices": ["Having fancy parts inside him", "Being truly loved by the Boy", "Being brand new"], "correctIndex": 1, "evidence": ["When a child loves you for a long, long time, not just to play with, but REALLY loves you, then you become Real", "He isn't a toy. He's REAL!"]},
+   "written": "The Boy couldn't sleep without his Bunny. Do you have a toy or blanket you love that much? What makes it special?"},
+  {"questions": [
+    {"prompt": "Where did the Boy leave the Rabbit while he played in the wood?", "choices": ["In a little nest in the bracken", "Up in a tree", "In his coat pocket"], "correctIndex": 0, "evidence": "he always made the Rabbit a little nest somewhere among the bracken"},
+    {"prompt": "What did the Rabbit look for on the wild rabbits, because he thought all rabbits worked that way?", "choices": ["Buttons", "The clockwork that wound them up", "Price tags"], "correctIndex": 1, "evidence": "the Rabbit stared hard to see which side the clockwork stuck out"},
+    {"prompt": "What did the wild rabbit laugh about the Velveteen Rabbit not having?", "choices": ["A fluffy tail", "Long ears", "Hind legs"], "correctIndex": 2, "evidence": "\"He hasn't got any hind legs!\" he called out. \"Fancy a rabbit without any hind legs!\" And he began to laugh."}]},
+  {"questions": [
+    {"prompt": "What happened to the Rabbit's looks as the Boy went on loving him?", "choices": ["He grew old and shabby, with his whiskers loved off", "He got a new coat of paint", "He stayed as bright as new"], "correctIndex": 0, "evidence": "He loved him so hard that he loved all his whiskers off"},
+    {"prompt": "Why did the Rabbit stay hidden under the bedclothes while the Boy was ill?", "choices": ["He was fast asleep", "He was afraid someone would take him away, and the Boy needed him", "Nana told him to hide"], "correctIndex": 1, "evidence": "he was afraid that if they found him some one might take him away, and he knew that the Boy needed him"},
+    {"prompt": "What did the doctor say must happen to the old Bunny?", "choices": ["It should be washed and kept", "It should go to the seaside too", "It must be burnt because of the fever germs"], "correctIndex": 2, "evidence": "it's a mass of scarlet fever germs"}],
+   "theme": {"prompt": "The Skin Horse said that once you are Real you can't be ugly, \"except to people who don't understand.\" How does that fit the shabby Rabbit now?", "choices": ["The Boy thinks he is too shabby to keep", "To the Boy he is still beautiful, however worn he looks", "He is shiny and new again"], "correctIndex": 1, "evidence": ["once you are Real you can't be ugly, except to people who don't understand", "To him he was always beautiful, and that was all that the little Rabbit cared about"]},
+   "written": "The Rabbit got shabby because he was loved so much. Why do you think the things we love most often end up looking worn?"},
+  {"questions": [
+    {"prompt": "Why didn't the Boy care much about his splendid new bunny?", "choices": ["He didn't like white bunnies", "He was too excited about going to the seaside", "He was still very ill"], "correctIndex": 1, "evidence": "the Boy was too excited to care very much about it"},
+    {"prompt": "Where did the little Rabbit spend his last night in the garden?", "choices": ["In a sack behind the fowl-house", "In the Boy's bed", "In the toy cupboard"], "correctIndex": 0, "evidence": "the little Rabbit lay among the old picture-books in the corner behind the fowl-house"},
+    {"prompt": "What grew where the Rabbit's tear fell?", "choices": ["A tall tree", "A patch of clover", "A mysterious flower"], "correctIndex": 2, "evidence": "where the tear had fallen a flower grew out of the ground"}]},
+  {"questions": [
+    {"prompt": "What does the Fairy do with the toys children have loved?", "choices": ["Mends them and gives them back", "Takes them away and turns them into Real", "Hides them in the wood"], "correctIndex": 1, "evidence": "then I come and take them away with me and turn them into Real"},
+    {"prompt": "Who changed the Rabbit so he had real hind legs and soft brown fur?", "choices": ["The nursery magic Fairy", "The Skin Horse", "The wild rabbits"], "correctIndex": 0, "evidence": "He did not know that when the Fairy kissed him that last time she had changed him altogether."},
+    {"prompt": "What did the Boy think when he saw the rabbit in the spring?", "choices": ["He was frightened of it", "He wanted to catch it", "It looked just like his old Bunny"], "correctIndex": 2, "evidence": "he looks just like my old Bunny that was lost when I had scarlet fever"}],
+   "theme": {"prompt": "On his lonely night, the Rabbit wondered what use it was to be loved and become Real \"if it all ended like this.\" How does the ending answer him?", "choices": ["Being loved made him Real, and that is why the Fairy could make him a real rabbit", "It shows that being loved doesn't matter", "He goes back to being a brand-new toy"], "correctIndex": 0, "evidence": ["Of what use was it to be loved and lose one's beauty and become Real if it all ended like this?", "You were Real to the Boy,\" the Fairy said, \"because he loved you. Now you shall be Real to every one."]},
+   "written": "At the end, the Boy sees a rabbit that looks just like his old Bunny. How do you think he would feel if he knew it really was his Bunny?"}
+]}

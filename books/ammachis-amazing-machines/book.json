@@ -114,5 +114,55 @@
     }
    ]
   }
+ ],
+ "segments": [
+  {
+   "startChapter": 0,
+   "startPage": 0,
+   "endChapter": 0,
+   "endPage": 13,
+   "wordCount": 187,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "What did Sooraj and Ammachi make together?",
+      "choices": [
+       "Coconut barfi",
+       "Unniappams",
+       "Mango juice"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "Which coconuts did Ammachi say to pick?",
+      "choices": [
+       "Small green ones",
+       "Ripe brown ones",
+       "Cracked ones"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What does the book say simple machines do?",
+      "choices": [
+       "Make food taste sweet",
+       "Keep things cold",
+       "Make work easier"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "The book says Ammachi's barfi was made using simple machines. What is the big idea?",
+     "choices": [
+      "Only factories use machines",
+      "Everyday jobs, like cooking, use simple machines",
+      "Machines are always big and noisy"
+     ],
+     "correctIndex": 1
+    },
+    "written": "Can you think of a simple machine you use at home, like a knife, a lever or a wheel? What does it help you do?"
+   }
+  }
  ]
 }

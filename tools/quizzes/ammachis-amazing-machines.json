@@ -1,5 +1,15 @@
-{"chapters": [[
-  {"prompt": "What did Sooraj and Ammachi make together?", "choices": ["Coconut barfi", "Unniappams", "Mango juice"], "correctIndex": 0, "evidence": "\"Ammachi! Ammachi! Could we make coconut barfi today?\" Sooraj asked his grandmother."},
-  {"prompt": "Which coconuts did Ammachi say to pick?", "choices": ["Small green ones", "Ripe brown ones", "Cracked ones"], "correctIndex": 1, "evidence": "We'll only pick the ripe ones, okay? The ones that are brown all over..."},
-  {"prompt": "What does the book say simple machines do?", "choices": ["Make food taste sweet", "Keep things cold", "Make work easier"], "correctIndex": 2, "evidence": "Simple machines make it easier to do work."}
-]]}
+{"chapters": [
+  [
+    {"prompt": "What did Sooraj and Ammachi make together?", "choices": ["Coconut barfi", "Unniappams", "Mango juice"], "correctIndex": 0, "evidence": "\"Ammachi! Ammachi! Could we make coconut barfi today?\" Sooraj asked his grandmother."},
+    {"prompt": "Which coconuts did Ammachi say to pick?", "choices": ["Small green ones", "Ripe brown ones", "Cracked ones"], "correctIndex": 1, "evidence": "We'll only pick the ripe ones, okay? The ones that are brown all over..."},
+    {"prompt": "What does the book say simple machines do?", "choices": ["Make food taste sweet", "Keep things cold", "Make work easier"], "correctIndex": 2, "evidence": "Simple machines make it easier to do work."}
+  ]
+],
+"segments": [
+  {"questions": [
+    {"prompt": "What did Sooraj and Ammachi make together?", "choices": ["Coconut barfi", "Unniappams", "Mango juice"], "correctIndex": 0, "evidence": "\"Ammachi! Ammachi! Could we make coconut barfi today?\" Sooraj asked his grandmother."},
+    {"prompt": "Which coconuts did Ammachi say to pick?", "choices": ["Small green ones", "Ripe brown ones", "Cracked ones"], "correctIndex": 1, "evidence": "We'll only pick the ripe ones, okay? The ones that are brown all over..."},
+    {"prompt": "What does the book say simple machines do?", "choices": ["Make food taste sweet", "Keep things cold", "Make work easier"], "correctIndex": 2, "evidence": "Simple machines make it easier to do work."}],
+   "theme": {"prompt": "The book says Ammachi's barfi was made using simple machines. What is the big idea?", "choices": ["Only factories use machines", "Everyday jobs, like cooking, use simple machines", "Machines are always big and noisy"], "correctIndex": 1, "evidence": ["Ammachi's barfi was made using SIMPLE MACHINES!"]},
+   "written": "Can you think of a simple machine you use at home, like a knife, a lever or a wheel? What does it help you do?"}
+]}

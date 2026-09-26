@@ -143,5 +143,55 @@
     }
    ]
   }
+ ],
+ "segments": [
+  {
+   "startChapter": 0,
+   "startPage": 0,
+   "endChapter": 0,
+   "endPage": 18,
+   "wordCount": 448,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "What went missing at the start of the story?",
+      "choices": [
+       "The unniappams",
+       "Ammachi's science book",
+       "The camera"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "Which trap did Ammachi set to catch Appachen?",
+      "choices": [
+       "A basket with a lid",
+       "A hidden camera",
+       "A bucket"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "Where did Sooraj say the last three unniappams were?",
+      "choices": [
+       "In the attic",
+       "Under the bucket",
+       "In the oven"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "How did Ammachi work out that Sooraj was the thief?",
+     "choices": [
+      "He knew things only the thief could know, like how many unniappams were left and where",
+      "She found crumbs on his shirt",
+      "The hidden camera took his picture"
+     ],
+     "correctIndex": 0
+    },
+    "written": "Sooraj says the unniappams were \"too irresistible.\" Have you ever found a treat too hard to resist? What happened?"
+   }
+  }
  ]
 }
