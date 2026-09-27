@@ -32,7 +32,8 @@ python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
 # move starts inside chapters onto scene breaks, then build --draft again
 .venv/bin/python tools/prep.py text <id>                   # chapter and segment text to tools/work/<id>/
 # write tools/quizzes/<id>.json and tools/notes/<id>.md, building --draft as you go
-.venv/bin/python tools/prep.py review <id>                 # readable quizzes in tools/work/<id>/review.md
+.venv/bin/python tools/prep.py review <id>                 # judgment calls to read, in tools/work/<id>/review.md
+.venv/bin/python tools/prep.py review <id> --all           # ... plus every comprehension question
 .venv/bin/python tools/prep.py build                       # full build; refuses missing quizzes, writes catalog.json
 ```
 
@@ -78,7 +79,9 @@ requires the pair on the last segment and never lets two segments in a row go wi
 sitting of two or more segments includes one; the app uses the sitting's most recent pair.
 
 Quizzes are written by hand in Claude Code sessions and read by a person before publishing; no
-API calls are involved. Every multiple-choice question carries an `evidence` quote that the build
+API calls are involved. The person reads the judgment calls: theme, link and written questions,
+which is what `prep.py review` shows. Comprehension questions are left to the build's evidence
+check, with `review --all` for a spot-check. Every multiple-choice question carries an `evidence` quote that the build
 checks against the text: comprehension evidence must be in its own segment, theme evidence in
 that segment or an earlier one. A quote from later in the book is rejected as a spoiler.
 Evidence doesn't ship in `book.json`.

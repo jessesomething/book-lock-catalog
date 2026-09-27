@@ -876,15 +876,25 @@ def review_question(q, label):
 
 
 def cmd_review(args):
+    """Only the judgment calls by default: theme, link-back and written questions. The build has
+    already checked every comprehension answer against the text; --all lists those too (BL-35)."""
     book = built_book(args.id)
     segments = book.get("segments") or []
     quizzes = json.loads((TOOLS / "quizzes" / f"{args.id}.json").read_text()).get("segments", [])
     chapters = book["chapters"]
-    lines = [f"# {book['title']}: segment quizzes", "",
-             f"{len(quizzes)} of {len(segments)} segments written. The build has checked every "
+    judged = sum(1 for q in quizzes if q.get("theme"))
+    intro = (f"{len(quizzes)} of {len(segments)} segments written. The build has checked every "
              "comprehension answer against the text, so those only need a skim (right answer in bold). "
-             "**Read the theme questions** — those are the judgment calls.", ""]
+             "**Read the theme and link-back questions** — those are the judgment calls."
+             if args.all else
+             f"The judgment calls in {len(quizzes)} of {len(segments)} written segments: {judged} theme "
+             f"questions, {sum(1 for q in quizzes if q.get('link'))} link-backs and their written "
+             "questions. Comprehension answers are checked against the text by the build and left out "
+             f"(`prep.py review {args.id} --all` lists them).")
+    lines = [f"# {book['title']}: segment quizzes", "", intro, ""]
     for si, (seg, quiz) in enumerate(zip(segments, quizzes), 1):
+        if not args.all and not quiz.get("theme"):
+            continue
         pages = pages_in(chapters, seg)
         (ci, pi), (lci, lpi) = pages[0], pages[-1]
         title = chapters[ci]["title"] or book["title"]
@@ -892,10 +902,11 @@ def cmd_review(args):
         end = " ".join(chapters[lci]["pages"][lpi]["text"].split()[-10:])
         lines += [f"## Segment {si}: {title}{' (continued)' if pi else ''}", "",
                   f"*{seg['wordCount']} words. Starts \"{start} …\" and ends \"… {end}\"*", ""]
-        for n, q in enumerate(quiz["questions"], 1):
-            choices = " · ".join(f"**{c}**" if i == q["correctIndex"] else c for i, c in enumerate(q["choices"]))
-            lines += [f"{n}. {q['prompt']} — {choices}"]
-        lines += [""]
+        if args.all:
+            for n, q in enumerate(quiz["questions"], 1):
+                choices = " · ".join(f"**{c}**" if i == q["correctIndex"] else c for i, c in enumerate(q["choices"]))
+                lines += [f"{n}. {q['prompt']} — {choices}"]
+            lines += [""]
         if quiz.get("theme"):
             lines += review_question(quiz["theme"], "Theme:")
             if quiz.get("link"):
@@ -1173,6 +1184,7 @@ def main():
     t.add_argument("id")
     r = sub.add_parser("review")
     r.add_argument("id")
+    r.add_argument("--all", action="store_true", help="also list the comprehension questions")
     c = sub.add_parser("covers")
     c.add_argument("ids", nargs="*")
     c.add_argument("--port", type=int, default=8766)
