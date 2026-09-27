@@ -298,13 +298,13 @@
     "books/wizard-of-oz/book.json",
     "books/wizard-of-oz/cover.jpg"
    ],
-   "sizeBytes": 592931,
-   "version": "1c450b73557c",
+   "sizeBytes": 602488,
+   "version": "ecffc0dc8f7d",
    "parts": {
     "cover": "eaa89cb1e9ec",
     "text": "67b12b3129a3",
     "pictures": "6aa33ece361a",
-    "quizzes": "ec82ddaa7883",
+    "quizzes": "37f285a14188",
     "credits": "e92d46435449"
    },
    "starter": true

@@ -83,6 +83,15 @@ checks against the text: comprehension evidence must be in its own segment, them
 that segment or an earlier one. A quote from later in the book is rejected as a spoiler.
 Evidence doesn't ship in `book.json`.
 
+A segment with a theme question may also have a `link` question: one that ties what was just read
+to an earlier part of the book ("Who else has Dorothy helped along the way?"). It names the
+earlier segments it draws on in `from` (1-based, as in `review.md`), and its evidence needs a quote
+of at least 4 words from each of them and from its own segment. The app asks it instead of the
+theme question when the kid has passed those segments, and falls back to the theme question when
+they haven't (one was sent back to be reread and isn't passed yet). Link questions are optional extras: about one per
+chapter, at a segment that ends a chapter, from the third segment on. Oz has them; a book
+doesn't wait for them.
+
 Theme questions need one answer the text clearly supports and wrong answers it clearly rules
 out. A question a kid could reasonably argue with doesn't belong in a quiz that locks their apps.
 

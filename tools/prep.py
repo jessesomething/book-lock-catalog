@@ -454,6 +454,22 @@ def check_evidence(q, allowed, later, where):
             raise PrepError(f"{where}: evidence for {q['prompt']!r} isn't in the text{hint}: {f!r}")
 
 
+def check_link_evidence(q, texts, si, later, where):
+    """A link-back question ties this segment to the earlier ones in its "from": its evidence
+    needs a quote of at least 4 words from each of them, and nothing from anywhere else."""
+    frags = evidence_fragments(q.get("evidence"))
+    places = [si] + [n - 1 for n in q["from"]]
+    for f in frags:
+        if not any(f in texts[p] for p in places):
+            hint = (" (it comes later in the book, so the question would spoil it)" if f in later
+                    else " of this segment or the ones in \"from\"")
+            raise PrepError(f"{where}: evidence for link-back {q['prompt']!r} isn't in the text{hint}: {f!r}")
+    for p in places:
+        if not any(len(f.split()) >= 4 and f in texts[p] for f in frags):
+            raise PrepError(f"{where}: link-back {q['prompt']!r} needs an evidence quote of at least "
+                            f"4 words from segment {p + 1}")
+
+
 def shipped_question(q):
     # "evidence" is for review and checking only; it doesn't ship in book.json.
     return {k: q[k] for k in ("prompt", "choices", "correctIndex")}
@@ -465,7 +481,11 @@ def load_segment_quizzes(book_id, texts, draft):
 
     Theme and written questions come as a pair on roughly every other segment: never two
     segments in a row without them (so any sitting of two or more segments gets one), and
-    always on the last segment."""
+    always on the last segment.
+
+    A segment with a theme question may also have a "link" question that connects it to earlier
+    segments, named 1-based in its "from" (BL-34). The app asks it instead of the theme question
+    when the kid has passed those segments; the theme question is the fallback, so it's required."""
     path = TOOLS / "quizzes" / f"{book_id}.json"
     quizzes = json.loads(path.read_text()).get("segments", []) if path.exists() else []
     if len(quizzes) > len(texts):
@@ -487,9 +507,21 @@ def load_segment_quizzes(book_id, texts, draft):
         if theme:
             check_choice_question(theme, where)
             check_evidence(theme, " ".join(texts[:si + 1]), later, where)
+        link = quiz.get("link")
+        if link:
+            if not theme:
+                raise PrepError(f"{where}: a link-back question needs a theme question to fall back on")
+            sources = link.get("from") or []
+            if not sources or len(set(sources)) != len(sources) or not all(1 <= n <= si for n in sources):
+                raise PrepError(f"{where}: link-back {link['prompt']!r} needs \"from\": the earlier "
+                                f"segment numbers it draws on (1 to {si})")
+            check_choice_question(link, where)
+            check_link_evidence(link, texts, si, later, where)
         shipped.append({"questions": [shipped_question(q) for q in questions],
                         "theme": shipped_question(theme) if theme else None,
                         "written": written or None})
+        if link:
+            shipped[-1]["link"] = {**shipped_question(link), "from": sorted(n - 1 for n in link["from"])}
     has_theme = [s["theme"] is not None for s in shipped]
     for si in range(len(has_theme) - 1):
         if not has_theme[si] and not has_theme[si + 1]:
@@ -866,6 +898,9 @@ def cmd_review(args):
         lines += [""]
         if quiz.get("theme"):
             lines += review_question(quiz["theme"], "Theme:")
+            if quiz.get("link"):
+                sources = ", ".join(str(n) for n in quiz["link"]["from"])
+                lines += review_question(quiz["link"], f"Link-back (to segment {sources}; asked instead of the theme):")
             lines += [f"**Written (for the parent):** {quiz['written']}", ""]
     out = WORK / args.id / "review.md"
     out.parent.mkdir(parents=True, exist_ok=True)

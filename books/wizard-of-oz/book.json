@@ -1943,7 +1943,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "The Witch of the North can't come with Dorothy, but she gives her a kiss to keep her safe. If you were going on a long journey by yourself, what would you want to bring with you, and why?"
+    "written": "The Witch of the North can't come with Dorothy, but she gives her a kiss to keep her safe. If you were going on a long journey by yourself, what would you want to bring with you, and why?",
+    "link": {
+     "prompt": "In the cyclone, Dorothy got over her fright and waited calmly to see what would happen. Now she cries when she hears she may never get home, then dries her tears and asks how to reach the City of Emeralds. What do these two moments show about her?",
+     "choices": [
+      "She is never scared of anything",
+      "She gets over being scared or sad and faces what comes next",
+      "She gives up whenever things go wrong"
+     ],
+     "correctIndex": 1,
+     "from": [
+      0
+     ]
+    }
    }
   },
   {
@@ -2039,7 +2051,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "The Scarecrow doesn't mind being stuffed with straw, but he doesn't want anyone to call him a fool. Why do you think being called a fool would hurt his feelings so much?"
+    "written": "The Scarecrow doesn't mind being stuffed with straw, but he doesn't want anyone to call him a fool. Why do you think being called a fool would hurt his feelings so much?",
+    "link": {
+     "prompt": "Dorothy lifts the Scarecrow off his pole. Back in the cyclone, who else did she pull out of trouble?",
+     "choices": [
+      "Aunt Em, who was stuck in the cellar",
+      "Toto, when he fell through the open trap door",
+      "Uncle Henry, who was out with the cows"
+     ],
+     "correctIndex": 1,
+     "from": [
+      0
+     ]
+    }
    }
   },
   {
@@ -2087,7 +2111,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "Dorothy misses home even though it's gray and dusty. What is one thing about your home you would miss most if you were far away?"
+    "written": "Dorothy misses home even though it's gray and dusty. What is one thing about your home you would miss most if you were far away?",
+    "link": {
+     "prompt": "The Scarecrow can't understand why Dorothy would leave \"this beautiful country\" for gray Kansas. What did Dorothy herself think of Oz when she first landed?",
+     "choices": [
+      "She thought it was as dull and gray as Kansas",
+      "She was too frightened to look around",
+      "She thought it was a country of marvelous beauty"
+     ],
+     "correctIndex": 2,
+     "from": [
+      1
+     ]
+    }
    }
   },
   {
@@ -2183,7 +2219,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "The Scarecrow would choose brains and the Tin Woodman would choose a heart. Which would you choose, and why?"
+    "written": "The Scarecrow would choose brains and the Tin Woodman would choose a heart. Which would you choose, and why?",
+    "link": {
+     "prompt": "The Tin Woodman lost his heart because of the Wicked Witch of the East. What had already happened to that Witch before Dorothy met him?",
+     "choices": [
+      "Dorothy's house had fallen on her and killed her",
+      "She still ruled over the Munchkins",
+      "Oz had locked her away in the Emerald City"
+     ],
+     "correctIndex": 0,
+     "from": [
+      1
+     ]
+    }
    }
   },
   {
@@ -2231,7 +2279,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "The Lion is scared of lots of things. What is something that scares you, and what helps you feel braver about it?"
+    "written": "The Lion is scared of lots of things. What is something that scares you, and what helps you feel braver about it?",
+    "link": {
+     "prompt": "Dorothy rushes at the Lion, \"heedless of danger,\" to save Toto. What did she do when the cyclone came that shows the same thing about her?",
+     "choices": [
+      "She ran straight down to the cellar with Aunt Em",
+      "She went after Toto when he hid under the bed",
+      "She sent Toto outside to Uncle Henry"
+     ],
+     "correctIndex": 1,
+     "from": [
+      0
+     ]
+    }
    }
   },
   {
@@ -2327,7 +2387,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "When the Kalidahs came, the trembling Lion said, \"Stand close behind me, and I will fight them as long as I am alive.\" What do you think being brave really means?"
+    "written": "When the Kalidahs came, the trembling Lion said, \"Stand close behind me, and I will fight them as long as I am alive.\" What do you think being brave really means?",
+    "link": {
+     "prompt": "After the Kalidahs, the Lion's heart is still beating fast, and the Tin Woodman says, \"I wish I had a heart to beat.\" When they first met, why did the Tin Woodman say a fast-beating heart was something to be glad of?",
+     "choices": [
+      "It proves you have a heart",
+      "It means you are very brave",
+      "It helps you run away faster"
+     ],
+     "correctIndex": 0,
+     "from": [
+      8
+     ]
+    }
    }
   },
   {
@@ -2423,7 +2495,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "The Scarecrow and the Tin Woodman carried Dorothy out of the poppies, but they had to leave the Lion behind. How do you think they felt about leaving their friend?"
+    "written": "The Scarecrow and the Tin Woodman carried Dorothy out of the poppies, but they had to leave the Lion behind. How do you think they felt about leaving their friend?",
+    "link": {
+     "prompt": "The poppies put Dorothy, Toto and the Lion to sleep. Earlier the Scarecrow said it must be \"inconvenient to be made of flesh.\" Why can he and the Tin Woodman carry Dorothy out?",
+     "choices": [
+      "They held their breath the whole way",
+      "They aren't made of flesh, so the flowers can't put them to sleep",
+      "They walked around the edge of the field"
+     ],
+     "correctIndex": 1,
+     "from": [
+      6
+     ]
+    }
    }
   },
   {
@@ -2471,7 +2555,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "Thousands of tiny mice worked together to pull a huge Lion. Tell about a time you worked with other people to do something none of you could have done alone."
+    "written": "Thousands of tiny mice worked together to pull a huge Lion. Tell about a time you worked with other people to do something none of you could have done alone.",
+    "link": {
+     "prompt": "In the poppy field, the Tin Woodman said they could do nothing for the Lion because he was \"much too heavy to lift.\" How do they save him now?",
+     "choices": [
+      "The Stork flies him out of the field",
+      "Dorothy wakes him with cold water from the river",
+      "Thousands of mice pull him out on a truck"
+     ],
+     "correctIndex": 2,
+     "from": [
+      12
+     ]
+    }
    }
   },
   {
@@ -2567,7 +2663,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "Everyone in the Emerald City has to wear green spectacles all the time. What do you think it would be like to see everything through green glasses?"
+    "written": "Everyone in the Emerald City has to wear green spectacles all the time. What do you think it would be like to see everything through green glasses?",
+    "link": {
+     "prompt": "The Guardian warns that Oz is terrible to anyone who isn't honest or who comes just out of curiosity. What had the Witch of the North told Dorothy to do when she met Oz?",
+     "choices": [
+      "Not to be afraid, but to tell her story and ask for help",
+      "To pretend she was a great sorceress",
+      "To bring him the silver shoes as a gift"
+     ],
+     "correctIndex": 0,
+     "from": [
+      2
+     ]
+    }
    }
   },
   {
@@ -2711,7 +2819,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "Oz tells each friend to do a hard, scary job before he will help them. Tell about a time you had to do something hard to earn something you really wanted."
+    "written": "Oz tells each friend to do a hard, scary job before he will help them. Tell about a time you had to do something hard to earn something you really wanted.",
+    "link": {
+     "prompt": "Before his turn with Oz, the Lion plans to \"roar my loudest, and so frighten him.\" When he first met Dorothy, what did he say he always did when he was scared?",
+     "choices": [
+      "Roared loudly, so everything ran away from him",
+      "Hid in his cave until the danger passed",
+      "Climbed the tallest tree in the forest"
+     ],
+     "correctIndex": 0,
+     "from": [
+      8
+     ]
+    }
    }
   },
   {
@@ -2855,7 +2975,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "Dorothy crept out every night to bring the Lion food, even though she was afraid of the Witch. Why do you think she took that risk for him?"
+    "written": "Dorothy crept out every night to bring the Lion food, even though she was afraid of the Witch. Why do you think she took that risk for him?",
+    "link": {
+     "prompt": "Toto flies at the Wicked Witch and bites her leg. When has little Toto faced a much bigger enemy before?",
+     "choices": [
+      "When he chased the Kalidahs off the bridge",
+      "When he ran barking at the Lion in the forest",
+      "When he fought the Witch's wolves"
+     ],
+     "correctIndex": 1,
+     "from": [
+      8
+     ]
+    }
    }
   },
   {
@@ -2903,7 +3035,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "The Tin Woodman comes back covered in patches, but he doesn't mind at all. Do you have something worn or patched that you love anyway? Why do you love it?"
+    "written": "The Tin Woodman comes back covered in patches, but he doesn't mind at all. Do you have something worn or patched that you love anyway? Why do you love it?",
+    "link": {
+     "prompt": "Dorothy sets out to rescue the Tin Woodman and the Scarecrow. Who rescued Dorothy when she fell asleep in the poppy field?",
+     "choices": [
+      "The Lion, who carried her on his back",
+      "The Scarecrow and the Tin Woodman, who carried her out",
+      "The Stork, who flew her to the riverbank"
+     ],
+     "correctIndex": 1,
+     "from": [
+      12
+     ]
+    }
    }
   },
   {
@@ -2999,7 +3143,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "The Monkey King's grandfather thought his joke was funny, but it spoiled someone's day. How can you tell when a joke has gone too far?"
+    "written": "The Monkey King's grandfather thought his joke was funny, but it spoiled someone's day. How can you tell when a joke has gone too far?",
+    "link": {
+     "prompt": "Not long ago the Winged Monkeys did the Wicked Witch's cruel work. Why are they now carrying Dorothy gently to the Emerald City?",
+     "choices": [
+      "They must obey whoever owns the Golden Cap, and now Dorothy does",
+      "Oz ordered them to bring her back",
+      "They have always been Dorothy's friends"
+     ],
+     "correctIndex": 0,
+     "from": [
+      20
+     ]
+    }
    }
   },
   {
@@ -3095,7 +3251,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "Oz tells the Scarecrow that \"experience is the only thing that brings knowledge.\" What is something you learned by doing it yourself, not just by being told?"
+    "written": "Oz tells the Scarecrow that \"experience is the only thing that brings knowledge.\" What is something you learned by doing it yourself, not just by being told?",
+    "link": {
+     "prompt": "The Guardian of the Gates said everyone must wear green spectacles or the brightness of the Emerald City would blind them. What was the real reason for the spectacles?",
+     "choices": [
+      "The city really was bright enough to blind people",
+      "To make everything look green, so the name Emerald City would fit",
+      "To keep the Wicked Witch from seeing in"
+     ],
+     "correctIndex": 1,
+     "from": [
+      15
+     ]
+    }
    }
   },
   {
@@ -3143,7 +3311,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "Dorothy tells the Scarecrow, \"I have always liked you as you were.\" Why do you think she says that? Who likes you just the way you are?"
+    "written": "Dorothy tells the Scarecrow, \"I have always liked you as you were.\" Why do you think she says that? Who likes you just the way you are?",
+    "link": {
+     "prompt": "On the way to the city, a man told the travelers that Oz \"has a large collection of hearts\" and a great pot of courage. Now that you've seen what Oz really gave them, what can you tell about the man's stories?",
+     "choices": [
+      "He was only repeating stories, since no one he knew had ever seen Oz",
+      "He was right, because Oz really had many hearts",
+      "He had seen the hearts himself in the Throne Room"
+     ],
+     "correctIndex": 0,
+     "from": [
+      14
+     ]
+    }
    }
   },
   {
@@ -3191,7 +3371,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "Dorothy missed the balloon because she wouldn't leave without Toto. What would you never leave behind, even if it meant missing out on something?"
+    "written": "Dorothy missed the balloon because she wouldn't leave without Toto. What would you never leave behind, even if it meant missing out on something?",
+    "link": {
+     "prompt": "Oz tells Dorothy, \"You also came through the air, being carried by a cyclone.\" What do Dorothy and Oz have in common?",
+     "choices": [
+      "Both were sent to Oz by the Witch of the North",
+      "Both came on purpose to find the Emerald City",
+      "Both came from near Kansas and were carried to Oz through the air by accident"
+     ],
+     "correctIndex": 2,
+     "from": [
+      26
+     ]
+    }
    }
   },
   {
@@ -3239,7 +3431,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "The Scarecrow, the Tin Woodman and the Lion already have what they wanted, but they still choose to help Dorothy get home. What makes someone a true friend?"
+    "written": "The Scarecrow, the Tin Woodman and the Lion already have what they wanted, but they still choose to help Dorothy get home. What makes someone a true friend?",
+    "link": {
+     "prompt": "The Tin Woodman cries because Oz is gone, now that he has a heart. Back when he said he had no heart at all, what made him cry?",
+     "choices": [
+      "Losing his axe in the river",
+      "Stepping on a beetle and killing it",
+      "Being left behind by his friends"
+     ],
+     "correctIndex": 1,
+     "from": [
+      8
+     ]
+    }
    }
   },
   {
@@ -3287,7 +3491,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "Oz didn't keep his promise to Dorothy, but she forgave him because he had done his best. Is it easy or hard for you to forgive someone? Tell about a time you did."
+    "written": "Oz didn't keep his promise to Dorothy, but she forgave him because he had done his best. Is it easy or hard for you to forgive someone? Tell about a time you did.",
+    "link": {
+     "prompt": "The Lion says Oz \"would have been a brave man\" if he had taken the same courage he gave the Lion. How did Oz act when the travelers found him behind the screen?",
+     "choices": [
+      "He was frightened and begged them not to strike him",
+      "He roared back at the Lion",
+      "He angrily ordered them out of the Throne Room"
+     ],
+     "correctIndex": 0,
+     "from": [
+      25
+     ]
+    }
    }
   },
   {
@@ -3335,7 +3551,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "The Scarecrow says, \"There are worse things in the world than being a Scarecrow.\" What is something about yourself that you've learned to like?"
+    "written": "The Scarecrow says, \"There are worse things in the world than being a Scarecrow.\" What is something about yourself that you've learned to like?",
+    "link": {
+     "prompt": "After the china country, the Scarecrow says, \"There are worse things in the world than being a Scarecrow.\" How did he feel about being a Scarecrow when Dorothy first met him?",
+     "choices": [
+      "Happy to stay on his pole forever",
+      "Proud to be the best scarecrow in the field",
+      "Unhappy, because a head full of straw made him feel like a fool"
+     ],
+     "correctIndex": 2,
+     "from": [
+      5
+     ]
+    }
    }
   },
   {
@@ -3383,7 +3611,19 @@
      ],
      "correctIndex": 1
     },
-    "written": "The Lion promises to come back and be King of the forest, but only after Dorothy is safely on her way home. Why do you think he puts Dorothy first?"
+    "written": "The Lion promises to come back and be King of the forest, but only after Dorothy is safely on her way home. Why do you think he puts Dorothy first?",
+    "link": {
+     "prompt": "The beasts of the forest now bow to the Lion as their King. When he went to see Oz, what did the Lion say he wanted courage for?",
+     "choices": [
+      "So he could really become the King of Beasts",
+      "So he could fight the Wicked Witch by himself",
+      "So he could live in the Emerald City"
+     ],
+     "correctIndex": 0,
+     "from": [
+      18
+     ]
+    }
    }
   },
   {
@@ -3431,7 +3671,19 @@
      ],
      "correctIndex": 0
     },
-    "written": "The Lion charged up the hill because the Hammer-Heads laughed at the Scarecrow. How do you feel when someone laughs at a friend of yours? What do you do?"
+    "written": "The Lion charged up the hill because the Hammer-Heads laughed at the Scarecrow. How do you feel when someone laughs at a friend of yours? What do you do?",
+    "link": {
+     "prompt": "\"This is the last time you can summon us,\" says the Monkey King. What happened the second time Dorothy called the Winged Monkeys?",
+     "choices": [
+      "They refused to come at all",
+      "They said they could not leave their country to fly her to Kansas",
+      "They carried her friends over the Hammer-Heads' hill"
+     ],
+     "correctIndex": 1,
+     "from": [
+      29
+     ]
+    }
    }
   },
   {
@@ -3479,7 +3731,19 @@
      ],
      "correctIndex": 2
     },
-    "written": "That's the end of Dorothy's journey! What was your favorite part of the whole story, and why?"
+    "written": "That's the end of Dorothy's journey! What was your favorite part of the whole story, and why?",
+    "link": {
+     "prompt": "In the first chapter, Aunt Em's hard life had made her so gray and sober that she \"never smiled.\" Now she covers Dorothy's face with kisses. What does this show?",
+     "choices": [
+      "Aunt Em thinks Dorothy is someone else",
+      "Aunt Em loved Dorothy all along, even if her hard life hid it",
+      "Aunt Em went to the Land of Oz too and was changed there"
+     ],
+     "correctIndex": 1,
+     "from": [
+      0
+     ]
+    }
    }
   }
  ]
