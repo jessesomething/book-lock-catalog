@@ -36,6 +36,10 @@ python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
 .venv/bin/python tools/prep.py build                       # full build; refuses missing quizzes, writes catalog.json
 ```
 
+Each `catalog.json` entry has a `version` (any file changed) and `parts`, a fingerprint each
+for the cover, text, pictures, quizzes and credits. The app compares `parts` with the copy on the
+phone to say what an update changes.
+
 A draft `book.json` isn't publishable: restore it (`git restore books/<id>`) before committing
 if the book's quizzes aren't finished. Once a book has a segments file, the full build refuses
 to run until every segment has its quiz.

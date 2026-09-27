@@ -674,6 +674,30 @@ def assemble_book(src, draft, out_dir):
     return book_json
 
 
+def content_parts(book_json, book_dir):
+    """A short fingerprint of each part of a book, so the app can say what an update changes
+    ("New cover, quizzes") by comparing them with the copy on the phone."""
+    def digest(*chunks):
+        h = hashlib.sha256()
+        for chunk in chunks:
+            h.update(chunk if isinstance(chunk, bytes) else
+                     json.dumps(chunk, ensure_ascii=False, sort_keys=True).encode())
+        return h.hexdigest()[:12]
+
+    chapters = book_json["chapters"]
+    layout = [[p["image"] for p in c["pages"]] for c in chapters]
+    images = sorted({name for names in layout for name in names if name})
+    return {
+        "cover": digest((book_dir / book_json["cover"]).read_bytes()) if book_json["cover"] else None,
+        "text": digest([[c["title"], [p["text"] for p in c["pages"]]] for c in chapters]),
+        "pictures": digest(layout, *[(book_dir / name).read_bytes() for name in images]),
+        "quizzes": digest([c["quiz"] for c in chapters], book_json.get("segments")),
+        "credits": digest({k: book_json[k] for k in ("title", "authors", "illustrators", "licence", "credit",
+                                                     "imageCredits", "changes", "year", "genre", "classic",
+                                                     "minAge", "maxAge")}),
+    }
+
+
 def catalog_entry(book_json, starter):
     book_dir = BOOKS / book_json["id"]
     files = sorted(f.name for f in book_dir.iterdir() if f.is_file())
@@ -700,6 +724,7 @@ def catalog_entry(book_json, starter):
         "files": [f"books/{book_json['id']}/{n}" for n in files],
         "sizeBytes": sum((book_dir / n).stat().st_size for n in files),
         "version": h.hexdigest()[:12],
+        "parts": content_parts(book_json, book_dir),
         "starter": starter,
     }
 

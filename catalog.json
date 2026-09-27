@@ -43,6 +43,13 @@
    ],
    "sizeBytes": 1269828,
    "version": "b37608d34a58",
+   "parts": {
+    "cover": "ccd43f6566d2",
+    "text": "e2d42c6b8365",
+    "pictures": "4a11a89d17db",
+    "quizzes": "c3f4534c213b",
+    "credits": "e6aca0a98452"
+   },
    "starter": true
   },
   {
@@ -101,6 +108,13 @@
    ],
    "sizeBytes": 1216929,
    "version": "d2de0f62f719",
+   "parts": {
+    "cover": "c829f26f2491",
+    "text": "a0e6e2f3a8d6",
+    "pictures": "e2c05c954202",
+    "quizzes": "4179666908f6",
+    "credits": "113309a3fc65"
+   },
    "starter": true
   },
   {
@@ -146,6 +160,13 @@
    ],
    "sizeBytes": 1865430,
    "version": "5bd468e9f3a2",
+   "parts": {
+    "cover": "c5bdd41012db",
+    "text": "cbb2b49e68cb",
+    "pictures": "f64a6cc2588e",
+    "quizzes": "aaca2819b051",
+    "credits": "74e9725324f2"
+   },
    "starter": true
   },
   {
@@ -184,6 +205,13 @@
    ],
    "sizeBytes": 527463,
    "version": "6d38cbf68dc2",
+   "parts": {
+    "cover": "be00dac90c75",
+    "text": "7170659de08d",
+    "pictures": "f28728a4d98d",
+    "quizzes": "fa996439692e",
+    "credits": "9e673cc680a3"
+   },
    "starter": true
   },
   {
@@ -234,6 +262,13 @@
    ],
    "sizeBytes": 2409859,
    "version": "10ff6a3866be",
+   "parts": {
+    "cover": "df74427515f4",
+    "text": "33610931878d",
+    "pictures": "f730e9e4279d",
+    "quizzes": "b8f05a966d86",
+    "credits": "674edf3a09b1"
+   },
    "starter": true
   },
   {
@@ -265,6 +300,13 @@
    ],
    "sizeBytes": 592931,
    "version": "1c450b73557c",
+   "parts": {
+    "cover": "eaa89cb1e9ec",
+    "text": "67b12b3129a3",
+    "pictures": "6aa33ece361a",
+    "quizzes": "ec82ddaa7883",
+    "credits": "e92d46435449"
+   },
    "starter": true
   },
   {
@@ -294,6 +336,13 @@
    ],
    "sizeBytes": 935246,
    "version": "c58b71c7523c",
+   "parts": {
+    "cover": "9eaa326529c6",
+    "text": "676cc9672515",
+    "pictures": "f77978a80e34",
+    "quizzes": "20342b62cded",
+    "credits": "f110c1cc818d"
+   },
    "starter": true
   },
   {
@@ -323,6 +372,13 @@
    ],
    "sizeBytes": 643691,
    "version": "ff1d939aa1b3",
+   "parts": {
+    "cover": "a3e2ea47ebd5",
+    "text": "ad0c5e67649e",
+    "pictures": "7566fce6bd71",
+    "quizzes": "5fb02e8025bc",
+    "credits": "edd36d3c0417"
+   },
    "starter": true
   }
  ]
