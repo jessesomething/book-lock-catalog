@@ -99,8 +99,8 @@
     "books/peter-rabbit/p26.jpg",
     "books/peter-rabbit/p27.jpg"
    ],
-   "sizeBytes": 1127492,
-   "version": "24bbed93003b",
+   "sizeBytes": 1216929,
+   "version": "d2de0f62f719",
    "starter": true
   },
   {
@@ -182,8 +182,8 @@
     "books/velveteen-rabbit/p06.jpg",
     "books/velveteen-rabbit/p07.jpg"
    ],
-   "sizeBytes": 380654,
-   "version": "04288fcabe1a",
+   "sizeBytes": 527463,
+   "version": "6d38cbf68dc2",
    "starter": true
   },
   {
@@ -263,8 +263,8 @@
     "books/wizard-of-oz/book.json",
     "books/wizard-of-oz/cover.jpg"
    ],
-   "sizeBytes": 486865,
-   "version": "1cc59303d4c2",
+   "sizeBytes": 592931,
+   "version": "1c450b73557c",
    "starter": true
   },
   {
@@ -292,8 +292,8 @@
     "books/anne-of-green-gables/book.json",
     "books/anne-of-green-gables/cover.jpg"
    ],
-   "sizeBytes": 906899,
-   "version": "2afb59cd40ef",
+   "sizeBytes": 935246,
+   "version": "c58b71c7523c",
    "starter": true
   },
   {
@@ -305,7 +305,7 @@
    "illustrators": [],
    "minAge": 10,
    "maxAge": 12,
-   "cover": null,
+   "cover": "books/railway-children/cover.jpg",
    "licence": {
     "name": "Public domain",
     "url": null
@@ -318,10 +318,11 @@
    "classic": false,
    "pictures": null,
    "files": [
-    "books/railway-children/book.json"
+    "books/railway-children/book.json",
+    "books/railway-children/cover.jpg"
    ],
-   "sizeBytes": 406341,
-   "version": "39603545898c",
+   "sizeBytes": 643691,
+   "version": "ff1d939aa1b3",
    "starter": true
   }
  ]

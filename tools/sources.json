@@ -19,8 +19,9 @@
   "classic": true,
   "minAge": 4, "maxAge": 6,
   "pageWords": 80,
-  "cover": "images/peter04.jpg",
-  "skipImages": ["images/peter04.jpg"]
+  "cover": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Peter_Rabbit_first_edition_1902a.jpg",
+  "skipImages": ["images/peter04.jpg"],
+  "coverCredit": "Cover: Beatrix Potter, 1902, via Wikimedia Commons."
  },
  {
   "id": "ammachis-amazing-machines",
@@ -43,10 +44,11 @@
   "pageWords": 110,
   "startAt": "HERE was once a velveteen rabbit",
   "replace": {"HERE was once a velveteen rabbit": "THERE was once a velveteen rabbit"},
-  "cover": "images/christmas.jpg",
+  "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/The_Velveteen_Rabbit_pg_1.jpg/1280px-The_Velveteen_Rabbit_pg_1.jpg",
   "skipImages": ["images/detail.jpg"],
   "skipParagraphs": ["Christmas Morning", "The Skin Horse Tells His Story", "Spring Time", "Summer Days",
-                     "Anxious Times", "The Fairy Flower", "At Last! At Last!"]
+                     "Anxious Times", "The Fairy Flower", "At Last! At Last!"],
+  "coverCredit": "Cover: William Nicholson, 1922, via Wikimedia Commons."
  },
  {
   "id": "ammachis-incredible-investigation",
@@ -68,7 +70,8 @@
   "classic": true,
   "minAge": 8, "maxAge": 10,
   "pageWords": 200,
-  "cover": "images/cover.jpg"
+  "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/The_Wonderful_Wizard_of_Oz_first_edition_cover.jpg/1280px-The_Wonderful_Wizard_of_Oz_first_edition_cover.jpg",
+  "coverCredit": "Cover: W. W. Denslow, 1900, via Wikimedia Commons."
  },
  {
   "id": "anne-of-green-gables",
@@ -82,8 +85,8 @@
   "classic": true,
   "minAge": 10, "maxAge": 12,
   "pageWords": 280,
-  "cover": "images/cover.jpg",
-  "coverCrop": [0.22, 0, 1, 1]
+  "cover": "https://www.gutenberg.org/cache/epub/64365/images/cover.jpg",
+  "coverCredit": "Cover: George Fort Gibbs, 1908. Public domain."
  },
  {
   "id": "railway-children",
@@ -96,6 +99,8 @@
   "genre": "Adventure",
   "replace": {"'ad 'a' been a Jap.": "'ad 'a' been Japanese.", "the Japs": "the Japanese"},
   "minAge": 10, "maxAge": 12,
-  "pageWords": 280
+  "pageWords": 280,
+  "cover": "https://upload.wikimedia.org/wikipedia/commons/3/31/Titlepage-The_railway_Children.png",
+  "coverCredit": "Cover: C. E. Brock, 1906, via Wikimedia Commons."
  }
 ]

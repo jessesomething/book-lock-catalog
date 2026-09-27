@@ -8,7 +8,7 @@
  "illustrators": [],
  "minAge": 10,
  "maxAge": 12,
- "cover": null,
+ "cover": "cover.jpg",
  "licence": {
   "name": "Public domain",
   "url": null
@@ -18,7 +18,7 @@
  "classic": false,
  "pictures": null,
  "credit": "The Railway Children by E. Nesbit, first published 1906. Public domain.",
- "imageCredits": null,
+ "imageCredits": "Cover: C. E. Brock, 1906, via Wikimedia Commons.",
  "changes": "Adapted for BookLock: text split into pages for phone screens, and comprehension quizzes added.",
  "wordCount": 58409,
  "chapters": [
