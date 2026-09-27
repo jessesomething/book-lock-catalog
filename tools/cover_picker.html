@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book covers</title>
+<!-- Served by `prep.py covers`, which supplies /api/books and /api/pick. -->
+<style>
+  :root {
+    --bg: #f6f5f2; --panel: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e3e1db;
+    --tile: #ecebe6; --accent: #5b3fa8; --accent-ink: #ffffff; --err: #b3261e;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161618; --panel: #1f1f22; --ink: #ececf0; --muted: #9a9aa3; --line: #34343a;
+      --tile: #2a2a2e; --accent: #b7a4f0; --accent-ink: #1a1033; --err: #f2b8b5;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, sans-serif; }
+  header, main { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  header { padding-top: 28px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  header p { color: var(--muted); margin: 0; max-width: 75ch; }
+  main { padding-bottom: 64px; }
+
+  .book { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px;
+          margin-top: 20px; display: grid; grid-template-columns: 170px 1fr; gap: 28px; }
+  .label { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+  h2 { font-size: 19px; margin: 0 0 12px; }
+  .cover { background: var(--tile); border-radius: 8px; aspect-ratio: 3 / 4; display: grid; place-items: center; overflow: hidden; }
+  .cover img { max-width: 100%; max-height: 100%; display: block; }
+  .cover .none { color: var(--muted); font-size: 13px; }
+  .credit { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 12px; }
+  .card { font: inherit; color: inherit; background: none; border: 0; text-align: left; cursor: pointer;
+          padding: 6px; border-radius: 10px; position: relative; }
+  .card:hover { background: var(--tile); }
+  .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .card .meta { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.35; }
+  .card .meta b { color: var(--ink); font-weight: 600; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .badge { position: absolute; top: 12px; left: 12px; background: var(--accent); color: var(--accent-ink);
+           font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+
+  dialog { border: 0; border-radius: 16px; padding: 0; background: var(--panel); color: var(--ink);
+           width: min(1040px, 94vw); max-height: 92vh; overflow: hidden; }
+  dialog::backdrop { background: rgb(0 0 0 / .55); }
+  .detail { display: grid; grid-template-columns: 1fr 300px; max-height: 92vh; }
+  .stage { background: var(--tile); display: grid; place-items: center; padding: 20px; min-height: 60vh; overflow: auto; }
+  .frame { position: relative; display: inline-block; line-height: 0; overflow: hidden; user-select: none; touch-action: none; }
+  .frame.croppable { cursor: crosshair; }
+  .frame img { max-width: 100%; max-height: 80vh; display: block; }
+  .sel { position: absolute; border: 2px solid #fff; box-shadow: 0 0 0 9999px rgb(0 0 0 / .5); pointer-events: none; }
+  .side { padding: 20px; overflow: auto; display: flex; flex-direction: column; gap: 14px; }
+  .side h3 { font-size: 17px; margin: 0; }
+  .facts { font-size: 13px; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+  .facts a { color: var(--accent); }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  canvas { width: 120px; height: 160px; background: var(--tile); border-radius: 6px; flex: none; }
+  .hint { font-size: 13px; color: var(--muted); margin: 0; }
+  label { font-size: 13px; font-weight: 600; display: grid; gap: 6px; }
+  textarea { font: inherit; font-size: 13px; font-weight: 400; color: inherit; background: var(--bg);
+             border: 1px solid var(--line); border-radius: 8px; padding: 8px; resize: vertical; min-height: 72px; }
+  .error { color: var(--err); font-size: 13px; margin: 0; }
+  .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: auto; padding-top: 8px; }
+  button.primary, button.plain { font: inherit; font-weight: 600; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+  button.primary { background: var(--accent); color: var(--accent-ink); border: 0; }
+  button.primary:disabled { opacity: .6; cursor: progress; }
+  button.plain { background: none; color: var(--accent); border: 1px solid var(--line); }
+  button.link { font: inherit; font-size: 13px; background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; }
+
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--bg);
+           padding: 10px 16px; border-radius: 10px; font-size: 14px; max-width: calc(100vw - 32px); }
+
+  @media (max-width: 720px) {
+    header, main { padding: 0 16px; }
+    header { padding-top: 20px; }
+    .book { grid-template-columns: 1fr; gap: 16px; }
+    .now { max-width: 160px; }
+    .detail { grid-template-columns: 1fr; overflow: auto; }
+    .stage { min-height: 0; }
+    .frame img { max-height: 50vh; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Book covers</h1>
+  <p>Click a picture to see it large. Using one saves it to <code>tools/sources.json</code> and rebuilds
+     that book. Commit and push the catalog to publish. Only public domain, CC0, CC BY and CC BY-SA
+     pictures are listed. For public domain, check the artist died more than 70 years ago.</p>
+</header>
+<main><p class="hint">Loading…</p></main>
+<dialog></dialog>
+
+<script>
+let books = [];
+
+function el(tag, props = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  e.append(...kids.flat().filter(k => k != null && k !== false));
+  return e;
+}
+
+const year = date => (String(date || '').match(/\d{4}/) || [''])[0];
+const sourceName = item => item.original ? 'Original' : item.where.split(':')[0].replace('Wikimedia ', '');
+
+function coverBox(src, alt) {
+  return el('div', {class: 'cover'}, src ? el('img', {src, alt, loading: 'lazy'}) : el('span', {class: 'none'}, 'No cover'));
+}
+
+function render() {
+  document.querySelector('main').replaceChildren(...books.map(book => {
+    const items = [];
+    if (book.original) items.push({original: true, url: book.original, inUse: book.originalInUse});
+    book.candidates.forEach((c, n) => items.push({...c, n, inUse: book.inUse === n}));
+    return el('section', {class: 'book', id: book.id},
+      el('div', {class: 'now'},
+        el('p', {class: 'label'}, 'In the app'),
+        coverBox(book.current, book.title),
+        book.credit && el('p', {class: 'credit'}, book.credit)),
+      el('div', {},
+        el('h2', {}, book.title),
+        el('div', {class: 'grid'}, items.map(item =>
+          el('button', {class: 'card', onclick: () => openDetail(book, item)},
+            coverBox(item.url, ''),
+            item.inUse && el('span', {class: 'badge'}, 'In use'),
+            el('div', {class: 'meta'},
+              el('b', {}, item.original ? 'Original cover' : (item.by || item.where.split(': ').pop())),
+              [sourceName(item), item.licence, year(item.date)].filter(Boolean).join(' · '),
+              !item.original && el('br'),
+              !item.original && `${item.width}×${item.height}`))))));
+  }));
+}
+
+function openDetail(book, item) {
+  const dialog = document.querySelector('dialog');
+  let crop = item.inUse && !item.original ? book.crop : null;
+  let start = null;
+
+  const img = el('img', {src: item.url, alt: book.title});
+  const sel = el('div', {class: 'sel', hidden: true});
+  const frame = el('div', {class: item.original ? 'frame' : 'frame croppable'}, img, sel);
+  const canvas = el('canvas', {width: 240, height: 320});
+  const credit = el('textarea', {}, item.inUse && book.credit ? book.credit : (item.credit || ''));
+  const error = el('p', {class: 'error'});
+  const save = el('button', {class: 'primary', onclick: () => submit()}, item.original ? 'Put this back' : 'Use this cover');
+  const clear = el('button', {class: 'link', onclick: () => { crop = null; drawCrop(); }}, 'Clear crop');
+
+  const clamp = v => Math.min(1, Math.max(0, v));
+  const at = e => { const r = img.getBoundingClientRect(); return [clamp((e.clientX - r.left) / r.width), clamp((e.clientY - r.top) / r.height)]; };
+  const box = (a, b) => [Math.min(a[0], b[0]), Math.min(a[1], b[1]), Math.max(a[0], b[0]), Math.max(a[1], b[1])];
+
+  function drawCrop() {
+    sel.hidden = !crop;
+    clear.hidden = !crop;
+    if (crop) Object.assign(sel.style, {left: crop[0] * 100 + '%', top: crop[1] * 100 + '%',
+      width: (crop[2] - crop[0]) * 100 + '%', height: (crop[3] - crop[1]) * 100 + '%'});
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!img.naturalWidth) return;
+    const [l, t, r, b] = crop || [0, 0, 1, 1];
+    const sw = (r - l) * img.naturalWidth, sh = (b - t) * img.naturalHeight;
+    const scale = Math.min(canvas.width / sw, canvas.height / sh);
+    ctx.drawImage(img, l * img.naturalWidth, t * img.naturalHeight, sw, sh,
+      (canvas.width - sw * scale) / 2, (canvas.height - sh * scale) / 2, sw * scale, sh * scale);
+  }
+
+  if (!item.original) {
+    frame.addEventListener('pointerdown', e => { e.preventDefault(); frame.setPointerCapture(e.pointerId); start = at(e); crop = box(start, start); drawCrop(); });
+    frame.addEventListener('pointermove', e => { if (start) { crop = box(start, at(e)); drawCrop(); } });
+    frame.addEventListener('pointerup', () => {
+      if (crop && (crop[2] - crop[0] < 0.03 || crop[3] - crop[1] < 0.03)) crop = null;  // a click, not a drag
+      start = null;
+      drawCrop();
+    });
+  }
+  img.addEventListener('load', drawCrop);
+
+  async function submit() {
+    save.disabled = true;
+    save.textContent = 'Saving and rebuilding…';
+    error.textContent = '';
+    const body = item.original ? {id: book.id, original: true} : {id: book.id, n: item.n, crop, credit: credit.value};
+    try {
+      const res = await fetch('/api/pick', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+      const data = await res.json().catch(() => ({error: `HTTP ${res.status}`}));
+      if (!res.ok) throw new Error(data.error);
+      books = data;
+      render();
+      dialog.close();
+      toast(`${book.title}: cover saved and rebuilt`);
+      document.getElementById(book.id).scrollIntoView({block: 'nearest'});
+    } catch (e) {
+      error.textContent = e.message;
+      save.disabled = false;
+      save.textContent = item.original ? 'Put this back' : 'Use this cover';
+    }
+  }
+
+  const facts = item.original
+    ? [el('p', {class: 'facts'}, 'The cover this book had before any picking.')]
+    : [el('p', {class: 'facts'}, el('a', {href: item.link, target: '_blank', rel: 'noopener'}, item.where)),
+       el('p', {class: 'facts'}, [`${item.width}×${item.height}`, item.licence, item.date].filter(Boolean).join(' · ')),
+       item.by && el('p', {class: 'facts'}, item.by)];
+
+  dialog.replaceChildren(el('div', {class: 'detail'},
+    el('div', {class: 'stage'}, frame),
+    el('div', {class: 'side'},
+      el('h3', {}, book.title),
+      facts,
+      !item.original && el('div', {class: 'row'},
+        canvas,
+        el('div', {}, el('p', {class: 'hint'}, 'Drag on the picture to crop it.'), clear)),
+      !item.original && el('label', {}, 'Credit', credit),
+      error,
+      el('div', {class: 'actions'},
+        el('button', {class: 'plain', onclick: () => dialog.close()}, 'Cancel'),
+        save))));
+  drawCrop();
+  dialog.showModal();
+}
+
+function toast(text) {
+  const t = el('div', {class: 'toast', role: 'status'}, text);
+  document.body.append(t);
+  setTimeout(() => t.remove(), 4000);
+}
+
+fetch('/api/books').then(r => r.json()).then(data => { books = data; render(); })
+  .catch(() => { document.querySelector('main').replaceChildren(el('p', {class: 'error'}, 'Couldn’t reach prep.py. Is `prep.py covers` still running?')); });
+</script>
+</body>
+</html>

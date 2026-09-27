@@ -5,19 +5,26 @@
     python tools/prep.py segment ID [--force]   # propose ~10-minute segments, report them
     python tools/prep.py text ID                # dump chapter/segment text to tools/work/ID/
     python tools/prep.py review ID              # readable segment quizzes in tools/work/ID/review.md
+    python tools/prep.py covers [ID ...]        # find cover candidates and open a page to choose them
 
 --draft allows missing quizzes so text can be extracted before quizzes exist; quizzes
 that are present are still checked. Drafts are never valid for publishing: catalog.json
 is only written on a full build.
 """
 import argparse
+import base64
+import csv
 import hashlib
+import http.server
 import io
 import json
 import re
 import shutil
 import sys
+import urllib.error
+import urllib.parse
 import urllib.request
+import webbrowser
 import zipfile
 from pathlib import Path
 
@@ -101,7 +108,9 @@ def fetch(url):
     CACHE.mkdir(parents=True, exist_ok=True)
     path = CACHE / hashlib.sha1(url.encode()).hexdigest()
     if not path.exists():
-        req = urllib.request.Request(url, headers={"User-Agent": "BookLock catalog prep"})
+        # Wikimedia asks for a User-Agent that says who's calling.
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "BookLock catalog prep (https://github.com/jessesomething/book-lock-catalog)"})
         with urllib.request.urlopen(req, timeout=60) as r:
             path.write_bytes(r.read())
     return path.read_bytes()
@@ -256,7 +265,9 @@ def build_gutenberg(src, out_dir):
 
     cover = None
     if src.get("cover"):
-        save_image(fetch(base + src["cover"]), out_dir / "cover.jpg", src.get("coverCrop"))
+        # A path inside this edition, or a full URL chosen on the `prep.py covers` page.
+        url = src["cover"] if src["cover"].startswith("http") else base + src["cover"]
+        save_image(fetch(url), out_dir / "cover.jpg", src.get("coverCrop"))
         cover = "cover.jpg"
 
     elements = soup.body.find_all(["h2", "p", "img"])
@@ -647,7 +658,7 @@ def assemble_book(src, draft, out_dir):
         "classic": src.get("classic", False),
         "pictures": pictures_label(book["chapters"]),
         "credit": book["credit"],
-        "imageCredits": book["imageCredits"],
+        "imageCredits": " ".join(c for c in (book["imageCredits"], src.get("coverCredit")) if c) or None,
         "changes": book["changes"],
         "wordCount": words,
         "chapters": book["chapters"],
@@ -836,6 +847,258 @@ def cmd_review(args):
     out.write_text("\n".join(lines))
     print(f"wrote {out.relative_to(ROOT)}")
 
+# --- Cover candidates ------------------------------------------------------------
+
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+PG_CATALOG = "https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv"
+COVER_IMAGE_TYPES = {"image/jpeg", "image/png", "image/gif", "image/tiff", "image/webp"}
+MIN_COVER_WIDTH = 300
+COMMONS_PER_BOOK = 12
+IMAGES_PER_EDITION = 3
+
+
+def main_title(title):
+    """"The Tale of Peter Rabbit; or, ..." -> "tale of peter rabbit", for matching editions."""
+    words = re.sub(r"[^a-z0-9 ]+", " ", re.split(r"[:;\n]|, or\b", title.lower())[0]).split()
+    return " ".join(words[1:] if words and words[0] in ("the", "a", "an") else words)
+
+
+def commons_licence(meta):
+    """The file's licence if the catalog's rules allow it (public domain, CC0, CC BY, CC BY-SA), else None."""
+    value = lambda key: meta.get(key, {}).get("value", "")
+    code = value("License").lower()
+    if code in ("pd", "cc0") or value("Copyrighted") == "False":
+        return value("LicenseShortName") or "Public domain"
+    if re.fullmatch(r"cc-by(-sa)?-[\d.]+", code):
+        return value("LicenseShortName")
+    return None
+
+
+def commons_candidates(src):
+    title = src["title"]
+    found, rejected = {}, 0
+    for query in (f'"{title}" cover', f'"{title}" first edition'):
+        params = {"action": "query", "format": "json", "generator": "search", "gsrsearch": query,
+                  "gsrnamespace": 6, "gsrlimit": 20, "prop": "imageinfo",
+                  "iiprop": "url|size|mime|extmetadata", "iiurlwidth": MAX_IMAGE_WIDTH,
+                  "iiextmetadatafilter": "License|LicenseShortName|Copyrighted|Artist|DateTimeOriginal"}
+        pages = json.loads(fetch(f"{COMMONS_API}?{urllib.parse.urlencode(params)}"))
+        for page in sorted(pages.get("query", {}).get("pages", {}).values(), key=lambda p: p["index"]):
+            info = page["imageinfo"][0]
+            # Covers are portrait; this also drops most photos of places and page spreads.
+            if (page["title"] in found or info["mime"] not in COVER_IMAGE_TYPES
+                    or info["width"] < MIN_COVER_WIDTH or info["width"] > info["height"]):
+                continue
+            meta = info.get("extmetadata", {})
+            licence = commons_licence(meta)
+            if not licence:
+                rejected += 1
+                continue
+            artist = " ".join(BeautifulSoup(meta.get("Artist", {}).get("value", ""), "html.parser")
+                              .get_text().split()).rstrip(",; ")
+            date = " ".join(BeautifulSoup(meta.get("DateTimeOriginal", {}).get("value", ""), "html.parser").get_text().split())
+            name = page["title"].removeprefix("File:")
+            credit = f"Cover: {artist or name}{', ' + date if date else ''}, via Wikimedia Commons"
+            credit += "." if licence.lower().startswith(("public domain", "pd")) else \
+                f" ({info['descriptionurl']}), {licence}."
+            found[page["title"]] = {
+                "url": (info.get("thumburl") or info["url"]).split("?utm_")[0],
+                "width": info["width"], "height": info["height"],
+                "where": f"Wikimedia Commons: {name}", "link": info["descriptionurl"],
+                "licence": licence, "by": artist, "date": date, "credit": credit}
+    if rejected:
+        print(f"  {rejected} Commons file(s) dropped for their licence")
+    return list(found.values())[:COMMONS_PER_BOOK]
+
+
+def illustrator_names(authors):
+    """"Claus, M. A. (May Austin), 1882-1976 [Illustrator]" -> ["M. A. Claus"]."""
+    names = []
+    for part in authors.split(";"):
+        if "[Illustrator]" not in part:
+            continue
+        name = re.sub(r"\s*\(.*?\)|,\s*[\d?]*-[\d?]*\s*$", "", part.split("[")[0].strip())
+        last, _, first = name.partition(", ")
+        names.append(f"{first} {last}".strip())
+    return names
+
+
+def edition_candidates(src):
+    """Cover-like pictures (named cover or frontispiece, or the first picture) in other English
+    editions of the same title."""
+    title, surname = main_title(src["title"]), src["authors"][0].split()[-1]
+    out = []
+    for row in csv.DictReader(io.StringIO(fetch(PG_CATALOG).decode("utf-8"))):
+        if (row["Type"] != "Text" or row["Language"] != "en" or row["Text#"] == str(src["ebook"])
+                or main_title(row["Title"]) != title or surname not in row["Authors"]):
+            continue
+        try:
+            soup, base = gutenberg_soup(row["Text#"])
+        except urllib.error.HTTPError:
+            continue
+        imgs = list({im["src"]: im for im in soup.find_all("img") if im.get("src")}.values())
+        coverish = [im for im in imgs if re.search(r"cover|front", " ".join(
+            [im["src"], im.get("alt", ""), im.get("id", "")] + im.get("class", [])), re.I)]
+        picks = (coverish if imgs[:1] and imgs[0] in coverish else imgs[:1] + coverish)[:IMAGES_PER_EDITION]
+        illustrators = illustrator_names(row["Authors"])
+        by = " and ".join(illustrators)
+        for im in picks:
+            width, height = Image.open(io.BytesIO(fetch(base + im["src"]))).size
+            if width < MIN_COVER_WIDTH:
+                continue
+            out.append({
+                "url": base + im["src"], "width": width, "height": height,
+                "where": f"Gutenberg edition #{row['Text#']}: {im['src'].split('/')[-1]}",
+                "link": f"https://www.gutenberg.org/ebooks/{row['Text#']}",
+                "licence": "Public domain", "by": row["Authors"].replace("\n", " "), "date": "",
+                # No Gutenberg name in credits - it's trademarked (see README, Licence rules).
+                "credit": f"Cover: from the edition illustrated by {by}. Public domain." if by
+                          else "Cover: from another public-domain edition."})
+    return out
+
+
+def cover_fields(src):
+    return {k: src[k] for k in ("cover", "coverCrop", "coverCredit") if k in src}
+
+
+def cover_snapshot(book_id):
+    path = BOOKS / book_id / "cover.jpg"
+    return "data:image/jpeg;base64," + base64.b64encode(path.read_bytes()).decode() if path.exists() else None
+
+
+def set_cover(book_id, fields):
+    """Sets this book's cover keys in sources.json, touching only those lines so the file keeps its
+    hand formatting: a key already there changes in place, a new one goes at the end, a dropped one
+    goes. Putting back a book's original fields restores the file exactly."""
+    path = TOOLS / "sources.json"
+    lines = path.read_text().split("\n")
+    start = next(i for i, line in enumerate(lines) if f'"id": "{book_id}"' in line)
+    end = next(i for i in range(start, len(lines)) if lines[i].rstrip(",") == " }")
+    entry = lambda k, v: f'  "{k}": {json.dumps(v, ensure_ascii=False)}'
+    todo, body = dict(fields), []
+    for line in lines[start:end]:
+        key = re.match(r'\s*"(cover(?:Crop|Credit)?)":', line)
+        if not key:
+            body.append(line)
+        elif key.group(1) in todo:
+            body.append(entry(key.group(1), todo.pop(key.group(1))))
+    body += [entry(k, v) for k, v in todo.items()]
+    body = [line.rstrip(",") + "," for line in body[:-1]] + [body[-1].rstrip(",")]
+    text = "\n".join(lines[:start] + body + lines[end:])
+    json.loads(text)
+    path.write_text(text)
+
+
+def picker_state(covers):
+    books = []
+    for book_id, entry in covers.items():
+        src = source(book_id)
+        fields = cover_fields(src)
+        path = BOOKS / book_id / "cover.jpg"
+        books.append({
+            "id": book_id, "title": src["title"],
+            "current": f"/current/{book_id}.jpg?v={path.stat().st_mtime_ns}" if path.exists() else None,
+            "credit": fields.get("coverCredit"),
+            "crop": fields.get("coverCrop"),
+            "original": entry["original"]["image"],
+            "originalInUse": fields == entry["original"]["fields"],
+            "inUse": next((i for i, c in enumerate(entry["candidates"]) if c["url"] == fields.get("cover")), None),
+            "candidates": entry["candidates"]})
+    return books
+
+
+def apply_pick(covers, pick):
+    book_id = pick["id"]
+    entry = covers[book_id]
+    if pick.get("original"):
+        fields = entry["original"]["fields"]
+    else:
+        cand = entry["candidates"][int(pick["n"])]
+        fields = {"cover": cand["url"], "coverCredit": " ".join(str(pick.get("credit") or cand["credit"]).split())}
+        if pick.get("crop"):
+            crop = [round(float(x), 3) for x in pick["crop"]]
+            if len(crop) != 4 or not (0 <= crop[0] < crop[2] <= 1 and 0 <= crop[1] < crop[3] <= 1):
+                raise PrepError(f"bad crop {crop}")
+            fields["coverCrop"] = crop
+    sources_path = TOOLS / "sources.json"
+    before = sources_path.read_text()
+    set_cover(book_id, fields)
+    try:
+        cmd_build(argparse.Namespace(only=book_id, draft=False))
+    except BaseException:
+        sources_path.write_text(before)  # the build swaps books in only on success, so this undoes it all
+        raise
+
+
+def serve_picker(covers, port):
+    origin = f"http://127.0.0.1:{port}"
+
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def reply(self, code, body, kind):
+            self.send_response(code)
+            self.send_header("Content-Type", kind)
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+
+        def reply_json(self, code, data):
+            self.reply(code, json.dumps(data, ensure_ascii=False).encode(), "application/json")
+
+        def do_GET(self):
+            path = urllib.parse.urlparse(self.path).path
+            current = re.fullmatch(r"/current/([a-z0-9-]+)\.jpg", path)
+            if path == "/":
+                self.reply(200, (TOOLS / "cover_picker.html").read_bytes(), "text/html; charset=utf-8")
+            elif path == "/api/books":
+                self.reply_json(200, picker_state(covers))
+            elif current and current.group(1) in covers and (BOOKS / current.group(1) / "cover.jpg").exists():
+                self.reply(200, (BOOKS / current.group(1) / "cover.jpg").read_bytes(), "image/jpeg")
+            else:
+                self.reply(404, b"not found", "text/plain")
+
+        def do_POST(self):
+            # JSON only, from this page only: another site open in the browser can't make the
+            # browser send this without being refused by the missing CORS headers.
+            if (self.path != "/api/pick" or self.headers.get("Content-Type") != "application/json"
+                    or self.headers.get("Origin") not in (None, origin)):
+                return self.reply(403, b"refused", "text/plain")
+            try:
+                apply_pick(covers, json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+            except Exception as e:
+                return self.reply_json(400, {"error": str(e) or type(e).__name__})
+            self.reply_json(200, picker_state(covers))
+
+        def log_message(self, *args):
+            pass
+
+    server = http.server.HTTPServer(("127.0.0.1", port), Handler)
+    print(f"cover picker at {origin}/ - Ctrl-C to stop")
+    webbrowser.open(origin + "/")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print()
+
+
+def cmd_covers(args):
+    path = WORK / "covers.json"
+    covers = json.loads(path.read_text()) if path.exists() else {}
+    for src in ([source(i) for i in args.ids] if args.ids else json.loads((TOOLS / "sources.json").read_text())):
+        if src["source"] != "gutenberg":
+            print(f"{src['id']}: skipped - StoryWeaver books keep the publisher's own cover")
+            continue
+        print(f"{src['id']}: searching")
+        # The cover the book had before any picking, so the page can always put it back.
+        original = covers.get(src["id"], {}).get("original") or \
+            {"fields": cover_fields(src), "image": cover_snapshot(src["id"])}
+        covers[src["id"]] = {"original": original,
+                             "candidates": commons_candidates(src) + edition_candidates(src)}
+        print(f"  {len(covers[src['id']]['candidates'])} candidate(s)")
+    WORK.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(covers, ensure_ascii=False, indent=1))
+    serve_picker(covers, args.port)
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -850,9 +1113,13 @@ def main():
     t.add_argument("id")
     r = sub.add_parser("review")
     r.add_argument("id")
+    c = sub.add_parser("covers")
+    c.add_argument("ids", nargs="*")
+    c.add_argument("--port", type=int, default=8766)
     args = parser.parse_args()
     try:
-        {"build": cmd_build, "segment": cmd_segment, "text": cmd_text, "review": cmd_review}[args.cmd](args)
+        {"build": cmd_build, "segment": cmd_segment, "text": cmd_text, "review": cmd_review,
+         "covers": cmd_covers}[args.cmd](args)
     except PrepError as e:
         sys.exit(f"error: {e}")
 

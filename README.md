@@ -40,6 +40,27 @@ A draft `book.json` isn't publishable: restore it (`git restore books/<id>`) bef
 if the book's quizzes aren't finished. Once a book has a segments file, the full build refuses
 to run until every segment has its quiz.
 
+## Covers
+
+```sh
+.venv/bin/python tools/prep.py covers [<id> ...]   # search, then open the cover picker in the browser
+```
+
+The picker shows each book's cover as it is in the app, its original cover, and candidates from
+Wikimedia Commons (searched for the title plus "cover" and "first edition") and other English
+editions of the same title on Gutenberg. Click one to see it large, drag on it to crop, edit the
+credit, and use it. That writes `cover` (the picture's URL), `coverCredit` and `coverCrop` into
+the book's lines in `tools/sources.json` and rebuilds the book and `catalog.json`. Putting the
+original back restores the file exactly. Commit and push to publish; phones that already have
+the book get it via Update on the parent's Books screen.
+
+Commons files whose licence isn't public domain, CC0, CC BY or CC BY-SA are dropped, and so are
+landscape pictures. StoryWeaver books are skipped: they keep the publisher's cover. For public
+domain, check the artist died more than 70 years ago. Check the credit names who drew the cover:
+Commons often lists the author instead, and a Gutenberg edition's credit names its interior
+illustrators, who may not have drawn the cover. Search results are cached in
+`tools/.cache/`; delete that folder to search again from scratch.
+
 ## Segment quizzes
 
 A segment is about 10 minutes of reading, sized at the book's youngest reader's speed; the app
