@@ -76,6 +76,14 @@ treated as decoration (drop capitals, emblems) and left out. A book with segment
 chapter quizzes: the app quizzes segments, and falls back to chapter quizzes only for copies
 downloaded before segments existed.
 
+Passages cut for content go in `"cuts"`, not `skipParagraphs`: a list of
+`{"note": ..., "paragraphs": [...], "replace": {...}}`, one per passage. The note is a short line
+for parents. The build leaves the cut out of `text`, and a page with a cut also carries its
+`original` wording and `cutNotes`. Parents who turn on "Keep passages cut from older books" see the
+original in the reader, and a notice in Parent settings before the kid's next reading reaches one.
+Quizzes, segments and word counts always use the cut text, so no question can depend on a cut.
+Cuts work in chapter books only, and a paragraph with a cut must fit on one page.
+
 A draft `book.json` isn't publishable: restore it (`git restore books/<id>`) before committing
 if the book's quizzes aren't finished. Once a book has a segments file, the full build refuses
 to run until every segment has its quiz.

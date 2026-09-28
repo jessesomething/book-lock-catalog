@@ -661,11 +661,11 @@
     "books/secret-garden/p02.jpg",
     "books/secret-garden/p03.jpg"
    ],
-   "sizeBytes": 609605,
-   "version": "e63778b44827",
+   "sizeBytes": 616071,
+   "version": "99dc072be6ad",
    "parts": {
     "cover": null,
-    "text": "ef3656849f44",
+    "text": "87d4e8b1157a",
     "pictures": "94c98aff768c",
     "quizzes": "b7b73721cfc6",
     "credits": "54542021d957"

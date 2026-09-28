@@ -171,18 +171,23 @@ def to_parts(paragraphs, page_words):
     return [part for para in paragraphs for part in split_long(para, page_words)]
 
 
-def paginate(parts, page_words, first_page_words=None):
-    pages, current, count = [], [], 0
-    for p in parts:
-        limit = first_page_words if first_page_words and not pages else page_words
+def page_groups(parts, page_words, first_page_words=None):
+    """Which parts go on each page, as lists of indices into parts."""
+    groups, current, count = [], [], 0
+    for i, p in enumerate(parts):
+        limit = first_page_words if first_page_words and not groups else page_words
         if current and count + len(p.split()) > limit:
-            pages.append("\n\n".join(current))
+            groups.append(current)
             current, count = [], 0
-        current.append(p)
+        current.append(i)
         count += len(p.split())
     if current:
-        pages.append("\n\n".join(current))
-    return pages
+        groups.append(current)
+    return groups
+
+
+def paginate(parts, page_words, first_page_words=None):
+    return ["\n\n".join(parts[i] for i in g) for g in page_groups(parts, page_words, first_page_words)]
 
 
 # --- StoryWeaver (PDF inside the downloaded zip) ---------------------------------
@@ -297,6 +302,8 @@ def build_gutenberg(src, out_dir):
         elements = elements[idx:]
 
     if src["kind"] == "picture":
+        if src.get("cuts"):
+            raise PrepError(f"{src['id']}: cuts only work in chapter books")
         chapters = [{"title": None, "pages": picture_pages(elements, base, out_dir, page_words,
                                                            replacements, skip_texts, skip_images)}]
     else:
@@ -404,18 +411,38 @@ def chapter_pages(elements, base, out_dir, src, heading_ids, name_ids):
     page_words, replacements = src["pageWords"], src.get("replace", {})
     skip_texts, skip_images = set(src.get("skipParagraphs", [])), set(src.get("skipImages", []))
     titles, line_breaks = src.get("chapterTitles", {}), src.get("lineBreaks", False)
+    # "cuts" (BL-36): passages left out of the text kids read by default. Each has a "note" for
+    # parents, whole "paragraphs" to leave out and/or "replace" edits inside paragraphs. A page
+    # with a cut also ships its "original" wording and the notes, for parents who keep them in.
+    cuts = src.get("cuts", [])
+    cut_paras = {text: cut["note"] for cut in cuts for text in cut.get("paragraphs", [])}
+    cut_edits = [(old, new, cut["note"]) for cut in cuts for old, new in cut.get("replace", {}).items()]
+    used = set()
+
+    def flush_cut(chapter):
+        """Cut paragraphs at a chapter's end go with its last paragraph."""
+        if chapter and chapter["pending"]:
+            last = len(chapter["paras"]) - 1
+            if last < 0:
+                raise PrepError(f"{chapter['number']}: a chapter can't be all cut")
+            original, notes = chapter["originals"].get(last, (chapter["paras"][last], set()))
+            chapter["originals"][last] = ("\n\n".join([original] + chapter["pending"]), notes | chapter["pendingNotes"])
+            chapter["pending"], chapter["pendingNotes"] = [], set()
+
     chapters, current, n_img, expect_name = [], None, 0, False
     for el in elements:
         if id(el) in heading_ids:
             m = CHAPTER_RE.match(" ".join(el.get_text().split()))
             if m:
                 name = m.group(2).strip().rstrip(".")
+                flush_cut(current)
                 current = {"number": roman_to_int(m.group(1)), "name": chapter_name(name) if name else None,
-                           "paras": [], "images": {}}
+                           "paras": [], "images": {}, "originals": {}, "pending": [], "pendingNotes": set()}
                 chapters.append(current)
                 expect_name = True
                 continue
             elif current is not None and chapters:
+                flush_cut(current)
                 current = None  # a non-chapter heading after the chapters (e.g. an appendix) ends the text
         elif id(el) in name_ids:
             text = " ".join(el.get_text().split())
@@ -438,23 +465,50 @@ def chapter_pages(elements, base, out_dir, src, heading_ids, name_ids):
         elif current is not None and el.name != "img":
             t = clean_text(element_text(el, line_breaks), replacements)
             if t and t not in skip_texts:
-                current["paras"].append(t)
                 expect_name = False
+                text, notes = t, set()
+                if t not in cut_paras:
+                    for old, new, note in cut_edits:
+                        if old in text:
+                            text = text.replace(old, new)
+                            notes.add(note)
+                            used.add(old)
+                if t in cut_paras or not text.strip():
+                    used.add(t)
+                    current["pending"].append(t)
+                    current["pendingNotes"] |= notes | ({cut_paras[t]} if t in cut_paras else set())
+                    continue
+                if current["pending"] or text != t:
+                    current["originals"][len(current["paras"])] = (
+                        "\n\n".join(current["pending"] + [t]), notes | current["pendingNotes"])
+                    current["pending"], current["pendingNotes"] = [], set()
+                current["paras"].append(text)
+    flush_cut(current)
     if not chapters:
         raise PrepError("no chapter headings found")
+    unused = [k for k in list(cut_paras) + [old for old, _, _ in cut_edits] if k not in used]
+    if unused:
+        raise PrepError(f"cut text not found: {unused[0][:80]!r}")
     out = []
     for c in chapters:
         # Paginated later, once segment starts are known, so each segment starts on a fresh page.
-        parts, images = [], {}
+        parts, images, originals = [], {}, {}
         for pi, para in enumerate(c["paras"]):
             if pi in c["images"]:
                 images[len(parts)] = c["images"][pi]
-            parts += split_long(para, page_words)
+            pieces = split_long(para, page_words)
+            if pi in c["originals"]:
+                if len(pieces) != 1:
+                    raise PrepError(f"chapter {c['number']}: a paragraph with a cut is too long for one page: "
+                                    f"{para[:60]!r}")
+                original, notes = c["originals"][pi]
+                originals[len(parts)] = (original, sorted(notes))
+            parts += pieces
         if len(c["paras"]) in c["images"] and parts:
             images.setdefault(len(parts) - 1, c["images"][len(c["paras"])])
         name = titles.get(str(c["number"]), c["name"])
         out.append({"title": f"Chapter {c['number']}" + (f": {name}" if name else ""),
-                    "parts": parts, "images": images})
+                    "parts": parts, "images": images, "originals": originals})
     return out
 
 
@@ -512,15 +566,20 @@ def lay_out(chapters, starts, page_words):
         if "parts" not in c:
             page_starts += [(ci, ui) for ui in cuts]
             continue
-        images = c.pop("images", {})
-        bounds = sorted({0, *cuts, *images, len(c["parts"])})
+        images, originals, parts = c.pop("images", {}), c.pop("originals", {}), c["parts"]
+        bounds = sorted({0, *cuts, *images, len(parts)})
         pages = []
         for a, b in zip(bounds, bounds[1:]):
             if a in cuts:
                 page_starts.append((ci, len(pages)))
             # A picture starts a page and takes about half of it.
-            chunk = paginate(c["parts"][a:b], page_words, page_words // 2 if a in images else None)
-            pages += [{"text": t, "image": images.get(a) if j == 0 else None} for j, t in enumerate(chunk)]
+            for j, group in enumerate(page_groups(parts[a:b], page_words, page_words // 2 if a in images else None)):
+                idx = [a + i for i in group]
+                page = {"text": "\n\n".join(parts[i] for i in idx), "image": images.get(a) if j == 0 else None}
+                if any(i in originals for i in idx):
+                    page["original"] = "\n\n".join(originals[i][0] if i in originals else parts[i] for i in idx)
+                    page["cutNotes"] = sorted({n for i in idx if i in originals for n in originals[i][1]})
+                pages.append(page)
         c["pages"] = pages
         del c["parts"]
     return page_starts
@@ -833,7 +892,8 @@ def content_parts(book_json, book_dir):
     images = sorted({name for names in layout for name in names if name})
     return {
         "cover": digest((book_dir / book_json["cover"]).read_bytes()) if book_json["cover"] else None,
-        "text": digest([[c["title"], [p["text"] for p in c["pages"]]] for c in chapters]),
+        "text": digest([[c["title"], [[p["text"], p["original"], p["cutNotes"]] if "original" in p else p["text"]
+                                      for p in c["pages"]]] for c in chapters]),
         "pictures": digest(layout, *[(book_dir / name).read_bytes() for name in images]),
         "quizzes": digest([c["quiz"] for c in chapters], book_json.get("segments")),
         "credits": digest({k: book_json[k] for k in ("title", "authors", "illustrators", "licence", "credit",
