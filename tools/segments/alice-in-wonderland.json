@@ -1,0 +1,28 @@
+{
+ "segments": [
+  {"chapter": 1},
+  {"chapter": 1, "startsWith": "There were doors all round the"},
+  {"chapter": 2},
+  {"chapter": 2, "startsWith": "As she said these words her foot slipped"},
+  {"chapter": 3},
+  {"chapter": 3, "startsWith": "The next thing was to eat the comfits"},
+  {"chapter": 4},
+  {"chapter": 4, "startsWith": "She waited for some time without hearing"},
+  {"chapter": 5},
+  {"chapter": 5, "startsWith": "Alice remained looking thoughtfully at the"},
+  {"chapter": 6},
+  {"chapter": 6, "startsWith": "Alice caught the baby with some"},
+  {"chapter": 7},
+  {"chapter": 7, "startsWith": "\"Suppose we change the subject,\""},
+  {"chapter": 8},
+  {"chapter": 8, "startsWith": "The chief difficulty Alice found at"},
+  {"chapter": 9},
+  {"chapter": 9, "startsWith": "They very soon came upon a Gryphon"},
+  {"chapter": 10},
+  {"chapter": 10, "startsWith": "So Alice began telling them her adventures"},
+  {"chapter": 11},
+  {"chapter": 11, "startsWith": "The first witness was the Hatter"},
+  {"chapter": 12},
+  {"chapter": 12, "startsWith": "The jury all wrote down on their slates"}
+ ]
+}

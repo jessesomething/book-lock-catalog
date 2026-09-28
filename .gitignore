@@ -4,6 +4,7 @@ sources/
 # Prep-script scratch
 tools/.cache/
 tools/work/
+tools/.sources.lock
 .venv/
 __pycache__/
 

@@ -1,0 +1,991 @@
+{
+ "segments": [
+  {
+   "questions": [
+    {
+     "prompt": "Why did Alice jump up and run after the White Rabbit?",
+     "choices": [
+      "It had a watch and a waistcoat-pocket",
+      "It had grabbed her sister's book",
+      "It had called out her name"
+     ],
+     "correctIndex": 0,
+     "evidence": "she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it"
+    },
+    {
+     "prompt": "What did Alice do with the empty marmalade jar as she fell?",
+     "choices": [
+      "She dropped it down the hole",
+      "She put it in a cupboard",
+      "She kept it in her pocket"
+     ],
+     "correctIndex": 1,
+     "evidence": "so managed to put it into one of the cupboards as she fell past it"
+    },
+    {
+     "prompt": "Where did Alice land at the end of her long fall?",
+     "choices": [
+      "In a cold, deep pool of water",
+      "On a big soft feather bed",
+      "On a heap of sticks and leaves"
+     ],
+     "correctIndex": 2,
+     "evidence": "down she came upon a heap of sticks and dry leaves, and the fall was over"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did the tiny golden key open?",
+     "choices": [
+      "A little door behind a curtain",
+      "The big doors round the hall",
+      "A glass box under the table"
+     ],
+     "correctIndex": 0,
+     "evidence": "behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted"
+    },
+    {
+     "prompt": "What did Alice check before she drank from the little bottle?",
+     "choices": [
+      "Whether it was hot or cold",
+      "Whether it said \"poison\"",
+      "Whether it was the Rabbit's"
+     ],
+     "correctIndex": 1,
+     "evidence": "and see whether it's marked 'poison' or not"
+    },
+    {
+     "prompt": "After she shrank, why couldn't Alice go through the little door?",
+     "choices": [
+      "The Rabbit had locked it again",
+      "She was still too big for it",
+      "She couldn't reach the key"
+     ],
+     "correctIndex": 2,
+     "evidence": "she found she had forgotten the little golden key, and when she went back to the table for it, she found she could not possibly reach it"
+    }
+   ],
+   "theme": {
+    "prompt": "So many odd things have happened that Alice now thinks \"very few things indeed were really impossible.\" What is happening to Alice?",
+    "choices": [
+     "She is starting to expect strange things",
+     "She wants everything to stay ordinary",
+     "She no longer believes her own eyes"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "Alice had begun to think that very few things indeed were really impossible",
+     "Alice had got so much into the way of expecting nothing but out-of-the-way things to happen"
+    ]
+   },
+   "written": "Alice finds a bottle that says DRINK ME and a cake that says EAT ME. Would you have tried them? Why or why not?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What happened when Alice cried while she was very tall?",
+     "choices": [
+      "Her tears made a big pool",
+      "Her crying woke the Rabbit",
+      "Her tears made her shrink"
+     ],
+     "correctIndex": 0,
+     "evidence": "shedding gallons of tears, until there was a large pool all round her"
+    },
+    {
+     "prompt": "What did the White Rabbit drop when Alice spoke to him?",
+     "choices": [
+      "His pocket watch",
+      "His gloves and a fan",
+      "The little golden key"
+     ],
+     "correctIndex": 1,
+     "evidence": "The Rabbit started violently, dropped the white kid gloves and the fan"
+    },
+    {
+     "prompt": "What made Alice start shrinking again?",
+     "choices": [
+      "A cake from under the table",
+      "The gloves she had put on",
+      "The fan she was holding"
+     ],
+     "correctIndex": 2,
+     "evidence": "she soon found out that the cause of this was the fan she was holding"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What was the salt water Alice fell into?",
+     "choices": [
+      "Her own pool of tears",
+      "Rain that had filled the hall",
+      "A bath the Rabbit ran"
+     ],
+     "correctIndex": 0,
+     "evidence": "she was in the pool of tears which she had wept when she was nine feet high"
+    },
+    {
+     "prompt": "Why did the Mouse get so upset with Alice?",
+     "choices": [
+      "She splashed water in its face",
+      "She kept talking about cats and dogs",
+      "She laughed at the way it swam"
+     ],
+     "correctIndex": 1,
+     "evidence": "Our family always hated cats: nasty, low, vulgar things!"
+    },
+    {
+     "prompt": "Who else had fallen into the pool?",
+     "choices": [
+      "A cow and a donkey",
+      "A fox and a goose",
+      "A Duck, a Dodo and others"
+     ],
+     "correctIndex": 2,
+     "evidence": "there were a Duck and a Dodo, a Lory and an Eaglet"
+    }
+   ],
+   "theme": {
+    "prompt": "Alice keeps saying things that upset the Mouse, and then says sorry. What does this show about her?",
+    "choices": [
+     "She is trying to scare the Mouse away",
+     "She means well but talks before thinking",
+     "She doesn't care how the Mouse feels"
+    ],
+    "correctIndex": 1,
+    "evidence": [
+     "afraid that she had hurt the poor animal's feelings",
+     "I'm afraid I've offended it again!"
+    ]
+   },
+   "written": "Alice upsets the Mouse more than once, even though she's trying to be friendly. Has something like that ever happened to you? How did you make it right?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "How did the Mouse try to get everyone dry?",
+     "choices": [
+      "By telling a very dry history lesson",
+      "By lighting a fire on the bank",
+      "By fanning them all with a leaf"
+     ],
+     "correctIndex": 0,
+     "evidence": "This is the driest thing I know."
+    },
+    {
+     "prompt": "When the Caucus-race was over, who did the Dodo say had won?",
+     "choices": [
+      "The Mouse",
+      "Everybody",
+      "Alice"
+     ],
+     "correctIndex": 1,
+     "evidence": "Everybody has won, and all must have prizes."
+    },
+    {
+     "prompt": "What prize did Alice get?",
+     "choices": [
+      "A box of comfits",
+      "A golden key",
+      "Her own thimble"
+     ],
+     "correctIndex": 2,
+     "evidence": "We beg your acceptance of this elegant thimble"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "Why did the Mouse walk away before finishing its story?",
+     "choices": [
+      "It thought she was talking nonsense",
+      "It was called home for its supper",
+      "It saw a cat coming its way"
+     ],
+     "correctIndex": 0,
+     "evidence": "You insult me by talking such nonsense!"
+    },
+    {
+     "prompt": "Why did the birds suddenly hurry away?",
+     "choices": [
+      "It started to rain on them",
+      "Alice said Dinah eats birds",
+      "The Dodo sent them all home"
+     ],
+     "correctIndex": 1,
+     "evidence": "Why, she'll eat a little bird as soon as look at it!"
+    },
+    {
+     "prompt": "What lesson did the old Crab tell her daughter to learn?",
+     "choices": [
+      "Never to swim too far",
+      "Never to talk to strangers",
+      "Never to lose her temper"
+     ],
+     "correctIndex": 2,
+     "evidence": "Let this be a lesson to you never to lose your temper!"
+    }
+   ],
+   "theme": {
+    "prompt": "Left alone, Alice cries and wonders if she will ever see Dinah again. What does this show about how she feels?",
+    "choices": [
+     "She is lonely and misses home",
+     "She is glad to be on her own",
+     "She is cross with her cat Dinah"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "Oh, my dear Dinah! I wonder if I shall ever see you any more!",
+     "for she felt very lonely and low-spirited"
+    ]
+   },
+   "written": "Alice feels lonely when everyone goes away. What do you do when you feel lonely, and who helps you feel better?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "Who did the White Rabbit think Alice was?",
+     "choices": [
+      "His housemaid, Mary Ann",
+      "His little niece, Lucy",
+      "His cook, Martha Jane"
+     ],
+     "correctIndex": 0,
+     "evidence": "He took me for his housemaid"
+    },
+    {
+     "prompt": "What happened after Alice drank from the bottle in the Rabbit's house?",
+     "choices": [
+      "She shrank to the size of a mouse",
+      "She grew until she filled the room",
+      "She fell fast asleep on the floor"
+     ],
+     "correctIndex": 1,
+     "evidence": "she put one arm out of the window, and one foot up the chimney"
+    },
+    {
+     "prompt": "Why couldn't the Rabbit open the door to the room?",
+     "choices": [
+      "He had lost his door key",
+      "The door was painted shut",
+      "Alice's elbow was against it"
+     ],
+     "correctIndex": 2,
+     "evidence": "as the door opened inwards, and Alice's elbow was pressed hard against it"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What happened to Bill the Lizard when he came down the chimney?",
+     "choices": [
+      "Alice kicked him up and out",
+      "He got stuck halfway down",
+      "He found the Rabbit's gloves"
+     ],
+     "correctIndex": 0,
+     "evidence": [
+      "she gave one sharp kick",
+      "something comes at me like a Jack-in-the-box, and up I goes like a sky-rocket!"
+     ]
+    },
+    {
+     "prompt": "What happened to the pebbles thrown in at the window?",
+     "choices": [
+      "They broke the looking-glass",
+      "They turned into little cakes",
+      "They turned into little birds"
+     ],
+     "correctIndex": 1,
+     "evidence": "the pebbles were all turning into little cakes as they lay on the floor"
+    },
+    {
+     "prompt": "Once she was safe in the wood, what was the first thing Alice planned to do?",
+     "choices": [
+      "Go back and help Bill",
+      "Find the Rabbit's fan",
+      "Grow to her right size"
+     ],
+     "correctIndex": 2,
+     "evidence": "is to grow to my right size again"
+    }
+   ],
+   "theme": {
+    "prompt": "Alice sees the pebbles turn into cakes and works out that eating one must make her smaller. What has she learned about Wonderland?",
+    "choices": [
+     "Eating or drinking changes her size",
+     "All the food there is poison",
+     "She must never eat anything there"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "whenever I eat or drink anything",
+     "it's sure to make some change in my size"
+    ]
+   },
+   "written": "Alice plays with a puppy that is much bigger than she is. If you were tiny for a day, what would you like to do, and what would you be careful of?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What question did the Caterpillar keep asking Alice?",
+     "choices": [
+      "\"Who are you?\"",
+      "\"Where are you going?\"",
+      "\"What time is it?\""
+     ],
+     "correctIndex": 0,
+     "evidence": "said the Caterpillar contemptuously. \"Who are you?\""
+    },
+    {
+     "prompt": "Why did the Caterpillar get angry when Alice said three inches was a wretched height?",
+     "choices": [
+      "It wanted to be much taller",
+      "It was three inches high itself",
+      "It hated being interrupted"
+     ],
+     "correctIndex": 1,
+     "evidence": "it was exactly three inches high"
+    },
+    {
+     "prompt": "What did the Caterpillar tell Alice about the mushroom?",
+     "choices": [
+      "It is poisonous to eat",
+      "It is the Caterpillar's house",
+      "Each side changes your size"
+     ],
+     "correctIndex": 2,
+     "evidence": "One side will make you grow taller, and the other side will make you grow shorter."
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "When Alice's neck grew very long, who thought she was a serpent?",
+     "choices": [
+      "A Pigeon",
+      "The Caterpillar",
+      "The White Rabbit"
+     ],
+     "correctIndex": 0,
+     "evidence": "\"Serpent!\" screamed the Pigeon."
+    },
+    {
+     "prompt": "Why was the Pigeon always watching out for serpents?",
+     "choices": [
+      "Serpents had eaten its tree",
+      "It was hatching its eggs",
+      "It hunted them for its dinner"
+     ],
+     "correctIndex": 1,
+     "evidence": "As if it wasn't trouble enough hatching the eggs"
+    },
+    {
+     "prompt": "How did Alice get back to her usual height?",
+     "choices": [
+      "By drinking from a little bottle",
+      "By waiting for the magic to end",
+      "By nibbling bits of mushroom"
+     ],
+     "correctIndex": 2,
+     "evidence": "nibbling first at one and then at the other"
+    }
+   ],
+   "theme": {
+    "prompt": "The Caterpillar asks \"Who are you?\" and the Pigeon won't believe Alice is a little girl. Why is it hard for Alice to say who she is?",
+    "choices": [
+     "She keeps changing, so she isn't sure",
+     "She is hurrying to find the garden",
+     "She is trying to trick them both"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "being so many different sizes in a day is very confusing",
+     "said Alice, rather doubtfully, as she remembered the number of changes she had gone through that day"
+    ]
+   },
+   "written": "The Caterpillar asks Alice, \"Who are you?\" If someone asked you that, what would you tell them about yourself?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did the Fish-Footman bring for the Duchess?",
+     "choices": [
+      "An invitation from the Queen",
+      "A big pot of pepper soup",
+      "A present for the baby"
+     ],
+     "correctIndex": 0,
+     "evidence": "An invitation from the Queen to play croquet."
+    },
+    {
+     "prompt": "Why was everyone in the kitchen sneezing?",
+     "choices": [
+      "The kitchen was very dusty",
+      "There was too much pepper",
+      "They all had bad colds"
+     ],
+     "correctIndex": 1,
+     "evidence": "There's certainly too much pepper in that soup!"
+    },
+    {
+     "prompt": "Why did the Duchess hand the baby to Alice and leave?",
+     "choices": [
+      "She had to go and fetch more pepper",
+      "The cook told her to leave",
+      "She had to get ready for croquet"
+     ],
+     "correctIndex": 2,
+     "evidence": "I must go and get ready to play croquet with the Queen"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What happened to the baby Alice carried out of the house?",
+     "choices": [
+      "It turned into a pig",
+      "It fell fast asleep",
+      "It began to talk"
+     ],
+     "correctIndex": 0,
+     "evidence": "it was neither more nor less than a pig"
+    },
+    {
+     "prompt": "What did the Cheshire Cat say about the Hatter and the March Hare?",
+     "choices": [
+      "They were both very wise",
+      "They were both mad",
+      "They were both asleep"
+     ],
+     "correctIndex": 1,
+     "evidence": "Visit either you like: they're both mad."
+    },
+    {
+     "prompt": "The last time the Cat vanished, what was the last part of it to go?",
+     "choices": [
+      "Its tail",
+      "Its eyes",
+      "Its grin"
+     ],
+     "correctIndex": 2,
+     "evidence": "beginning with the end of the tail, and ending with the grin"
+    }
+   ],
+   "theme": {
+    "prompt": "Alice carries the baby out of the Duchess's house because she thinks it isn't safe in there. What does this show about Alice?",
+    "choices": [
+     "She cares about keeping others safe",
+     "She hoped the Duchess would reward her",
+     "She wanted to make the Duchess cross"
+    ],
+    "correctIndex": 0,
+    "evidence": "If I don't take this child away with me,\" thought Alice, \"they're sure to kill it in a day or two"
+   },
+   "written": "The Cheshire Cat can vanish and leave just its grin behind. If you could disappear and leave only your smile, when would you use that trick?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did the March Hare and the Hatter cry out when they saw Alice coming?",
+     "choices": [
+      "\"No room! No room!\"",
+      "\"Welcome to our party!\"",
+      "\"Off with her head!\""
+     ],
+     "correctIndex": 0,
+     "evidence": "\"No room! No room!\" they cried out when they saw Alice coming."
+    },
+    {
+     "prompt": "What had the March Hare put inside the Hatter's watch?",
+     "choices": [
+      "Tea",
+      "Butter",
+      "Jam"
+     ],
+     "correctIndex": 1,
+     "evidence": "I told you butter would not suit the works!"
+    },
+    {
+     "prompt": "Why is it always tea-time at the Hatter's party?",
+     "choices": [
+      "They love tea more than anything",
+      "The Dormouse broke all the clocks",
+      "Time won't do what the Hatter asks"
+     ],
+     "correctIndex": 2,
+     "evidence": "he won't do a thing I ask! It's always six o'clock now."
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "In the Dormouse's story, where did the three sisters live?",
+     "choices": [
+      "At the bottom of a well",
+      "Inside a big teapot",
+      "In a castle by the sea"
+     ],
+     "correctIndex": 0,
+     "evidence": "and they lived at the bottom of a well"
+    },
+    {
+     "prompt": "Why did Alice finally get up and leave the tea-party?",
+     "choices": [
+      "She had finished her tea",
+      "The Hatter was too rude",
+      "The Queen called her away"
+     ],
+     "correctIndex": 1,
+     "evidence": "This piece of rudeness was more than Alice could bear"
+    },
+    {
+     "prompt": "This time in the hall, how did Alice make herself small enough for the little door?",
+     "choices": [
+      "By drinking from a little bottle",
+      "By eating a little cake",
+      "By nibbling the mushroom she kept"
+     ],
+     "correctIndex": 2,
+     "evidence": "Then she set to work nibbling at the mushroom (she had kept a piece of it in her pocket) till she was about a foot high"
+    }
+   ],
+   "theme": {
+    "prompt": "Last time in the hall, Alice made herself small before getting the key, and then couldn't reach it. This time she unlocks the door first. What does that show about her?",
+    "choices": [
+     "She learns from her mistakes",
+     "She never plans anything ahead",
+     "She waits for others to help her"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "she found she had forgotten the little golden key",
+     "Now I'll manage better this time",
+     "began by taking the little golden key"
+    ]
+   },
+   "written": "Alice leaves the tea-party because the Hatter is rude to her. What do you do when someone is rude to you?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "Why were the gardeners painting the roses red?",
+     "choices": [
+      "They planted a white tree by mistake",
+      "The Queen likes roses of every color",
+      "The roses had faded in the sun"
+     ],
+     "correctIndex": 0,
+     "evidence": "this here ought to have been a red rose-tree, and we put a white one in by mistake"
+    },
+    {
+     "prompt": "How did Alice save the gardeners from the soldiers?",
+     "choices": [
+      "She finished painting the roses red",
+      "She hid them in a flower-pot",
+      "She ran off with them into the wood"
+     ],
+     "correctIndex": 1,
+     "evidence": "she put them into a large flower-pot that stood near"
+    },
+    {
+     "prompt": "In the Queen's croquet game, what were the balls and the mallets?",
+     "choices": [
+      "Apples and sticks",
+      "Wooden balls and mallets",
+      "Hedgehogs and flamingoes"
+     ],
+     "correctIndex": 2,
+     "evidence": "the balls were live hedgehogs, the mallets live flamingoes"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "Why was the croquet game so hard for Alice?",
+     "choices": [
+      "Her flamingo and hedgehog kept moving",
+      "It was raining hard all through it",
+      "It was too dark to see the arches"
+     ],
+     "correctIndex": 0,
+     "evidence": [
+      "it would twist itself round and look up in her face",
+      "the hedgehog had unrolled itself and was in the act of crawling away"
+     ]
+    },
+    {
+     "prompt": "Why did the executioner say he couldn't cut off the Cat's head?",
+     "choices": [
+      "The Cat had already run away",
+      "There was no body to cut it from",
+      "The King had told him not to"
+     ],
+     "correctIndex": 1,
+     "evidence": "you couldn't cut off a head unless there was a body to cut it off from"
+    },
+    {
+     "prompt": "Who did Alice say the Cheshire Cat belonged to?",
+     "choices": [
+      "The Queen",
+      "The Hatter",
+      "The Duchess"
+     ],
+     "correctIndex": 2,
+     "evidence": "It belongs to the Duchess: you'd better ask her about it."
+    }
+   ],
+   "theme": {
+    "prompt": "The Queen shouts \"Off with his head!\" about almost everything, great or small. What does this show about her?",
+    "choices": [
+     "She settles every problem the same way",
+     "She is patient and fair with everyone",
+     "She only gets angry about big things"
+    ],
+    "correctIndex": 0,
+    "evidence": "The Queen had only one way of settling all difficulties, great or small."
+   },
+   "written": "Alice thinks the Queen's croquet game isn't fair because nobody follows any rules. What's a game you like to play, and what rule keeps it fair?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "The Duchess is friendly now. What did Alice think had made her so cross in the kitchen?",
+     "choices": [
+      "All the pepper in the kitchen",
+      "The Cheshire Cat's grinning",
+      "Losing at the Queen's croquet"
+     ],
+     "correctIndex": 0,
+     "evidence": "perhaps it was only the pepper that had made her so savage when they met in the kitchen"
+    },
+    {
+     "prompt": "What did the Duchess keep finding in everything Alice said?",
+     "choices": [
+      "A riddle",
+      "A moral",
+      "A mistake"
+     ],
+     "correctIndex": 1,
+     "evidence": "Every thing's got a moral, if only you can find it."
+    },
+    {
+     "prompt": "What did the King quietly say to all the players the Queen had sentenced?",
+     "choices": [
+      "\"Off with your heads!\"",
+      "\"Go back to the game!\"",
+      "\"You are all pardoned.\""
+     ],
+     "correctIndex": 2,
+     "evidence": "You are all pardoned."
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did the Gryphon say about the Queen's executions?",
+     "choices": [
+      "Nobody is ever really executed",
+      "Someone is executed every day",
+      "Only the gardeners get executed"
+     ],
+     "correctIndex": 0,
+     "evidence": "they never executes nobody, you know"
+    },
+    {
+     "prompt": "Where did the Mock Turtle go to school?",
+     "choices": [
+      "In a tree",
+      "In the sea",
+      "In the palace"
+     ],
+     "correctIndex": 1,
+     "evidence": "we went to school in the sea"
+    },
+    {
+     "prompt": "How did Alice feel when the Mock Turtle and the Gryphon said her question was too simple?",
+     "choices": [
+      "Proud of herself",
+      "Sleepy and bored",
+      "Very embarrassed"
+     ],
+     "correctIndex": 2,
+     "evidence": "looked at poor Alice, who felt ready to sink into the earth"
+    }
+   ],
+   "theme": {
+    "prompt": "The Queen keeps ordering heads cut off, but the King pardons everyone and the Gryphon says nobody is ever executed. What does this tell you about the Queen's orders?",
+    "choices": [
+     "They're loud, but nothing comes of them",
+     "They're the most dangerous thing there",
+     "They are how she keeps everyone safe"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "You are all pardoned.",
+     "they never executes nobody, you know"
+    ]
+   },
+   "written": "The Mock Turtle is very sad, and the Gryphon says \"It's all his fancy.\" When a friend is sad, what can you do to help them feel better?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "How did the Mock Turtle and the Gryphon show Alice the Lobster Quadrille?",
+     "choices": [
+      "They danced round her, singing",
+      "They took her down to the sea",
+      "They drew it for her in the sand"
+     ],
+     "correctIndex": 0,
+     "evidence": "So they began solemnly dancing round and round Alice"
+    },
+    {
+     "prompt": "In the Lobster Quadrille, what do the dancers throw out to sea?",
+     "choices": [
+      "Their hats",
+      "The lobsters",
+      "Seaweed"
+     ],
+     "correctIndex": 1,
+     "evidence": "The lobsters!\" shouted the Gryphon, with a bound into the air"
+    },
+    {
+     "prompt": "What does the Mock Turtle say whiting always have in their mouths?",
+     "choices": [
+      "Little stones",
+      "Little shells",
+      "Their tails"
+     ],
+     "correctIndex": 2,
+     "evidence": "But they have their tails in their mouths"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did Alice tell the Mock Turtle and the Gryphon about?",
+     "choices": [
+      "Her adventures since the Rabbit",
+      "Her lessons at school at home",
+      "Her cat Dinah's clever tricks"
+     ],
+     "correctIndex": 0,
+     "evidence": "So Alice began telling them her adventures from the time when she first saw the White Rabbit"
+    },
+    {
+     "prompt": "When Alice tried to say a poem for them, why did it come out so strange?",
+     "choices": [
+      "She was trying hard to be funny",
+      "Her head was full of the dance",
+      "She was just about to fall asleep"
+     ],
+     "correctIndex": 1,
+     "evidence": "her head was so full of the Lobster Quadrille, that she hardly knew what she was saying"
+    },
+    {
+     "prompt": "What stopped the Mock Turtle's song?",
+     "choices": [
+      "The Queen came looking for them",
+      "Alice asked him to stop singing",
+      "A cry that the trial was starting"
+     ],
+     "correctIndex": 2,
+     "evidence": "a cry of \"The trial's beginning!\" was heard in the distance"
+    }
+   ],
+   "theme": {
+    "prompt": "Alice's poems came out wrong when she said them to herself, to the Caterpillar, and now to the Mock Turtle. What does that tell you about Wonderland?",
+    "choices": [
+     "Even things she knows well go wrong there",
+     "She is better at lessons there than at home",
+     "She makes up silly poems on purpose"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "the words did not come the same as they used to do",
+     "some of the words have got altered",
+     "the words came very queer indeed",
+     "wondering if anything would ever happen in a natural way again"
+    ]
+   },
+   "written": "Alice tells the Mock Turtle and the Gryphon all about her adventures. Which of Alice's adventures so far would you most like to tell a friend about, and why?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "Who was the judge at the trial?",
+     "choices": [
+      "The King",
+      "The Queen",
+      "The White Rabbit"
+     ],
+     "correctIndex": 0,
+     "evidence": "The judge, by the way, was the King"
+    },
+    {
+     "prompt": "Why were the jurors writing on their slates before the trial had even started?",
+     "choices": [
+      "To draw pictures of the tarts",
+      "So they wouldn't forget their names",
+      "To write down their verdict"
+     ],
+     "correctIndex": 1,
+     "evidence": "for fear they should forget them before the end of the trial"
+    },
+    {
+     "prompt": "What was the Knave of Hearts accused of?",
+     "choices": [
+      "Breaking the King's crown",
+      "Painting the Queen's roses",
+      "Stealing the Queen's tarts"
+     ],
+     "correctIndex": 2,
+     "evidence": "The Knave of Hearts, he stole those tarts"
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What did the Hatter bite by mistake because he was so nervous?",
+     "choices": [
+      "A piece of his teacup",
+      "The brim of his hat",
+      "The King's pencil"
+     ],
+     "correctIndex": 0,
+     "evidence": "he bit a large piece out of his teacup instead of the bread-and-butter"
+    },
+    {
+     "prompt": "What strange thing began to happen to Alice during the trial?",
+     "choices": [
+      "She began to shrink",
+      "She began to grow",
+      "She fell asleep"
+     ],
+     "correctIndex": 1,
+     "evidence": "she was beginning to grow larger again"
+    },
+    {
+     "prompt": "Who was called as the next witness at the end of the chapter?",
+     "choices": [
+      "The Gryphon",
+      "The Mock Turtle",
+      "Alice"
+     ],
+     "correctIndex": 2,
+     "evidence": "at the top of his shrill little voice, the name \"Alice!\""
+    }
+   ],
+   "theme": {
+    "prompt": "When the Queen asks for the list of singers from the last concert, the Hatter trembles so hard his shoes fall off. Why is he so frightened?",
+    "choices": [
+     "He remembers she once ordered his head off",
+     "He knows that he stole the Queen's tarts",
+     "He forgot to bring the Queen her tea"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "He's murdering the time! Off with his head!",
+     "Bring me the list of the singers in the last concert!"
+    ]
+   },
+   "written": "The Hatter is so nervous in court that he bites his teacup by mistake. Tell about a time you felt nervous. What helped you feel braver?"
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What happened when Alice jumped up to be a witness?",
+     "choices": [
+      "She tipped over the jury-box",
+      "She knocked over the tarts",
+      "She bumped into the King"
+     ],
+     "correctIndex": 0,
+     "evidence": "she tipped over the jury-box with the edge of her skirt, upsetting all the jurymen"
+    },
+    {
+     "prompt": "What did \"Rule Forty-two\" say?",
+     "choices": [
+      "Nobody may talk in court",
+      "Anyone a mile high must leave",
+      "The tarts must be shared"
+     ],
+     "correctIndex": 1,
+     "evidence": "All persons more than a mile high to leave the court."
+    },
+    {
+     "prompt": "What did Alice think the verses the White Rabbit read out meant?",
+     "choices": [
+      "That the Knave was guilty",
+      "That the Queen lost her tarts",
+      "That they meant nothing at all"
+     ],
+     "correctIndex": 2,
+     "evidence": "I don't believe there's an atom of meaning in it."
+    }
+   ]
+  },
+  {
+   "questions": [
+    {
+     "prompt": "What happened when the Queen shouted \"Off with her head!\" at Alice?",
+     "choices": [
+      "Nobody moved at all",
+      "The soldiers grabbed Alice",
+      "Alice ran out of court"
+     ],
+     "correctIndex": 0,
+     "evidence": "the Queen shouted at the top of her voice. Nobody moved."
+    },
+    {
+     "prompt": "Where was Alice when she woke up?",
+     "choices": [
+      "In her own bed at home",
+      "On the bank by her sister",
+      "In the lovely garden"
+     ],
+     "correctIndex": 1,
+     "evidence": "found herself lying on the bank, with her head in the lap of her sister"
+    },
+    {
+     "prompt": "What did Alice's sister tell her to do after hearing about the dream?",
+     "choices": [
+      "Write the dream down",
+      "Go back to sleep",
+      "Run in to her tea"
+     ],
+     "correctIndex": 2,
+     "evidence": "but now run in to your tea; it's getting late"
+    }
+   ],
+   "theme": {
+    "prompt": "Near the start, Alice was so frightened of the Rabbit that she ran off to do what he said. At the end she tells the Queen, \"You're nothing but a pack of cards!\" How has Alice changed?",
+    "choices": [
+     "She is braver about standing up for herself",
+     "She is more frightened of everyone she meets",
+     "She now does whatever the Queen tells her"
+    ],
+    "correctIndex": 0,
+    "evidence": [
+     "And Alice was so much frightened that she ran off at once",
+     "You're nothing but a pack of cards!"
+    ]
+   },
+   "written": "Alice's adventures were all a dream. If you had a dream as strange as Alice's, which Wonderland creature would you want to meet in it, and what would you ask them?"
+  }
+ ]
+}

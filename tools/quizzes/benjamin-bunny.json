@@ -1,0 +1,12 @@
+{"segments": [
+  {"questions": [
+    {"prompt": "Where were Peter's coat and shoes?", "choices": ["In the rabbit hole", "On the scarecrow in Mr. McGregor's garden", "At the bottom of a pond"], "correctIndex": 1, "evidence": "Peter's coat and shoes were plainly to be seen upon the scarecrow"},
+    {"prompt": "How did Benjamin say to get into the garden?", "choices": ["Climb down a pear-tree", "Squeeze under the gate", "Dig a hole under the wall"], "correctIndex": 0, "evidence": "the proper way to get in is to climb down a pear-tree"},
+    {"prompt": "What did Benjamin want to put in the handkerchief for his Aunt?", "choices": ["Carrots", "Flowers", "Onions"], "correctIndex": 2, "evidence": "he suggested that they should fill the pocket-handkerchief with onions, as a little present for his Aunt"}]},
+  {"questions": [
+    {"prompt": "Where did Benjamin hide himself and Peter?", "choices": ["Up the pear-tree", "Under a large basket", "Inside the greenhouse"], "correctIndex": 1, "evidence": "he hid himself and Peter and the onions underneath a large basket"},
+    {"prompt": "Who chased the cat away and locked her in the greenhouse?", "choices": ["Old Mr. Bunny, Benjamin's father", "Mr. McGregor", "Peter's mother"], "correctIndex": 0, "evidence": "When old Mr. Bunny had driven the cat into the greenhouse, he locked the door."},
+    {"prompt": "Why was Peter's mother so glad when he got home?", "choices": ["He brought her some lettuces", "He had found his shoes and coat", "He had eaten all his supper"], "correctIndex": 1, "evidence": "she was so glad to see that he had found his shoes and coat"}],
+   "theme": {"prompt": "Benjamin was not scared in the garden. Peter kept hearing noises and wanted to go home. Who was right to worry?", "choices": ["Benjamin, because nothing bad happened", "Peter, because a cat trapped them under a basket", "Nobody, because the garden was empty all day"], "correctIndex": 1, "evidence": ["Peter did not seem to be enjoying himself; he kept hearing noises", "Benjamin, on the contrary, was perfectly at home", "Anyway, she sat down upon the top of the basket.", "She sat there for five hours."]},
+   "written": "Old Mr. Bunny came looking for Benjamin when he didn't come home. Who comes to help you when you feel stuck or scared?"}
+]}

@@ -6,6 +6,10 @@
     python tools/prep.py text ID                # dump chapter/segment text to tools/work/ID/
     python tools/prep.py review ID              # readable segment quizzes in tools/work/ID/review.md
     python tools/prep.py covers [ID ...]        # find cover candidates and open a page to choose them
+    python tools/prep.py shelf                  # open a page to pick new books from tools/work/shelf/candidates.json
+    python tools/prep.py add [ID ...]           # add picked books to sources.json
+    python tools/prep.py set ID '{"key": ...}'  # change a book's settings in sources.json (null removes)
+    python tools/prep.py status                 # where each book stands
 
 --draft allows missing quizzes so text can be extracted before quizzes exist; quizzes
 that are present are still checked. Drafts are never valid for publishing: catalog.json
@@ -13,7 +17,10 @@ is only written on a full build.
 """
 import argparse
 import base64
+import contextlib
 import csv
+import datetime
+import fcntl
 import hashlib
 import http.server
 import io
@@ -21,6 +28,7 @@ import json
 import re
 import shutil
 import sys
+import threading
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -145,14 +153,17 @@ def clean_text(text, replacements):
 def split_long(paragraph, page_words):
     if len(paragraph.split()) <= page_words * 1.3:
         return [paragraph]
-    sentences = re.split(r"(?<=[.!?”’\"])\s+(?=[A-Z“‘\"])", paragraph)
+    # Verse (kept line breaks) splits between lines; prose between sentences.
+    joiner = "\n" if "\n" in paragraph else " "
+    pieces = paragraph.split("\n") if joiner == "\n" else \
+        re.split(r"(?<=[.!?”’\"])\s+(?=[A-Z“‘\"])", paragraph)
     parts, current = [], []
-    for s in sentences:
+    for s in pieces:
         if current and len(" ".join(current + [s]).split()) > page_words:
-            parts.append(" ".join(current))
+            parts.append(joiner.join(current))
             current = []
         current.append(s)
-    parts.append(" ".join(current))
+    parts.append(joiner.join(current))
     return parts
 
 
@@ -160,10 +171,11 @@ def to_parts(paragraphs, page_words):
     return [part for para in paragraphs for part in split_long(para, page_words)]
 
 
-def paginate(parts, page_words):
+def paginate(parts, page_words, first_page_words=None):
     pages, current, count = [], [], 0
     for p in parts:
-        if current and count + len(p.split()) > page_words:
+        limit = first_page_words if first_page_words and not pages else page_words
+        if current and count + len(p.split()) > limit:
             pages.append("\n\n".join(current))
             current, count = [], 0
         current.append(p)
@@ -251,7 +263,8 @@ def gutenberg_soup(ebook):
     base = f"https://www.gutenberg.org/cache/epub/{ebook}/"
     html = fetch(f"{base}pg{ebook}-images.html").decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
-    for x in soup.select("#pg-header, #pg-footer, section.pg-boilerplate"):
+    # Page numbers of the printed edition ("[Pg 5]"), which can sit mid-word, go too.
+    for x in soup.select("#pg-header, #pg-footer, section.pg-boilerplate, span.pagenum"):
         x.decompose()
     return soup, base
 
@@ -270,7 +283,11 @@ def build_gutenberg(src, out_dir):
         save_image(fetch(url), out_dir / "cover.jpg", src.get("coverCrop"))
         cover = "cover.jpg"
 
-    elements = soup.body.find_all(["h2", "p", "img"])
+    # Editions mark chapters differently; "headings" and "names" are CSS selectors for a
+    # chapter's heading ("CHAPTER IV") and for the chapter name that follows it, and
+    # "paragraphs" for text blocks that aren't <p>.
+    headings, names = src.get("headings", "h2"), src.get("names", "h3")
+    elements = soup.body.select(", ".join([headings, names, src.get("paragraphs", "p"), "img"]))
     start = src.get("startAt")
     if start:
         idx = next((i for i, el in enumerate(elements)
@@ -283,7 +300,9 @@ def build_gutenberg(src, out_dir):
         chapters = [{"title": None, "pages": picture_pages(elements, base, out_dir, page_words,
                                                            replacements, skip_texts, skip_images)}]
     else:
-        chapters = chapter_pages(elements, page_words, replacements, skip_texts)
+        chapters = chapter_pages(elements, base, out_dir, src,
+                                 {id(el) for el in soup.body.select(headings)},
+                                 {id(el) for el in soup.body.select(names)})
 
     return {
         "title": src["title"],
@@ -297,6 +316,14 @@ def build_gutenberg(src, out_dir):
         "chapters": chapters,
         "year": src["year"],
     }
+
+
+def picture_source(img):
+    """The picture's file: the full-size one when the page shows a thumbnail linked to it."""
+    link = img.parent.get("href") if img.parent.name == "a" else None
+    if link and not link.startswith(("http:", "https:", "#")) and link.lower().endswith((".jpg", ".jpeg", ".png", ".gif")):
+        return link
+    return img.get("src")
 
 
 def picture_pages(elements, base, out_dir, page_words, replacements, skip_texts, skip_images):
@@ -313,8 +340,8 @@ def picture_pages(elements, base, out_dir, page_words, replacements, skip_texts,
 
     for el in elements:
         if el.name == "img":
-            src = el.get("src")
-            if src in skip_images:
+            src = picture_source(el)
+            if el.get("src") in skip_images or src in skip_images:
                 continue
             flush()
             n_img += 1
@@ -331,26 +358,104 @@ def picture_pages(elements, base, out_dir, page_words, replacements, skip_texts,
 CHAPTER_RE = re.compile(r"^chapter\s+([IVXLC]+)\b\.?\s*(.*)$", re.I)
 
 
-def chapter_pages(elements, page_words, replacements, skip_texts):
-    chapters, current = [], None
+SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "from", "in", "into", "of", "on", "or",
+               "the", "to", "with"}
+# Pictures narrower than this in a chapter book are decorations: drop capitals, emblems, rules.
+MIN_PICTURE_WIDTH = 250
+
+
+def chapter_name(text):
+    """"BEAUTIFUL AS THE DAY" -> "Beautiful as the Day"; names already in mixed case are kept."""
+    text = " ".join(text.split()).strip(" .")
+    if text != text.upper():
+        return text
+    words = re.split(r"(\s+|—)", text.lower())
+    out, first = [], True
+    for w in words:
+        if w.strip() and w != "—":
+            # Capitalise the first letter, past any opening quote ('"I Am Colin"').
+            if first or w not in SMALL_WORDS:
+                w = re.sub(r"[a-z]", lambda m: m.group().upper(), w, count=1)
+            first = False
+        out.append(w)
+    return "".join(out)
+
+
+LINE_BREAK = "\u2028"
+
+
+def element_text(el, line_breaks=False):
+    """An element's text with whitespace collapsed. With line_breaks, each <br> becomes a newline,
+    for verse; blank lines are dropped, since a blank line separates paragraphs on a page."""
+    if not line_breaks:
+        return " ".join(el.get_text().split())
+    for br in el.find_all("br"):
+        br.replace_with(LINE_BREAK)  # not "\n": the source HTML's own line wrapping isn't a break
+    for block in el.find_all(["div", "p"]):  # stanzas
+        block.append(LINE_BREAK)
+    lines = (" ".join(line.split()) for line in el.get_text().split(LINE_BREAK))
+    return "\n".join(line for line in lines if line)
+
+
+def chapter_pages(elements, base, out_dir, src, heading_ids, name_ids):
+    """A chapter starts at a heading ("CHAPTER IV"), optionally followed by a name element.
+    Pictures inside a chapter start a page of their own (see lay_out). "chapterTitles" in the
+    source renames chapters by number, where the edition's own name is wrong or cut short."""
+    page_words, replacements = src["pageWords"], src.get("replace", {})
+    skip_texts, skip_images = set(src.get("skipParagraphs", [])), set(src.get("skipImages", []))
+    titles, line_breaks = src.get("chapterTitles", {}), src.get("lineBreaks", False)
+    chapters, current, n_img, expect_name = [], None, 0, False
     for el in elements:
-        if el.name == "h2":
+        if id(el) in heading_ids:
             m = CHAPTER_RE.match(" ".join(el.get_text().split()))
             if m:
                 name = m.group(2).strip().rstrip(".")
-                current = {"title": f"Chapter {roman_to_int(m.group(1))}" + (f": {name}" if name else ""),
-                           "paras": []}
+                current = {"number": roman_to_int(m.group(1)), "name": chapter_name(name) if name else None,
+                           "paras": [], "images": {}}
                 chapters.append(current)
+                expect_name = True
+                continue
             elif current is not None and chapters:
-                current = None  # a non-chapter h2 after the chapters (e.g. an appendix) ends the text
-        elif el.name == "p" and current is not None:
-            t = clean_text(" ".join(el.get_text().split()), replacements)
+                current = None  # a non-chapter heading after the chapters (e.g. an appendix) ends the text
+        elif id(el) in name_ids:
+            text = " ".join(el.get_text().split())
+            if text and expect_name and current is not None and not current["paras"]:
+                current["name"] = chapter_name(text)
+                expect_name = False
+            continue
+        elif el.name == "img" and current is not None:
+            src = picture_source(el)
+            if not src or el.get("src") in skip_images or src in skip_images:
+                continue
+            data = fetch(base + src)
+            if Image.open(io.BytesIO(data)).width < MIN_PICTURE_WIDTH:
+                continue
+            n_img += 1
+            name = f"p{n_img:02d}.jpg"
+            save_image(data, out_dir / name)
+            # Before the next paragraph; a picture at a chapter's end goes on its last page.
+            current["images"].setdefault(len(current["paras"]), name)
+        elif current is not None and el.name != "img":
+            t = clean_text(element_text(el, line_breaks), replacements)
             if t and t not in skip_texts:
                 current["paras"].append(t)
+                expect_name = False
     if not chapters:
         raise PrepError("no chapter headings found")
-    # Paginated later, once segment starts are known, so each segment starts on a fresh page.
-    return [{"title": c["title"], "parts": to_parts(c["paras"], page_words)} for c in chapters]
+    out = []
+    for c in chapters:
+        # Paginated later, once segment starts are known, so each segment starts on a fresh page.
+        parts, images = [], {}
+        for pi, para in enumerate(c["paras"]):
+            if pi in c["images"]:
+                images[len(parts)] = c["images"][pi]
+            parts += split_long(para, page_words)
+        if len(c["paras"]) in c["images"] and parts:
+            images.setdefault(len(parts) - 1, c["images"][len(c["paras"])])
+        name = titles.get(str(c["number"]), c["name"])
+        out.append({"title": f"Chapter {c['number']}" + (f": {name}" if name else ""),
+                    "parts": parts, "images": images})
+    return out
 
 
 # --- Segments --------------------------------------------------------------------
@@ -407,13 +512,16 @@ def lay_out(chapters, starts, page_words):
         if "parts" not in c:
             page_starts += [(ci, ui) for ui in cuts]
             continue
-        bounds = sorted({0, *cuts, len(c["parts"])})
+        images = c.pop("images", {})
+        bounds = sorted({0, *cuts, *images, len(c["parts"])})
         pages = []
         for a, b in zip(bounds, bounds[1:]):
             if a in cuts:
                 page_starts.append((ci, len(pages)))
-            pages += paginate(c["parts"][a:b], page_words)
-        c["pages"] = [{"text": t, "image": None} for t in pages]
+            # A picture starts a page and takes about half of it.
+            chunk = paginate(c["parts"][a:b], page_words, page_words // 2 if a in images else None)
+            pages += [{"text": t, "image": images.get(a) if j == 0 else None} for j, t in enumerate(chunk)]
+        c["pages"] = pages
         del c["parts"]
     return page_starts
 
@@ -552,6 +660,7 @@ def pick_cut(chapter, candidates, before, goal, target):
             c += MID_TALK_PUSH * target
         return c
 
+    candidates = [i for i in candidates if chapter[i].strip()] or list(candidates)  # not a picture-only page
     allowed = [i for i in candidates
                if not DIALOGUE_OPENING.match(chapter[i]) and not chapter[i - 1].rstrip().endswith(":")]
     return min(allowed or candidates, key=cost)
@@ -605,12 +714,15 @@ def write_segments(path, units, starts):
 # --- Assembly --------------------------------------------------------------------
 
 def load_quizzes(book_id, chapter_count, draft):
+    """Chapter quizzes. The app quizzes segments instead once a book has them, so a book with a
+    segments file needn't have these (the app only falls back to them for older downloads)."""
     path = TOOLS / "quizzes" / f"{book_id}.json"
+    draft = draft or (SEGMENTS / f"{book_id}.json").exists()
     if not path.exists():
         if draft:
             return [[] for _ in range(chapter_count)]
         raise PrepError(f"missing quizzes: {path.relative_to(ROOT)}")
-    quizzes = json.loads(path.read_text())["chapters"]
+    quizzes = json.loads(path.read_text()).get("chapters", [])
     if len(quizzes) != chapter_count and not draft:
         raise PrepError(f"{path.name} has {len(quizzes)} chapter quizzes, book has {chapter_count} chapters")
     for ci, quiz in enumerate(quizzes):
@@ -783,9 +895,10 @@ def cmd_build(args):
             raise PrepError(f"{book_id} has not been built")
         book_json = json.loads(path.read_text())
         load_quizzes(book_id, len(book_json["chapters"]), draft=False)
-        if any(not c["quiz"] for c in book_json["chapters"]):
-            raise PrepError(f"{book_id} was built as a draft - rebuild it without --draft")
-        if (SEGMENTS / f"{book_id}.json").exists():
+        if not (SEGMENTS / f"{book_id}.json").exists():
+            if any(not c["quiz"] for c in book_json["chapters"]):
+                raise PrepError(f"{book_id} was built as a draft - rebuild it without --draft")
+        else:
             segs = book_json.get("segments") or []
             texts = [segment_text(book_json["chapters"], pages_in(book_json["chapters"], s)) for s in segs]
             if not segs or load_segment_quizzes(book_id, texts, draft=False) != [s["quiz"] for s in segs]:
@@ -1037,27 +1150,43 @@ def cover_snapshot(book_id):
     return "data:image/jpeg;base64," + base64.b64encode(path.read_bytes()).decode() if path.exists() else None
 
 
+@contextlib.contextmanager
+def sources_locked():
+    """Holds sources.json for one read-change-write, so agents prepping books side by side can't
+    overwrite each other's edits."""
+    with open(TOOLS / ".sources.lock", "w") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        yield TOOLS / "sources.json"
+
+
+def set_source_fields(book_id, fields, keys):
+    """Sets `keys` of this book's entry in sources.json to `fields`, touching only those lines so the
+    file keeps its hand formatting: a key already there changes in place, a new one goes at the end,
+    and one in `keys` but not in `fields` goes. Putting back a book's original fields restores the
+    file exactly."""
+    with sources_locked() as path:
+        lines = path.read_text().split("\n")
+        start = next((i for i, line in enumerate(lines) if f'"id": "{book_id}"' in line), None)
+        if start is None:
+            raise PrepError(f"no source with id {book_id!r}")
+        end = next(i for i in range(start, len(lines)) if lines[i].rstrip(",") == " }")
+        entry = lambda k, v: f'  "{k}": {json.dumps(v, ensure_ascii=False)}'
+        todo, body = dict(fields), []
+        for line in lines[start:end]:
+            key = re.match(r'\s*"([A-Za-z]+)":', line)
+            if not key or key.group(1) not in keys:
+                body.append(line)
+            elif key.group(1) in todo:
+                body.append(entry(key.group(1), todo.pop(key.group(1))))
+        body += [entry(k, v) for k, v in todo.items()]
+        body = [line.rstrip(",") + "," for line in body[:-1]] + [body[-1].rstrip(",")]
+        text = "\n".join(lines[:start] + body + lines[end:])
+        json.loads(text)
+        path.write_text(text)
+
+
 def set_cover(book_id, fields):
-    """Sets this book's cover keys in sources.json, touching only those lines so the file keeps its
-    hand formatting: a key already there changes in place, a new one goes at the end, a dropped one
-    goes. Putting back a book's original fields restores the file exactly."""
-    path = TOOLS / "sources.json"
-    lines = path.read_text().split("\n")
-    start = next(i for i, line in enumerate(lines) if f'"id": "{book_id}"' in line)
-    end = next(i for i in range(start, len(lines)) if lines[i].rstrip(",") == " }")
-    entry = lambda k, v: f'  "{k}": {json.dumps(v, ensure_ascii=False)}'
-    todo, body = dict(fields), []
-    for line in lines[start:end]:
-        key = re.match(r'\s*"(cover(?:Crop|Credit)?)":', line)
-        if not key:
-            body.append(line)
-        elif key.group(1) in todo:
-            body.append(entry(key.group(1), todo.pop(key.group(1))))
-    body += [entry(k, v) for k, v in todo.items()]
-    body = [line.rstrip(",") + "," for line in body[:-1]] + [body[-1].rstrip(",")]
-    text = "\n".join(lines[:start] + body + lines[end:])
-    json.loads(text)
-    path.write_text(text)
+    set_source_fields(book_id, fields, ("cover", "coverCrop", "coverCredit"))
 
 
 def picker_state(covers):
@@ -1091,17 +1220,35 @@ def apply_pick(covers, pick):
             if len(crop) != 4 or not (0 <= crop[0] < crop[2] <= 1 and 0 <= crop[1] < crop[3] <= 1):
                 raise PrepError(f"bad crop {crop}")
             fields["coverCrop"] = crop
-    sources_path = TOOLS / "sources.json"
-    before = sources_path.read_text()
+    before = cover_fields(source(book_id))
     set_cover(book_id, fields)
     try:
-        cmd_build(argparse.Namespace(only=book_id, draft=False))
+        rebuild_with_cover(book_id)
     except BaseException:
-        sources_path.write_text(before)  # the build swaps books in only on success, so this undoes it all
+        # The build swaps a book in only on success, so putting its cover lines back undoes it
+        # all. Only this book's cover lines: agents may be editing other books' lines meanwhile.
+        set_cover(book_id, before)
         raise
 
 
-def serve_picker(covers, port):
+def rebuild_with_cover(book_id):
+    """Rebuilds one book after its cover changes. A published book is rebuilt in full and its
+    catalog.json entry refreshed; a book still being written gets a draft build, and the rest of
+    the catalog is left alone (a full build would refuse to run until every book is finished)."""
+    path = ROOT / "catalog.json"
+    catalog = json.loads(path.read_text())
+    index = next((i for i, b in enumerate(catalog["books"]) if b["id"] == book_id), None)
+    src = source(book_id)
+    book_json = build_book(src, draft=index is None)
+    if index is not None:
+        catalog["books"][index] = catalog_entry(book_json, src.get("starter", False))
+        path.write_text(json.dumps(catalog, ensure_ascii=False, indent=1))
+
+
+def serve_page(page, port, name, get, post):
+    """Serves tools/<page> on 127.0.0.1 with a small JSON API for it. get(path) returns
+    (body bytes, content type) or None for a 404; post(path, data) returns (reply data, stop),
+    and stop shuts the server down once the reply is sent. Ctrl-C stops it too."""
     origin = f"http://127.0.0.1:{port}"
 
     class Handler(http.server.BaseHTTPRequestHandler):
@@ -1118,38 +1265,54 @@ def serve_picker(covers, port):
 
         def do_GET(self):
             path = urllib.parse.urlparse(self.path).path
-            current = re.fullmatch(r"/current/([a-z0-9-]+)\.jpg", path)
-            if path == "/":
-                self.reply(200, (TOOLS / "cover_picker.html").read_bytes(), "text/html; charset=utf-8")
-            elif path == "/api/books":
-                self.reply_json(200, picker_state(covers))
-            elif current and current.group(1) in covers and (BOOKS / current.group(1) / "cover.jpg").exists():
-                self.reply(200, (BOOKS / current.group(1) / "cover.jpg").read_bytes(), "image/jpeg")
+            found = ((TOOLS / page).read_bytes(), "text/html; charset=utf-8") if path == "/" else get(path)
+            if found:
+                self.reply(200, *found)
             else:
                 self.reply(404, b"not found", "text/plain")
 
         def do_POST(self):
             # JSON only, from this page only: another site open in the browser can't make the
             # browser send this without being refused by the missing CORS headers.
-            if (self.path != "/api/pick" or self.headers.get("Content-Type") != "application/json"
+            if (not self.path.startswith("/api/") or self.headers.get("Content-Type") != "application/json"
                     or self.headers.get("Origin") not in (None, origin)):
                 return self.reply(403, b"refused", "text/plain")
             try:
-                apply_pick(covers, json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+                data, stop = post(self.path, json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
             except Exception as e:
                 return self.reply_json(400, {"error": str(e) or type(e).__name__})
-            self.reply_json(200, picker_state(covers))
+            self.reply_json(200, data)
+            if stop:
+                threading.Thread(target=server.shutdown).start()
 
         def log_message(self, *args):
             pass
 
     server = http.server.HTTPServer(("127.0.0.1", port), Handler)
-    print(f"cover picker at {origin}/ - Ctrl-C to stop")
+    print(f"{name} at {origin}/ - Ctrl-C to stop")
     webbrowser.open(origin + "/")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         print()
+
+
+def serve_picker(covers, port):
+    def get(path):
+        current = re.fullmatch(r"/current/([a-z0-9-]+)\.jpg", path)
+        if path == "/api/books":
+            return json.dumps(picker_state(covers), ensure_ascii=False).encode(), "application/json"
+        if current and current.group(1) in covers and (BOOKS / current.group(1) / "cover.jpg").exists():
+            return (BOOKS / current.group(1) / "cover.jpg").read_bytes(), "image/jpeg"
+        return None
+
+    def post(path, pick):
+        if path != "/api/pick":
+            raise PrepError(f"unknown {path}")
+        apply_pick(covers, pick)
+        return picker_state(covers), False
+
+    serve_page("cover_picker.html", port, "cover picker", get, post)
 
 
 def cmd_covers(args):
@@ -1171,6 +1334,253 @@ def cmd_covers(args):
     serve_picker(covers, args.port)
 
 
+# --- Choosing new books (BL-35) ---------------------------------------------------
+
+SHELF = WORK / "shelf"
+OPEN_LIBRARY_SEARCH = "https://openlibrary.org/search.json"
+PUBLIC_DOMAIN_AFTER = 70  # years after the last creator's death
+CANDIDATE_KEYS = {"ebook", "id", "title", "authors", "year", "kind", "genre", "minAge", "maxAge",
+                  "synopsis", "themes"}
+
+
+def pg_rows():
+    """Project Gutenberg's catalog, by ebook number. Cached; delete tools/.cache/ to refresh it."""
+    return {row["Text#"]: row for row in csv.DictReader(io.StringIO(fetch(PG_CATALOG).decode("utf-8")))}
+
+
+def creators(authors_field):
+    """"Carroll, Lewis, 1832-1898; Tenniel, John, 1820-1914 [Illustrator]" ->
+    [{"name": "Lewis Carroll", "role": "Author", "died": 1898}, ...]; died is None when not given."""
+    out = []
+    for part in authors_field.split(";"):
+        part = " ".join(part.split())
+        if not part:
+            continue
+        role = re.search(r"\[(.*?)\]", part)
+        base = re.sub(r"\s*\[.*?\]", "", part)
+        died = re.search(r"-\s*(\d{3,4})\??\s*$", base)
+        name = re.sub(r"\s*\(.*?\)|,\s*[\d?]*\s*(BCE?)?\s*-\s*[\d?]*\s*(BCE?)?\s*$", "", base)
+        last, _, first = name.partition(", ")
+        out.append({"name": f"{first} {last}".strip(), "role": role.group(1) if role else "Author",
+                    "died": int(died.group(1)) if died else None})
+    return out
+
+
+def licence_problems(people):
+    """Why this edition might not be public domain everywhere (see README, Licence rules)."""
+    year = datetime.date.today().year
+    return [f"{p['name']} ({p['role'].lower()}): " +
+            ("no death year in Gutenberg's catalog - check" if p["died"] is None
+             else f"died {p['died']}, under {PUBLIC_DOMAIN_AFTER} years ago")
+            for p in people if p["died"] is None or p["died"] + PUBLIC_DOMAIN_AFTER >= year]
+
+
+def open_library(title, author):
+    """Open Library's rating for the work (the edition with the most ratings) and a cover."""
+    params = {"title": title, "author": author.split()[-1], "limit": 20,
+              "fields": "key,title,ratings_average,ratings_count,cover_i"}
+    try:
+        docs = json.loads(fetch(f"{OPEN_LIBRARY_SEARCH}?{urllib.parse.urlencode(params)}"))["docs"]
+    except (urllib.error.URLError, TimeoutError, ValueError, KeyError):
+        return {}
+    docs = [d for d in docs if main_title(d["title"]) == main_title(title)] or docs
+    if not docs:
+        return {}
+    best = max(docs, key=lambda d: d.get("ratings_count") or 0)
+    cover = best.get("cover_i") or next((d["cover_i"] for d in docs if d.get("cover_i")), None)
+    return {"rating": best.get("ratings_average"), "ratings": best.get("ratings_count") or 0,
+            "link": f"https://openlibrary.org{best['key']}",
+            "cover": f"https://covers.openlibrary.org/b/id/{cover}-L.jpg" if cover else None}
+
+
+def check_candidate(c, known):
+    missing = CANDIDATE_KEYS - c.keys()
+    if missing:
+        raise PrepError(f"candidate {c.get('id') or c.get('title')!r} is missing {sorted(missing)}")
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", c["id"]):
+        raise PrepError(f"candidate id {c['id']!r}: use lowercase words joined by hyphens")
+    if c["id"] in known:
+        raise PrepError(f"candidate id {c['id']!r} is already used")
+    if c["genre"] not in GENRES:
+        raise PrepError(f"{c['id']}: genre {c['genre']!r} must be one of {GENRES}")
+    if c["kind"] not in ("picture", "chapters"):
+        raise PrepError(f"{c['id']}: kind must be \"picture\" or \"chapters\"")
+    known.add(c["id"])
+
+
+def shelf_card(c, row):
+    """What the shelf page shows for a candidate: the session's synopsis and themes, plus facts
+    looked up here - Gutenberg's own record, the edition's length, pictures and cover, and Open
+    Library's rating."""
+    warnings = []
+    if row is None:
+        warnings.append(f"Gutenberg has no ebook #{c['ebook']}")
+        people, words, pictures, pg_cover = [], None, 0, None
+    else:
+        if main_title(row["Title"]) != main_title(c["title"]):
+            warnings.append(f"Gutenberg #{c['ebook']} is titled {' '.join(row['Title'].split())!r}")
+        if row["Language"] != "en":
+            warnings.append(f"Gutenberg #{c['ebook']} is in {row['Language']!r}, not English")
+        people = creators(row["Authors"])
+        warnings += licence_problems(people)
+        soup, base = gutenberg_soup(c["ebook"])
+        words = len(soup.body.get_text().split())
+        imgs = list(dict.fromkeys(im["src"] for im in soup.find_all("img") if im.get("src")))
+        pg_cover = next((base + src for src in imgs if "cover" in src.lower()), None)
+        pictures = len([src for src in imgs if "cover" not in src.lower()])
+    ol = open_library(c["title"], c["authors"][0])
+    hours = words / words_per_minute(c["minAge"]) / 60 if words else None
+    return {**{k: c.get(k) for k in ("id", "ebook", "title", "authors", "illustrators", "year", "kind",
+                                      "genre", "classic", "minAge", "maxAge", "synopsis", "themes", "note")},
+            "words": words, "hours": round(hours, 1) if hours else None, "pictures": pictures,
+            "creators": people, "warnings": warnings,
+            "rating": ol.get("rating"), "ratings": ol.get("ratings", 0), "ratingLink": ol.get("link"),
+            # The edition's own scanned cover is closest to the original; Open Library's is often
+            # some later edition (a translation, an audiobook).
+            "coverUrl": pg_cover or ol.get("cover") or
+                        f"https://www.gutenberg.org/cache/epub/{c['ebook']}/pg{c['ebook']}.cover.medium.jpg",
+            "gutenberg": f"https://www.gutenberg.org/ebooks/{c['ebook']}"}
+
+
+def cmd_shelf(args):
+    path = SHELF / "candidates.json"
+    if not path.exists():
+        raise PrepError(f"write {path.relative_to(ROOT)} first (see the /add-books command)")
+    known = {s["id"] for s in json.loads((TOOLS / "sources.json").read_text())}
+    candidates = []
+    for c in json.loads(path.read_text()):
+        if c.get("id") in known:
+            print(f"{c['id']}: already added - left off the page")
+            continue
+        check_candidate(c, known)
+        candidates.append(c)
+    if not candidates:
+        raise PrepError(f"every book in {path.relative_to(ROOT)} has been added already")
+    rows = pg_rows()
+    cards = []
+    for c in candidates:
+        print(f"{c['id']}: looking up")
+        cards.append(shelf_card(c, rows.get(str(c["ebook"]))))
+        for w in cards[-1]["warnings"]:
+            print(f"  warning: {w}")
+    covers = {card["id"]: card["coverUrl"] for card in cards}
+    picks_path = SHELF / "picks.json"
+    picks_path.unlink(missing_ok=True)
+
+    def get(path):
+        if path == "/api/books":
+            return json.dumps(cards, ensure_ascii=False).encode(), "application/json"
+        cover = re.fullmatch(r"/cover/([a-z0-9-]+)\.jpg", path)
+        if cover and cover.group(1) in covers:
+            try:
+                return fetch(covers[cover.group(1)]), "image/jpeg"
+            except (urllib.error.URLError, TimeoutError):
+                return None
+        return None
+
+    def post(path, data):
+        ids = data.get("ids") if path == "/api/picks" else None
+        if not isinstance(ids, list) or not ids or not set(ids) <= covers.keys():
+            raise PrepError("pick at least one book from this page")
+        picks_path.write_text(json.dumps({"ids": ids}, indent=1) + "\n")
+        print(f"picked {len(ids)}: {', '.join(ids)} -> {picks_path.relative_to(ROOT)}")
+        return {"saved": len(ids)}, True
+
+    serve_page("shelf.html", args.port, "book shelf", get, post)
+
+
+def credit_line(c):
+    authors, illustrators = " and ".join(c["authors"]), " and ".join(c.get("illustrators") or [])
+    if illustrators and c.get("illustrators") == c["authors"]:
+        who = f", written and illustrated by {authors}"
+    elif illustrators:
+        who = f", written by {authors}, illustrated by {illustrators}"
+    else:
+        who = f" by {authors}"
+    return f"{c['title']}{who}, first published {c['year']}. Public domain."
+
+
+def source_entry(c):
+    """A sources.json entry for a picked candidate, in the file's hand layout."""
+    if c["kind"] == "picture":
+        page_words = 80 if c["minAge"] < 6 else 110
+    else:
+        page_words = 200 if c["minAge"] < 10 else 280
+    d = lambda v: json.dumps(v, ensure_ascii=False)
+    lines = [f'  "id": {d(c["id"])}',
+             f'  "source": "gutenberg", "ebook": {int(c["ebook"])}, "kind": {d(c["kind"])}',
+             f'  "title": {d(c["title"])}',
+             f'  "authors": {d(c["authors"])}' + (f', "illustrators": {d(c["illustrators"])}'
+                                                   if c.get("illustrators") else ""),
+             f'  "credit": {d(credit_line(c))}',
+             f'  "year": {int(c["year"])}',
+             f'  "genre": {d(c["genre"])}']
+    if c.get("classic"):
+        lines.append('  "classic": true')
+    lines += [f'  "minAge": {int(c["minAge"])}, "maxAge": {int(c["maxAge"])}',
+              f'  "pageWords": {page_words}']
+    return " {\n" + ",\n".join(lines) + "\n }"
+
+
+def cmd_add(args):
+    candidates = {c["id"]: c for c in json.loads((SHELF / "candidates.json").read_text())}
+    ids = args.ids or json.loads((SHELF / "picks.json").read_text())["ids"]
+    with sources_locked() as path:
+        text = path.read_text()
+        known = {s["id"] for s in json.loads(text)}
+        added = []
+        for book_id in ids:
+            if book_id not in candidates:
+                raise PrepError(f"{book_id!r} isn't in {(SHELF / 'candidates.json').relative_to(ROOT)}")
+            if book_id in known:
+                print(f"{book_id}: already in sources.json")
+                continue
+            check_candidate(candidates[book_id], set(known))
+            added.append(source_entry(candidates[book_id]))
+            known.add(book_id)
+        if added:
+            body = text.rstrip()
+            if not body.endswith("]"):
+                raise PrepError("sources.json doesn't end with ]")
+            text = body[:-1].rstrip() + ",\n" + ",\n".join(added) + "\n]\n"
+            json.loads(text)
+            path.write_text(text)
+    print(f"added {len(added)} to tools/sources.json")
+
+
+def cmd_set(args):
+    """Change one book's settings in sources.json (startAt, skipParagraphs, replace, ...) without
+    touching other lines; null removes a key. Safe to run from agents working side by side."""
+    fields = json.loads(args.fields)
+    if not isinstance(fields, dict) or "id" in fields:
+        raise PrepError('give a JSON object of fields to set, e.g. \'{"startAt": "Once upon"}\' (not "id")')
+    set_source_fields(args.id, {k: v for k, v in fields.items() if v is not None}, set(fields))
+    print(f"{args.id}: set {', '.join(fields)}")
+
+
+def cmd_status(args):
+    """Where each book stands, from source to published."""
+    catalog = {b["id"]: b for b in json.loads((ROOT / "catalog.json").read_text())["books"]}
+    rows = [("book", "built", "segments", "quizzes", "theme", "link", "notes", "published")]
+    for src in json.loads((TOOLS / "sources.json").read_text()):
+        book_id = src["id"]
+        seg_path, quiz_path = SEGMENTS / f"{book_id}.json", TOOLS / "quizzes" / f"{book_id}.json"
+        segs = len(json.loads(seg_path.read_text())["segments"]) if seg_path.exists() else 0
+        quizzes = json.loads(quiz_path.read_text()).get("segments", []) if quiz_path.exists() else []
+        book_path = BOOKS / book_id / "book.json"
+        published = "-"
+        if book_id in catalog:
+            published = "yes" if catalog[book_id]["version"] == catalog_entry(
+                json.loads(book_path.read_text()), src.get("starter", False))["version"] else "changed"
+        rows.append((book_id, "yes" if book_path.exists() else "-", str(segs or "-"),
+                     f"{len(quizzes)}/{segs}" if segs else "-",
+                     str(sum(1 for q in quizzes if q.get("theme"))), str(sum(1 for q in quizzes if q.get("link"))),
+                     "yes" if (TOOLS / "notes" / f"{book_id}.md").exists() else "-", published))
+    widths = [max(len(r[i]) for r in rows) for i in range(len(rows[0]))]
+    for r in rows:
+        print("  ".join(v.ljust(w) for v, w in zip(r, widths)).rstrip())
+
+
 def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
@@ -1188,10 +1598,19 @@ def main():
     c = sub.add_parser("covers")
     c.add_argument("ids", nargs="*")
     c.add_argument("--port", type=int, default=8766)
+    sh = sub.add_parser("shelf")
+    sh.add_argument("--port", type=int, default=8767)
+    a = sub.add_parser("add")
+    a.add_argument("ids", nargs="*", help="candidate ids (default: the ones picked on the shelf page)")
+    st = sub.add_parser("set")
+    st.add_argument("id")
+    st.add_argument("fields", help="a JSON object; null removes a key")
+    sub.add_parser("status")
     args = parser.parse_args()
     try:
         {"build": cmd_build, "segment": cmd_segment, "text": cmd_text, "review": cmd_review,
-         "covers": cmd_covers}[args.cmd](args)
+         "covers": cmd_covers, "shelf": cmd_shelf, "add": cmd_add, "set": cmd_set,
+         "status": cmd_status}[args.cmd](args)
     except PrepError as e:
         sys.exit(f"error: {e}")
 

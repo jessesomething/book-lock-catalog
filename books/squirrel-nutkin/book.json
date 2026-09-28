@@ -1,0 +1,240 @@
+{
+ "formatVersion": 1,
+ "id": "squirrel-nutkin",
+ "title": "The Tale of Squirrel Nutkin",
+ "authors": [
+  "Beatrix Potter"
+ ],
+ "illustrators": [
+  "Beatrix Potter"
+ ],
+ "minAge": 4,
+ "maxAge": 6,
+ "cover": "cover.jpg",
+ "licence": {
+  "name": "Public domain",
+  "url": null
+ },
+ "year": 1903,
+ "genre": "Funny",
+ "classic": false,
+ "pictures": "picture-book",
+ "credit": "The Tale of Squirrel Nutkin, written and illustrated by Beatrix Potter, first published 1903. Public domain.",
+ "imageCredits": "Cover: Beatrix Potter, 1903, via Wikimedia Commons.",
+ "changes": "Adapted for BookLock: text split into pages for phone screens, and comprehension quizzes added.",
+ "wordCount": 1202,
+ "chapters": [
+  {
+   "title": null,
+   "pages": [
+    {
+     "text": "This is a Tale about a tail—a tail that belonged to a little red squirrel, and his name was Nutkin.\n\nHe had a brother called Twinkleberry, and a great many cousins: they lived in a wood at the edge of a lake.",
+     "image": "p01.jpg"
+    },
+    {
+     "text": "In the middle of the lake there is an island covered with trees and nut bushes; and amongst those trees stands a hollow oak-tree, which is the house of an owl who is called Old Brown.",
+     "image": "p02.jpg"
+    },
+    {
+     "text": "One autumn when the nuts were ripe, and the leaves on the hazel bushes were golden and green—Nutkin and Twinkleberry and all the other little squirrels came out of the wood, and down to the edge of the lake.",
+     "image": "p03.jpg"
+    },
+    {
+     "text": "They made little rafts out of twigs, and they paddled away over the water to Owl Island to gather nuts.\n\nEach squirrel had a little sack and a large oar, and spread out his tail for a sail.",
+     "image": "p04.jpg"
+    },
+    {
+     "text": "They also took with them an offering of three fat mice as a present for Old Brown, and put them down upon his door-step.\n\nThen Twinkleberry and the other little squirrels each made a low bow, and said politely—\n\n\"Old Mr. Brown, will you favour us with permission to gather nuts upon your island?\"",
+     "image": "p05.jpg"
+    },
+    {
+     "text": "But Nutkin was excessively impertinent in his manners. He bobbed up and down like a little red cherry, singing—\n\n\"Riddle me, riddle me, rot-tot-tote! A little wee man, in a red red coat! A staff in his hand, and a stone in his throat; If you'll tell me this riddle, I'll give you a groat.\"\n\nNow this riddle is as old as the hills; Mr. Brown paid no attention whatever to Nutkin.",
+     "image": "p06.jpg"
+    },
+    {
+     "text": "He shut his eyes obstinately and went to sleep.",
+     "image": null
+    },
+    {
+     "text": "The squirrels filled their little sacks with nuts, and sailed away home in the evening.",
+     "image": "p07.jpg"
+    },
+    {
+     "text": "But next morning they all came back again to Owl Island; and Twinkleberry and the others brought a fine fat mole, and laid it on the stone in front of Old Brown's doorway, and said—\n\n\"Mr. Brown, will you favour us with your gracious permission to gather some more nuts?\"",
+     "image": "p08.jpg"
+    },
+    {
+     "text": "But Nutkin, who had no respect, began to dance up and down, tickling old Mr. Brown with a nettle and singing—\n\n\"Old Mr. B! Riddle-me-ree! Hitty Pitty within the wall, Hitty Pitty without the wall; If you touch Hitty Pitty, Hitty Pitty will bite you!\"\n\nMr. Brown woke up suddenly and carried the mole into his house.",
+     "image": "p09.jpg"
+    },
+    {
+     "text": "He shut the door in Nutkin's face. Presently a little thread of blue smoke from a wood fire came up from the top of the tree, and Nutkin peeped through the key-hole and sang—\n\n\"A house full, a hole full! And you cannot gather a bowl-full!\"",
+     "image": "p10.jpg"
+    },
+    {
+     "text": "The squirrels searched for nuts all over the island and filled their little sacks.\n\nBut Nutkin gathered oak-apples—yellow and scarlet—and sat upon a beech-stump playing marbles, and watching the door of old Mr. Brown.",
+     "image": "p11.jpg"
+    },
+    {
+     "text": "On the third day the squirrels got up very early and went fishing; they caught seven fat minnows as a present for Old Brown.\n\nThey paddled over the lake and landed under a crooked chestnut tree on Owl Island.",
+     "image": "p12.jpg"
+    },
+    {
+     "text": "Twinkleberry and six other little squirrels each carried a fat minnow; but Nutkin, who had no nice manners, brought no present at all. He ran in front, singing—\n\n\"The man in the wilderness said to me, 'How many strawberries grow in the sea?' I answered him as I thought good— 'As many red herrings as grow in the wood.'\"\n\nBut old Mr. Brown took no interest in riddles—not even when the answer was provided for him.",
+     "image": "p13.jpg"
+    },
+    {
+     "text": "On the fourth day the squirrels brought a present of six fat beetles, which were as good as plums in plum-pudding for Old Brown. Each beetle was wrapped up carefully in a dock-leaf, fastened with a pine-needle pin.\n\nBut Nutkin sang as rudely as ever—",
+     "image": "p14.jpg"
+    },
+    {
+     "text": "\"Old Mr. B! riddle-me-ree Flour of England, fruit of Spain, Met together in a shower of rain; Put in a bag tied round with a string, If you'll tell me this riddle, I'll give you a ring!\"\n\nWhich was ridiculous of Nutkin, because he had not got any ring to give to Old Brown.",
+     "image": null
+    },
+    {
+     "text": "The other squirrels hunted up and down the nut bushes; but Nutkin gathered robin's pincushions off a briar bush, and stuck them full of pine-needle pins.",
+     "image": "p15.jpg"
+    },
+    {
+     "text": "On the fifth day the squirrels brought a present of wild honey; it was so sweet and sticky that they licked their fingers as they put it down upon the stone. They had stolen it out of a bumble bees' nest on the tippitty top of the hill.\n\nBut Nutkin skipped up and down, singing—",
+     "image": "p16.jpg"
+    },
+    {
+     "text": "\"Hum-a-bum! buzz! buzz! Hum-a-bum buzz! As I went over Tipple-tine I met a flock of bonny swine; Some yellow-nacked, some yellow backed! They were the very bonniest swine That e'er went over Tipple-tine.\"",
+     "image": null
+    },
+    {
+     "text": "Old Mr. Brown turned up his eyes in disgust at the impertinence of Nutkin.\n\nBut he ate up the honey!",
+     "image": "p17.jpg"
+    },
+    {
+     "text": "The squirrels filled their little sacks with nuts.\n\nBut Nutkin sat upon a big flat rock, and played ninepins with a crab apple and green fir-cones.",
+     "image": "p18.jpg"
+    },
+    {
+     "text": "On the sixth day, which was Saturday, the squirrels came again for the last time; they brought a new-laid egg in a little rush basket as a last parting present for Old Brown.\n\nBut Nutkin ran in front laughing, and shouting—\n\n\"Humpty Dumpty lies in the beck, With a white counterpane round his neck, Forty doctors and forty wrights, Cannot put Humpty Dumpty to rights!\"",
+     "image": "p19.jpg"
+    },
+    {
+     "text": "Now old Mr. Brown took an interest in eggs; he opened one eye and shut it again. But still he did not speak.",
+     "image": "p20.jpg"
+    },
+    {
+     "text": "Nutkin became more and more impertinent—\n\n\"Old Mr. B! Old Mr. B! Hickamore, Hackamore, on the King's kitchen door; All the King's horses, and all the King's men, Couldn't drive Hickamore, Hackamore, Off the King's kitchen door.\"\n\nNutkin danced up and down like a sunbeam; but still Old Brown said nothing at all.",
+     "image": "p21.jpg"
+    },
+    {
+     "text": "Nutkin began again—\n\n\"Arthur O'Bower has broken his band, He comes roaring up the land! The King of Scots with all his power, Cannot turn Arthur of the Bower!\"\n\nNutkin made a whirring noise to sound like the wind, and he took a running jump right onto the head of Old Brown!...\n\nThen all at once there was a flutterment and a scufflement and a loud \"Squeak!\"\n\nThe other squirrels scuttered away into the bushes.",
+     "image": "p22.jpg"
+    },
+    {
+     "text": "When they came back very cautiously, peeping round the tree—there was Old Brown sitting on his door-step, quite still, with his eyes closed, as if nothing had happened.\n\nBut Nutkin was in his waistcoat pocket!",
+     "image": "p23.jpg"
+    },
+    {
+     "text": "This looks like the end of the story; but it isn't.",
+     "image": "p24.jpg"
+    },
+    {
+     "text": "Old Brown carried Nutkin into his house, and held him up by the tail, intending to skin him; but Nutkin pulled so very hard that his tail broke in two, and he dashed up the staircase and escaped out of the attic window.",
+     "image": "p25.jpg"
+    },
+    {
+     "text": "And to this day, if you meet Nutkin up a tree and ask him a riddle, he will throw sticks at you, and stamp his feet and scold, and shout—\n\n\"Cuck-cuck-cuck-cur-r-r-cuck-k-k!\"",
+     "image": "p26.jpg"
+    }
+   ],
+   "quiz": []
+  }
+ ],
+ "segments": [
+  {
+   "startChapter": 0,
+   "startPage": 0,
+   "endChapter": 0,
+   "endPage": 13,
+   "wordCount": 607,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "How did the squirrels get across the lake to Owl Island?",
+      "choices": [
+       "They swam",
+       "They paddled little rafts",
+       "Old Brown carried them"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What did Old Brown do when Nutkin sang his first riddle?",
+      "choices": [
+       "He shut his eyes and went to sleep",
+       "He laughed and clapped",
+       "He told Nutkin the answer"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "On the third day, the other squirrels each brought a fat minnow. What did Nutkin bring?",
+      "choices": [
+       "A fat minnow, like the others",
+       "A bag of nuts",
+       "No present at all"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": null,
+    "written": null
+   }
+  },
+  {
+   "startChapter": 0,
+   "startPage": 14,
+   "endChapter": 0,
+   "endPage": 28,
+   "wordCount": 595,
+   "quiz": {
+    "questions": [
+     {
+      "prompt": "What did Old Brown do with the honey?",
+      "choices": [
+       "He gave it back",
+       "He ate it up",
+       "He threw it in the lake"
+      ],
+      "correctIndex": 1
+     },
+     {
+      "prompt": "What did Nutkin do right before Old Brown caught him?",
+      "choices": [
+       "He jumped onto Old Brown's head",
+       "He gave Old Brown an egg",
+       "He said sorry to Old Brown"
+      ],
+      "correctIndex": 0
+     },
+     {
+      "prompt": "How did Nutkin get away from Old Brown?",
+      "choices": [
+       "Twinkleberry came and saved him",
+       "Old Brown let him go",
+       "He pulled so hard his tail broke"
+      ],
+      "correctIndex": 2
+     }
+    ],
+    "theme": {
+     "prompt": "Every day the other squirrels were polite to Old Brown, but Nutkin teased him again and again. What does the story show?",
+     "choices": [
+      "Teasing someone again and again can get you into big trouble",
+      "Old Brown liked riddles more than presents",
+      "Being rude is fine if you sing it"
+     ],
+     "correctIndex": 0
+    },
+    "written": "Nutkin kept teasing Old Brown, and Old Brown didn't like it. How does it feel when someone keeps teasing you? What could you do?"
+   }
+  }
+ ]
+}

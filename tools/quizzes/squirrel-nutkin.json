@@ -1,0 +1,12 @@
+{"segments": [
+  {"questions": [
+    {"prompt": "How did the squirrels get across the lake to Owl Island?", "choices": ["They swam", "They paddled little rafts", "Old Brown carried them"], "correctIndex": 1, "evidence": "They made little rafts out of twigs, and they paddled away over the water to Owl Island"},
+    {"prompt": "What did Old Brown do when Nutkin sang his first riddle?", "choices": ["He shut his eyes and went to sleep", "He laughed and clapped", "He told Nutkin the answer"], "correctIndex": 0, "evidence": "He shut his eyes obstinately and went to sleep."},
+    {"prompt": "On the third day, the other squirrels each brought a fat minnow. What did Nutkin bring?", "choices": ["A fat minnow, like the others", "A bag of nuts", "No present at all"], "correctIndex": 2, "evidence": "but Nutkin, who had no nice manners, brought no present at all"}]},
+  {"questions": [
+    {"prompt": "What did Old Brown do with the honey?", "choices": ["He gave it back", "He ate it up", "He threw it in the lake"], "correctIndex": 1, "evidence": "But he ate up the honey!"},
+    {"prompt": "What did Nutkin do right before Old Brown caught him?", "choices": ["He jumped onto Old Brown's head", "He gave Old Brown an egg", "He said sorry to Old Brown"], "correctIndex": 0, "evidence": "he took a running jump right onto the head of Old Brown"},
+    {"prompt": "How did Nutkin get away from Old Brown?", "choices": ["Twinkleberry came and saved him", "Old Brown let him go", "He pulled so hard his tail broke"], "correctIndex": 2, "evidence": "Nutkin pulled so very hard that his tail broke in two, and he dashed up the staircase and escaped out of the attic window"}],
+   "theme": {"prompt": "Every day the other squirrels were polite to Old Brown, but Nutkin teased him again and again. What does the story show?", "choices": ["Teasing someone again and again can get you into big trouble", "Old Brown liked riddles more than presents", "Being rude is fine if you sing it"], "correctIndex": 0, "evidence": ["But Nutkin was excessively impertinent in his manners", "Nutkin became more and more impertinent", "But Nutkin was in his waistcoat pocket!"]},
+   "written": "Nutkin kept teasing Old Brown, and Old Brown didn't like it. How does it feel when someone keeps teasing you? What could you do?"}
+]}

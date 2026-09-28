@@ -16,12 +16,36 @@ books/<id>/book.json      chapters -> pages (text + optional picture), a quiz pe
                           and ~10-minute segments with a quiz each
 books/<id>/*.jpg          cover and page pictures
 tools/prep.py             builds books/ and catalog.json from tools/sources.json
+tools/shelf.html          the page for picking new books (`prep.py shelf`)
 tools/sources.json        where each book comes from, plus per-book settings
 tools/segments/<id>.json  where each segment starts
 tools/quizzes/<id>.json   hand-written quizzes: one list per chapter, one quiz per segment
 tools/notes/<id>.md       for long books written across sessions: what each segment covers and
                           which threads are open, so theme questions reach back without spoiling
 ```
+
+## Finding new books
+
+In the app repo, `/add-books` runs the whole process. It asks what to look for, writes
+candidates to `tools/work/shelf/candidates.json` (with a synopsis, themes, genre and ages for
+each), and opens a page to pick from:
+
+```sh
+.venv/bin/python tools/prep.py shelf     # look up each candidate and open the page to pick them
+.venv/bin/python tools/prep.py add       # add the picked books to sources.json
+.venv/bin/python tools/prep.py status    # where every book stands, from source to published
+```
+
+The page shows each candidate's Open Library rating and a popular edition's cover. It also shows
+the length, number of pictures and reading time of the Gutenberg edition. It warns when that
+edition's title doesn't match, or when any author, illustrator or translator died less than 70
+years ago (going by Gutenberg's catalog). Pressing Add writes `tools/work/shelf/picks.json` and
+stops the page.
+
+Several books can then be prepped and quizzed side by side, one agent per book. Agents change
+`sources.json` only through `prep.py set <id> '{"key": value}'` (null removes a key), which
+edits that book's lines under a lock. They build only with `--only <id> --draft`, because a full
+build rewrites `catalog.json`.
 
 ## Adding or rebuilding a book
 
@@ -41,6 +65,17 @@ Each `catalog.json` entry has a `version` (any file changed) and `parts`, a fing
 for the cover, text, pictures, quizzes and credits. The app compares `parts` with the copy on the
 phone to say what an update changes.
 
+Gutenberg chapter books start a chapter at each `h2` reading "CHAPTER …", and take its name from
+an `h3` right after it. Editions that mark chapters differently set CSS selectors in
+`sources.json`: `headings`, `names`, and `paragraphs` for text in something other than `<p>`
+(for example Alice: `div.chapter`, `div.sidenote`, `p, div.unindent`). `"lineBreaks": true`
+keeps each `<br>` as a line break, for books with verse, and `"chapterTitles": {"2": "The Pool
+of Tears"}` renames a chapter whose name comes out wrong. A picture inside a
+chapter starts a page that holds about half the usual words. Pictures narrower than 250px are
+treated as decoration (drop capitals, emblems) and left out. A book with segments needs no
+chapter quizzes: the app quizzes segments, and falls back to chapter quizzes only for copies
+downloaded before segments existed.
+
 A draft `book.json` isn't publishable: restore it (`git restore books/<id>`) before committing
 if the book's quizzes aren't finished. Once a book has a segments file, the full build refuses
 to run until every segment has its quiz.
@@ -55,7 +90,9 @@ The picker shows each book's cover as it is in the app, its original cover, and 
 Wikimedia Commons (searched for the title plus "cover" and "first edition") and other English
 editions of the same title on Gutenberg. Click one to see it large, drag on it to crop, edit the
 credit, and use it. That writes `cover` (the picture's URL), `coverCredit` and `coverCrop` into
-the book's lines in `tools/sources.json` and rebuilds the book and `catalog.json`. Putting the
+the book's lines in `tools/sources.json` and rebuilds the book: a published book in full, along
+with its `catalog.json` entry, and a book still being written as a draft. `/covers` in the app
+repo runs this. Putting the
 original back restores the file exactly. Commit and push to publish; phones that already have
 the book get it via Update on the parent's Books screen.
 

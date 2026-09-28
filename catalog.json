@@ -380,6 +380,297 @@
     "credits": "edd36d3c0417"
    },
    "starter": true
+  },
+  {
+   "id": "benjamin-bunny",
+   "title": "The Tale of Benjamin Bunny",
+   "authors": [
+    "Beatrix Potter"
+   ],
+   "illustrators": [
+    "Beatrix Potter"
+   ],
+   "minAge": 4,
+   "maxAge": 6,
+   "cover": "books/benjamin-bunny/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Tale of Benjamin Bunny, written and illustrated by Beatrix Potter, first published 1904. Public domain.",
+   "chapterCount": 1,
+   "wordCount": 1118,
+   "year": 1904,
+   "genre": "Animals",
+   "classic": false,
+   "pictures": "picture-book",
+   "files": [
+    "books/benjamin-bunny/book.json",
+    "books/benjamin-bunny/cover.jpg",
+    "books/benjamin-bunny/p01.jpg",
+    "books/benjamin-bunny/p02.jpg",
+    "books/benjamin-bunny/p03.jpg",
+    "books/benjamin-bunny/p04.jpg",
+    "books/benjamin-bunny/p05.jpg",
+    "books/benjamin-bunny/p06.jpg",
+    "books/benjamin-bunny/p07.jpg",
+    "books/benjamin-bunny/p08.jpg",
+    "books/benjamin-bunny/p09.jpg",
+    "books/benjamin-bunny/p10.jpg",
+    "books/benjamin-bunny/p11.jpg",
+    "books/benjamin-bunny/p12.jpg",
+    "books/benjamin-bunny/p13.jpg",
+    "books/benjamin-bunny/p14.jpg",
+    "books/benjamin-bunny/p15.jpg",
+    "books/benjamin-bunny/p16.jpg",
+    "books/benjamin-bunny/p17.jpg",
+    "books/benjamin-bunny/p18.jpg",
+    "books/benjamin-bunny/p19.jpg",
+    "books/benjamin-bunny/p20.jpg",
+    "books/benjamin-bunny/p21.jpg",
+    "books/benjamin-bunny/p22.jpg",
+    "books/benjamin-bunny/p23.jpg",
+    "books/benjamin-bunny/p24.jpg",
+    "books/benjamin-bunny/p25.jpg",
+    "books/benjamin-bunny/p26.jpg"
+   ],
+   "sizeBytes": 4342414,
+   "version": "70d35d54672b",
+   "parts": {
+    "cover": "7b33e0a39657",
+    "text": "550e17ac2c03",
+    "pictures": "c3977c042e36",
+    "quizzes": "5a9ca5065aed",
+    "credits": "ebdf1ea9591f"
+   },
+   "starter": false
+  },
+  {
+   "id": "squirrel-nutkin",
+   "title": "The Tale of Squirrel Nutkin",
+   "authors": [
+    "Beatrix Potter"
+   ],
+   "illustrators": [
+    "Beatrix Potter"
+   ],
+   "minAge": 4,
+   "maxAge": 6,
+   "cover": "books/squirrel-nutkin/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Tale of Squirrel Nutkin, written and illustrated by Beatrix Potter, first published 1903. Public domain.",
+   "chapterCount": 1,
+   "wordCount": 1202,
+   "year": 1903,
+   "genre": "Funny",
+   "classic": false,
+   "pictures": "picture-book",
+   "files": [
+    "books/squirrel-nutkin/book.json",
+    "books/squirrel-nutkin/cover.jpg",
+    "books/squirrel-nutkin/p01.jpg",
+    "books/squirrel-nutkin/p02.jpg",
+    "books/squirrel-nutkin/p03.jpg",
+    "books/squirrel-nutkin/p04.jpg",
+    "books/squirrel-nutkin/p05.jpg",
+    "books/squirrel-nutkin/p06.jpg",
+    "books/squirrel-nutkin/p07.jpg",
+    "books/squirrel-nutkin/p08.jpg",
+    "books/squirrel-nutkin/p09.jpg",
+    "books/squirrel-nutkin/p10.jpg",
+    "books/squirrel-nutkin/p11.jpg",
+    "books/squirrel-nutkin/p12.jpg",
+    "books/squirrel-nutkin/p13.jpg",
+    "books/squirrel-nutkin/p14.jpg",
+    "books/squirrel-nutkin/p15.jpg",
+    "books/squirrel-nutkin/p16.jpg",
+    "books/squirrel-nutkin/p17.jpg",
+    "books/squirrel-nutkin/p18.jpg",
+    "books/squirrel-nutkin/p19.jpg",
+    "books/squirrel-nutkin/p20.jpg",
+    "books/squirrel-nutkin/p21.jpg",
+    "books/squirrel-nutkin/p22.jpg",
+    "books/squirrel-nutkin/p23.jpg",
+    "books/squirrel-nutkin/p24.jpg",
+    "books/squirrel-nutkin/p25.jpg",
+    "books/squirrel-nutkin/p26.jpg"
+   ],
+   "sizeBytes": 3155890,
+   "version": "d467c4f3a729",
+   "parts": {
+    "cover": "092825333901",
+    "text": "dabaefdb5fea",
+    "pictures": "370357c5ce17",
+    "quizzes": "4648a3c794bc",
+    "credits": "d515af8f4fc0"
+   },
+   "starter": false
+  },
+  {
+   "id": "jeremy-fisher",
+   "title": "The Tale of Mr. Jeremy Fisher",
+   "authors": [
+    "Beatrix Potter"
+   ],
+   "illustrators": [
+    "Beatrix Potter"
+   ],
+   "minAge": 4,
+   "maxAge": 6,
+   "cover": "books/jeremy-fisher/cover.jpg",
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Tale of Mr. Jeremy Fisher, written and illustrated by Beatrix Potter, first published 1906. Public domain.",
+   "chapterCount": 1,
+   "wordCount": 792,
+   "year": 1906,
+   "genre": "Adventure",
+   "classic": false,
+   "pictures": "picture-book",
+   "files": [
+    "books/jeremy-fisher/book.json",
+    "books/jeremy-fisher/cover.jpg",
+    "books/jeremy-fisher/p01.jpg",
+    "books/jeremy-fisher/p02.jpg",
+    "books/jeremy-fisher/p03.jpg",
+    "books/jeremy-fisher/p04.jpg",
+    "books/jeremy-fisher/p05.jpg",
+    "books/jeremy-fisher/p06.jpg",
+    "books/jeremy-fisher/p07.jpg",
+    "books/jeremy-fisher/p08.jpg",
+    "books/jeremy-fisher/p09.jpg",
+    "books/jeremy-fisher/p10.jpg",
+    "books/jeremy-fisher/p11.jpg",
+    "books/jeremy-fisher/p12.jpg",
+    "books/jeremy-fisher/p13.jpg",
+    "books/jeremy-fisher/p14.jpg",
+    "books/jeremy-fisher/p15.jpg",
+    "books/jeremy-fisher/p16.jpg",
+    "books/jeremy-fisher/p17.jpg",
+    "books/jeremy-fisher/p18.jpg",
+    "books/jeremy-fisher/p19.jpg",
+    "books/jeremy-fisher/p20.jpg",
+    "books/jeremy-fisher/p21.jpg",
+    "books/jeremy-fisher/p22.jpg",
+    "books/jeremy-fisher/p23.jpg",
+    "books/jeremy-fisher/p24.jpg",
+    "books/jeremy-fisher/p25.jpg",
+    "books/jeremy-fisher/p26.jpg"
+   ],
+   "sizeBytes": 727446,
+   "version": "8a9cafc1c2d8",
+   "parts": {
+    "cover": "e34588b4ae69",
+    "text": "c602a54f621a",
+    "pictures": "a4e447e0fdd1",
+    "quizzes": "c2d8ba5d0db5",
+    "credits": "30a171295e65"
+   },
+   "starter": false
+  },
+  {
+   "id": "alice-in-wonderland",
+   "title": "Alice's Adventures in Wonderland",
+   "authors": [
+    "Lewis Carroll"
+   ],
+   "illustrators": [
+    "Arthur Rackham"
+   ],
+   "minAge": 8,
+   "maxAge": 10,
+   "cover": null,
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "Alice's Adventures in Wonderland, written by Lewis Carroll, illustrated by Arthur Rackham, first published 1865. Public domain.",
+   "chapterCount": 12,
+   "wordCount": 26300,
+   "year": 1865,
+   "genre": "Fantasy",
+   "classic": true,
+   "pictures": "illustrated",
+   "files": [
+    "books/alice-in-wonderland/book.json",
+    "books/alice-in-wonderland/p01.jpg",
+    "books/alice-in-wonderland/p02.jpg",
+    "books/alice-in-wonderland/p03.jpg",
+    "books/alice-in-wonderland/p04.jpg",
+    "books/alice-in-wonderland/p05.jpg",
+    "books/alice-in-wonderland/p06.jpg",
+    "books/alice-in-wonderland/p07.jpg",
+    "books/alice-in-wonderland/p08.jpg",
+    "books/alice-in-wonderland/p09.jpg",
+    "books/alice-in-wonderland/p10.jpg",
+    "books/alice-in-wonderland/p11.jpg",
+    "books/alice-in-wonderland/p12.jpg",
+    "books/alice-in-wonderland/p13.jpg",
+    "books/alice-in-wonderland/p14.jpg",
+    "books/alice-in-wonderland/p15.jpg",
+    "books/alice-in-wonderland/p16.jpg",
+    "books/alice-in-wonderland/p17.jpg",
+    "books/alice-in-wonderland/p18.jpg",
+    "books/alice-in-wonderland/p19.jpg",
+    "books/alice-in-wonderland/p20.jpg",
+    "books/alice-in-wonderland/p21.jpg",
+    "books/alice-in-wonderland/p22.jpg"
+   ],
+   "sizeBytes": 1437121,
+   "version": "c20376a143a2",
+   "parts": {
+    "cover": null,
+    "text": "88743fe2369a",
+    "pictures": "555f1d484458",
+    "quizzes": "d94ed8cac336",
+    "credits": "ae7ed09f6197"
+   },
+   "starter": false
+  },
+  {
+   "id": "secret-garden",
+   "title": "The Secret Garden",
+   "authors": [
+    "Frances Hodgson Burnett"
+   ],
+   "illustrators": [
+    "Maria Louise Kirk"
+   ],
+   "minAge": 10,
+   "maxAge": 12,
+   "cover": null,
+   "licence": {
+    "name": "Public domain",
+    "url": null
+   },
+   "credit": "The Secret Garden, written by Frances Hodgson Burnett, illustrated by Maria Louise Kirk, first published 1911. Public domain.",
+   "chapterCount": 27,
+   "wordCount": 79973,
+   "year": 1911,
+   "genre": "Family & friends",
+   "classic": true,
+   "pictures": "illustrated",
+   "files": [
+    "books/secret-garden/book.json",
+    "books/secret-garden/p01.jpg",
+    "books/secret-garden/p02.jpg",
+    "books/secret-garden/p03.jpg"
+   ],
+   "sizeBytes": 609605,
+   "version": "e63778b44827",
+   "parts": {
+    "cover": null,
+    "text": "ef3656849f44",
+    "pictures": "94c98aff768c",
+    "quizzes": "b7b73721cfc6",
+    "credits": "54542021d957"
+   },
+   "starter": false
   }
  ]
 }

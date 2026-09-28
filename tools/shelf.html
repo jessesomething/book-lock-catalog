@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pick new books</title>
+<!-- Served by `prep.py shelf`, which supplies /api/books, /cover/<id>.jpg and /api/picks. -->
+<style>
+  :root {
+    --bg: #f6f5f2; --panel: #ffffff; --ink: #1d1d1f; --muted: #6b6b70; --line: #e3e1db;
+    --tile: #ecebe6; --accent: #5b3fa8; --accent-ink: #ffffff; --err: #b3261e; --err-bg: #fbeceb;
+    --note: #7a5200; --note-bg: #fdf3dc; --star: #e0a000;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161618; --panel: #1f1f22; --ink: #ececf0; --muted: #9a9aa3; --line: #34343a;
+      --tile: #2a2a2e; --accent: #b7a4f0; --accent-ink: #1a1033; --err: #f2b8b5; --err-bg: #3a1f1d;
+      --note: #f3d28b; --note-bg: #3a2e14; --star: #f5c542;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, sans-serif; }
+  header, main { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  header { padding-top: 28px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  header p { color: var(--muted); margin: 0; max-width: 75ch; }
+  main { padding: 20px 32px 120px; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+
+  .book { background: var(--panel); border: 2px solid var(--line); border-radius: 14px; padding: 16px;
+          display: flex; flex-direction: column; gap: 12px; cursor: pointer; position: relative; }
+  .book:hover { border-color: var(--muted); }
+  .book:has(input:checked) { border-color: var(--accent); }
+  .book:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .book input { position: absolute; opacity: 0; pointer-events: none; }
+  .tick { position: absolute; top: 12px; right: 12px; width: 26px; height: 26px; border-radius: 50%;
+          border: 2px solid var(--line); display: grid; place-items: center; font-size: 15px; font-weight: 700;
+          color: transparent; background: var(--panel); }
+  .book:has(input:checked) .tick { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+  .top { display: grid; grid-template-columns: 104px 1fr; gap: 14px; padding-right: 30px; }
+  .cover { background: var(--tile); border-radius: 6px; aspect-ratio: 2 / 3; overflow: hidden; display: grid; place-items: center; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cover span { color: var(--muted); font-size: 12px; padding: 6px; text-align: center; }
+  h2 { font-size: 18px; line-height: 1.25; margin: 0 0 2px; }
+  .by { color: var(--muted); font-size: 13px; margin: 0 0 8px; }
+  .rating { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); flex-wrap: wrap; }
+  .stars { font-size: 17px; letter-spacing: 1px; line-height: 1;
+           background: linear-gradient(90deg, var(--star) var(--fill), var(--line) var(--fill));
+           -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .rating b { color: var(--ink); }
+  a { color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .chip { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--tile); }
+  .chip.genre { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+
+  .synopsis { margin: 0; }
+  .label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 4px; }
+  .themes { margin: 0; font-size: 14px; }
+  .facts { font-size: 13px; color: var(--muted); margin: 0; }
+  .box { font-size: 13px; border-radius: 8px; padding: 8px 10px; margin: 0; }
+  .box.note { background: var(--note-bg); color: var(--note); }
+  .box.warn { background: var(--err-bg); color: var(--err); }
+  .box ul { margin: 0; padding-left: 18px; }
+
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--panel); border-top: 1px solid var(--line);
+         padding: 12px 32px; display: flex; justify-content: center; }
+  .bar div { max-width: 1136px; width: 100%; display: flex; align-items: center; gap: 16px; justify-content: space-between; }
+  .bar p { margin: 0; color: var(--muted); }
+  .bar .error { color: var(--err); }
+  button { font: inherit; font-weight: 600; border-radius: 999px; padding: 10px 20px; cursor: pointer;
+           background: var(--accent); color: var(--accent-ink); border: 0; }
+  button:disabled { opacity: .5; cursor: default; }
+  .done { grid-column: 1 / -1; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+  .done h2 { font-size: 20px; margin-bottom: 6px; }
+  .done p { margin: 0; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    header, main { padding-left: 16px; padding-right: 16px; }
+    header { padding-top: 20px; }
+    main { grid-template-columns: 1fr; }
+    .bar { padding: 12px 16px; }
+    .top { grid-template-columns: 84px 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pick new books</h1>
+  <p>Click the books to add to the catalog, then Add. Ratings are from Open Library readers. Covers
+     are the Gutenberg edition's where it has one; the book's cover in the app is chosen later.</p>
+</header>
+<main id="books"><p class="facts">Loading…</p></main>
+<div class="bar"><div>
+  <p id="count" aria-live="polite">No books picked</p>
+  <button id="add" disabled>Add these books</button>
+</div></div>
+
+<script>
+const main = document.getElementById("books");
+const count = document.getElementById("count");
+const add = document.getElementById("add");
+
+const el = (tag, attrs = {}, ...kids) => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") e.className = v; else if (k === "style") e.style.cssText = v; else e.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) e.append(kid);
+  return e;
+};
+
+function readingTime(book) {
+  if (!book.hours) return null;
+  const mins = Math.round(book.hours * 60);
+  return mins < 60 ? `about ${mins} min` : `about ${book.hours < 10 ? book.hours : Math.round(book.hours)} hours`;
+}
+
+function card(book) {
+  const box = el("input", { type: "checkbox", value: book.id, "aria-label": `Pick ${book.title}` });
+  box.addEventListener("change", update);
+
+  const img = el("img", { src: `/cover/${book.id}.jpg`, alt: "", loading: "lazy" });
+  const cover = el("div", { class: "cover" }, img);
+  img.addEventListener("error", () => cover.replaceChildren(el("span", {}, "No cover found")));
+
+  const rating = book.rating
+    ? [el("span", { class: "stars", style: `--fill:${(book.rating / 5) * 100}%`, "aria-hidden": "true" }, "★★★★★"),
+       el("b", {}, book.rating.toFixed(1)),
+       el("span", {}, "· ", el("a", { href: book.ratingLink, target: "_blank", rel: "noopener" },
+          `${book.ratings.toLocaleString()} rating${book.ratings === 1 ? "" : "s"}`))]
+    : [el("span", {}, "No ratings on Open Library")];
+
+  const people = [book.authors.join(" and ")];
+  if (book.illustrators?.length && book.illustrators.join() !== book.authors.join())
+    people.push(`pictures by ${book.illustrators.join(" and ")}`);
+
+  const facts = [
+    book.words ? `${book.words.toLocaleString()} words` : null,
+    readingTime(book) ? `${readingTime(book)} at age ${book.minAge}` : null,
+    book.pictures ? `${book.pictures} picture${book.pictures === 1 ? "" : "s"}` : "no pictures",
+  ].filter(Boolean).join(" · ");
+
+  return el("label", { class: "book" }, box, el("span", { class: "tick", "aria-hidden": "true" }, "✓"),
+    el("div", { class: "top" }, cover, el("div", {},
+      el("h2", {}, book.title),
+      el("p", { class: "by" }, `${people.join(", ")} · ${book.year}`),
+      el("div", { class: "rating", role: "img", "aria-label": book.rating ? `${book.rating.toFixed(1)} out of 5` : "No ratings" }, rating),
+      el("div", { class: "chips" },
+        el("span", { class: "chip genre" }, book.genre),
+        el("span", { class: "chip" }, `Ages ${book.minAge}–${book.maxAge}`),
+        el("span", { class: "chip" }, book.kind === "picture" ? "Picture book" : "Chapter book"),
+        book.classic ? el("span", { class: "chip" }, "Classic") : null))),
+    el("p", { class: "synopsis" }, book.synopsis),
+    el("div", {}, el("p", { class: "label" }, "Themes"), el("p", { class: "themes" }, book.themes.join(" · "))),
+    el("p", { class: "facts" }, facts, " · ",
+      el("a", { href: book.gutenberg, target: "_blank", rel: "noopener" }, `Gutenberg #${book.ebook}`)),
+    book.note ? el("p", { class: "box note" }, book.note) : null,
+    book.warnings.length ? el("div", { class: "box warn" }, el("ul", {}, book.warnings.map(w => el("li", {}, w)))) : null);
+}
+
+function picked() {
+  return [...main.querySelectorAll("input:checked")].map(i => i.value);
+}
+
+function update() {
+  const n = picked().length;
+  count.className = "";
+  count.textContent = n ? `${n} book${n === 1 ? "" : "s"} picked` : "No books picked";
+  add.disabled = !n;
+}
+
+add.addEventListener("click", async () => {
+  const ids = picked();
+  add.disabled = true;
+  try {
+    const r = await fetch("/api/picks", { method: "POST", headers: { "Content-Type": "application/json" },
+                                          body: JSON.stringify({ ids }) });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || r.statusText);
+    main.replaceChildren(el("div", { class: "done" },
+      el("h2", {}, `${data.saved} book${data.saved === 1 ? "" : "s"} picked`),
+      el("p", {}, "Saved. You can close this page; Claude carries on from here.")));
+    document.querySelector(".bar").remove();
+  } catch (e) {
+    count.className = "error";
+    count.textContent = `Couldn't save: ${e.message}`;
+    add.disabled = false;
+  }
+});
+
+fetch("/api/books").then(r => r.json()).then(books => {
+  books.sort((a, b) => a.minAge - b.minAge || (b.rating || 0) - (a.rating || 0));
+  main.replaceChildren(...books.map(card));
+}).catch(e => { main.replaceChildren(el("p", { class: "facts" }, `Couldn't load the books: ${e.message}`)); });
+</script>
+</body>
+</html>

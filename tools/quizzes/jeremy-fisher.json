@@ -1,0 +1,12 @@
+{"segments": [
+  {"questions": [
+    {"prompt": "What did Mr. Jeremy want to catch for his dinner?", "choices": ["Some carrots", "A dish of minnows", "A basket of butterflies"], "correctIndex": 1, "evidence": "catch a dish of minnows for my dinner"},
+    {"prompt": "What was Mr. Jeremy's boat like?", "choices": ["Round and green, like a lily-leaf", "A big wooden rowing boat", "A red teacup"], "correctIndex": 0, "evidence": "The boat was round and green, and very like the other lily-leaves."},
+    {"prompt": "What did Mr. Jeremy eat for lunch?", "choices": ["A salad", "A slice of cake", "A butterfly sandwich"], "correctIndex": 2, "evidence": "I will eat a butterfly sandwich"}]},
+  {"questions": [
+    {"prompt": "What did Mr. Jeremy catch instead of a minnow?", "choices": ["An old boot", "A spiky fish called Jack Sharp", "A water-beetle"], "correctIndex": 1, "evidence": "Mr. Jeremy landed little Jack Sharp the stickleback, covered with spines"},
+    {"prompt": "Why did the trout spit Mr. Jeremy out?", "choices": ["It did not like the taste of his macintosh", "Mr. Jeremy tickled it", "Its mother called it home"], "correctIndex": 0, "evidence": "the trout was so displeased with the taste of the macintosh, that in less than half a minute it spat him out again"},
+    {"prompt": "What did Mr. Jeremy and his friends have for dinner?", "choices": ["A dish of minnows", "A roasted grasshopper with lady-bird sauce", "Butterfly sandwiches"], "correctIndex": 1, "evidence": "they had a roasted grasshopper with lady-bird sauce"}],
+   "theme": {"prompt": "Mr. Jeremy caught no minnows and lost his rod. But he said it did not much matter. What does the story show?", "choices": ["Mr. Jeremy was very good at fishing", "A day can still end well when plans go wrong", "A bad day means your friends won't come"], "correctIndex": 1, "evidence": ["I have lost my rod and basket; but it does not much matter", "his friends both came to dinner", "which frogs consider a beautiful treat"]},
+   "written": "Mr. Jeremy had a scary surprise at the pond, but he got home safe and had dinner with his friends. What helps you feel better after a hard day?"}
+]}
